@@ -1,0 +1,14 @@
+.Grafica-Principal{
+    border: 2px solid;
+    display: flex;
+    position: absolute;
+    top: 13.3%;
+    width: 77.7%;
+    height: 38%;
+    left: 21.56%;
+}
+.Grafica-Principal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

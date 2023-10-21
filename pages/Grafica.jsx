@@ -9,12 +9,7 @@ function Grafica(){
     return(
             <div className="Grafica-Principal">
 
-
                 <h1> Este es la tabla</h1>
-
-
-
-
             </div>
 
 

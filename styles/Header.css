@@ -1,37 +1,37 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@200&display=swap');
 .Header{
-        width: 78.4%;
+
+        margin-top: 2px;
+        display: flex;
+        width: 100%;
         height: 100px;
-        flex-shrink: 0;
-        position: absolute;
         background: #FFF;
-        right: 0px;
         top: 4px;
-    
-        
+        position: relative;
+      
 }
 .Header{
-    box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.75);
+ box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.75);
 -webkit-box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.75);
 -moz-box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.75);
 }
 .Header{
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
-    flex-direction: arrow;
     
- 
 }
 .Contenedor-Principal{
-  
+    padding: 10px;
     width: 95%;
     height: 60%;
     display: flex;
-    flex-direction: arrow;
     align-items: center;
-  
+    position: relative;
+   
+    position: relative;
     
 }
 .Lupa-icon{
@@ -43,43 +43,54 @@
    align-items: center;
    width: 45px;
    justify-content: center;
-   margin-left: 10px;
+   position: relative;
+   
 }
 .notificaciones{  
-    margin-left: 24%;
+    margin-left: 9%;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 .perfil{
     border: 2px solid var(--grey-grey-50, #a6d97a);
     width: 40px;
     height: 40px;
     right: 10px;
-    margin-left:2%;
+    margin-left:10px;
     border-radius: 50%;
+    position: initial;
+    display: flex;
+}
+.items{
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: end;
+    align-items: center;
+ 
 }
 .entrada{
     height: 40px;
     display: flex;
+    position: relative;
 }
 .buscador{
-    
     width: 600px;
     background: none; 
     border: none; 
-    outline: none;
-   
-    
 }
 .div-buscador{
     display: flex;
     align-items: center;
     border: 1px solid var(--grey-grey-50, #F0F1F3);
     border-top-right-radius: 4px; 
-    border-bottom-right-radius: 4px
+    border-bottom-right-radius: 4px;
+    position: relative;
+   
 }
 ::placeholder{
     color: #858D9D;
@@ -89,11 +100,42 @@
     font-style: normal;
     font-weight: 100;
   }
-  input{
+input{
     color: #505154;
     font-family: 'Inter', sans-serif;
     font-family: Inter;
     font-size: 15px;
     font-style: normal;
     font-weight: 100;
+  }
+input:focus {
+    color: #505154;   
+ 
+    outline-color: #a6d97a;
+
+}
+  @media (max-width: 768px) {
+
+    
+    .buscador{
+        width: 240px;
+       
+    }
+    .notificaciones{  
+        margin-left: 0px;
+       
+    }
+    .Header{
+        margin-left:0px;
+       top: 0;
+       margin-top: 0;
+      
+        
+    }
+    .items{
+        margin-left: 0;
+        width: auto;
+    }
+   
+    /* Pueden agregar mas reglas especificas para pantallas pequeñas*/
   }

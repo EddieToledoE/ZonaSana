@@ -2,18 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@200&display=swap');
     :root{
         background-color: #F0F1F3;
-    
-    }
-    body {
-        margin: 0;
-        padding: 0;
-        
     }
 .Bar{
-    position: fixed;
+    
     display: flex;
     width: 240px;
-    height: 90%;
+    height: 92vh;
     padding: 24px 24px 32px 24px;
     flex-direction: column;
     justify-content: space-between;
@@ -21,6 +15,7 @@
     flex-shrink: 0;
     border-radius: 0px 8px 8px 0px;
     background: #FFF;
+
 }
 .Bar{
     box-shadow: 1px 0px 3px 0px rgba(207,198,198,0.44);
@@ -41,30 +36,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height:400px;
+    height:500px;
     width: 100%;
-    
-  
+    margin-top: 10px;
+   
 }
 .paginas-div{
         display: flex;
-        position: absolute;
-        top: 100px;
+        position: relative;
 }
 .Close{
     display: flex;
-    align-items: center;
+   align-items: end;
     justify-content: center;
     display: flex;
-    height:200px;
+    height:250px;
     width: 100%;
-    margin-top: 300px;
+    margin-top: 0px;
+    
 }
 .Close-Options{
     display: flex;
     flex-direction: column;
-    position: absolute;
-    
 }
 
 ul{
@@ -105,7 +98,7 @@ ul{
     line-height: 24px; /* 150% */
     cursor: pointer;
     font-family: 'Inter', sans-serif;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 .Close-Enlaces{
         color: var(--grey-grey-600, #5D6679);
@@ -128,7 +121,23 @@ ul{
     line-height: 30px; /* 150% */
 
 }
-
+@media (max-width: 768px) {
+    body {
+      font-size: 44px;
+      overflow: hidden;
+    }
+    .Bar{
+        width: 200px;
+        height: 720px;
+        position: fixed;
+        z-index: 1;
+        display: none;
+    }
+    .Close-Enlaces{
+        margin-top: 20px;
+    }
+    /* Pueden agregar mas reglas especificas para pantallas pequeñas*/
+  }
 
 
 

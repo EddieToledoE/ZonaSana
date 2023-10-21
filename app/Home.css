@@ -36,21 +36,17 @@ body{
 }
 .avisos{
     display: flex;
-   padding-top:10px ;
-   /* border: 2px solid green; */ 
+    padding-top:10px ;
     width: 100%;
     height: 20%;
     
 }
 .citas{
    width: 100%;
-   
    margin: 5px;
    display: flex;
    background: #FFF;
    border-radius: 8px;
-
-   
 }
 .Citas a{
     color: var(--grey-grey-600, #5D6679);
@@ -95,7 +91,6 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
- 
   margin-top: 10px;
 }
 .citas-inf{
@@ -133,9 +128,48 @@ body{
 
 @media (max-width: 768px) {
   .hola{
-    
+    border: none;
     width: 100%;
     padding-left: 0px;
+    margin: 0px;
    
   }
+ .grafica{
+    margin: 0px;
+    width: 100%;
+    border: none;
+ }
+
+ .avisos{
+  display: flex;
+  flex-direction: column;
+  padding-top:0px ;
+  border: none;
+   width: 100%;
+   height:27%;
+ }
+.citas{
+    width: 100%;
+    margin: 0px;
+  }
+  .linea{
+    margin-bottom: 10px;
+  }
+.inventario{
+  width: 100%;
+  margin: 0px;
+  margin-top: 1px;
+  border: none;
+ }
+ .inf-a{
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 550;
+  line-height: 10px; /* 150% */
+  font-family: 'Inter', sans-serif;
+ }
+
+
+
+
 }

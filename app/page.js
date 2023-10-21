@@ -48,7 +48,7 @@ export default function Home() {
                       </div>
                  </div>
                  <div className='inventario'>
-
+                        <h3>Hola</h3>
                  </div>
               </div>
              </div>

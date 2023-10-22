@@ -88,7 +88,7 @@ function Bar() {
                             </svg>
                             Ajustes</a></li>
                         <li className="Close-li">
-                        <a className="Close-Enlaces">
+                        <a href="/" className="Close-Enlaces">
                         <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="path-1-outside-1_327_20" maskUnits="userSpaceOnUse" x="0" y="0" width="18" height="22" fill="black">
                             <rect fill="white" width="18" height="22"/>

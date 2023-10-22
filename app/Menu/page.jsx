@@ -1,5 +1,5 @@
 import Header from '@/pages/Header';
-import styles from '../app/Home.css'
+import 'app/Home.css'
 import Grafica from '@/pages/Grafica';
 import Bar from '@/pages/Bar-1';
 

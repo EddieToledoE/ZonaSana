@@ -5,13 +5,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 
+
+
+
+```bash
+
 Instalar la dependencia de redux
 npm i -S redux
 npm i -S react-redux
 npm i -D redux-devtools
-
-
-```bash
 npm run dev
 # or
 yarn dev

@@ -1,9 +1,22 @@
+
+'use client'
 import React from "react";
 import estiloBar from '@/styles/Bar.css';
+import {useSelector} from 'react-redux';
+import {closeBar,openBar} from '../store/barSlice'; // Importa las acciones
 
-function Bar() {     
+function Bar() {  
+    const isBarOpen = useSelector((state) => state.bar.isBarOpen);
+    const barStyles = {
+      
+        display: isBarOpen? 'flex' : 'none'
+        // Otros estilos según sea necesario
+        
+      };
+    
     return(
-            <div className="Bar">
+
+        <div className='Bar' style={barStyles}>
                     <div className="Logo">
                         <a className="edi"> Zona Sana</a>
                     </div>
@@ -11,7 +24,6 @@ function Bar() {
                        <div className="paginas-div">
                        <ul className="Paginas-ul">
                           <li className="Paginas">
-
                             <a className="Paginas-Enlaces">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10 21H5C3.89543 21 3 20.1046 
@@ -100,7 +112,8 @@ function Bar() {
                             Salir</a></li>
                         </ul>
                 </div>
-            </div>        
+            </div>     
+            
     );
 }
 export default Bar;

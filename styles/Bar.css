@@ -15,7 +15,8 @@
     flex-shrink: 0;
     border-radius: 0px 8px 8px 0px;
     background: #FFF;
-
+   
+   
 }
 .Bar{
     box-shadow: 1px 0px 3px 0px rgba(207,198,198,0.44);
@@ -62,6 +63,9 @@
 
 ul{
   list-style: none;
+}
+a{
+    text-decoration: none;
 }
 .Paginas-Enlaces{
     display: flex;
@@ -121,7 +125,8 @@ ul{
     line-height: 30px; /* 150% */
 
 }
-@media (max-width: 768px) {
+
+@media only screen and (max-width: 800px){
     body {
       font-size: 44px;
       overflow: hidden;
@@ -130,9 +135,15 @@ ul{
         width: 200px;
         height: 720px;
         position: fixed;
-        z-index: 1;
-        display: none;
+        z-index: 999;
+        overflow: hidden;
+        -webkit-transition: width 0.3s ease;
+        transition: width 0.3s ease;
+        
+        
+        
     }
+   
     .Close-Enlaces{
         margin-top: 20px;
     }

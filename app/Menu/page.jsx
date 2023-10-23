@@ -1,20 +1,62 @@
+
+'use client'
 import Header from '@/pages/Header';
 import 'app/Home.css'
 import Grafica from '@/pages/Grafica';
 import Bar from '@/pages/Bar-1';
+import {closeBar,openBar } from '@/store/barSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function Home() {
+  //Logica para mandar y recibir los estados de la libreria "Redux"
+  const isBarOpen = useSelector((state) => state.bar.isBarOpen);
+  // importamos el objeto useDispatch para poder mandar los cambios de estados
+  const windowWidth = window.innerWidth;
+  const dispatch = useDispatch();
+  if (windowWidth >= 800) {
+  //Si cumple las condiciones se manda el cambio de estado 
+    dispatch(openBar());
+  }
+  const handleDivClick = () => {
+    const windowWidth = window.innerWidth;
+
+  //Condicion para que cambie de estado unicamente cuando isBarOpen sea true y la pantalla tenga un width maximo de 800 px
+    if (isBarOpen && windowWidth <= 800) {
+      console.log("Div clickeado");
+    //Si cumple las condiciones se manda el cambio de estado 
+      dispatch(closeBar());
+    }
+    
+  }; 
+  const barStyles = {
+    opacity: windowWidth <= 800 ? (isBarOpen ? '0.5' : '1') : '1',
+    backgroundColor: windowWidth <= 800 ? (isBarOpen ? 'rgba(0, 0, 0, 0.6)' : '') : ''
+
+
+    
+    // Aplicar estilos de ser necesario
+  };
+  const Styles = {
+   
+    opacity: windowWidth <= 800 ? (isBarOpen ? '0.5' : '1') : '1',
+    
+    // Aplicar estilos de ser necesario
+  };
   return(
-            <section className="seccion1">
-             <div className='bar1'>
+            <section className="seccion1" >
+             <div className='bar1' >
                 <Bar/>
              </div>
-             <div className='hola'>
+             <div className='hola '
+                style={barStyles}
+               onClick={handleDivClick}>
+            
                <Header/>
-               <div className='grafica'>
+             
+               <div className='grafica' style={Styles}>
                    <h1>Buildeando la grafica</h1>
                </div>
-              <div className='avisos'>
+              <div className='avisos'style={Styles} >
                  <div className='citas'>
                       <div className='Citas'>
                         <a className='titulo-citas'>Citas</a>
@@ -29,7 +71,7 @@ export default function Home() {
                           </div>
                     </div>
                     <div className='linea'></div>
-                    <div className='citas-pendientes1'>
+                    <div className='inventario-pendiente'>
                           <div className='inf'>
                              
                               <svg width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,10 +90,44 @@ export default function Home() {
                       </div>
                  </div>
                  <div className='inventario'>
-                        <h3>Hola</h3>
+                      <div className='Citas'>
+                        <a className='titulo-citas'>Citas</a>
+                      </div>
+                    <div className='citas-pendientes'>
+                          <div className='inf'>
+                          <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <g id="Quantity">
+                                  <g id="Group 34">
+                                  <path id="Vector" d="M4.4026 0.900208C3.8361 0.900208 3.26817 1.18245 2.95024 1.65814L0.389879 5.23069L0.385262 5.23713L0.381717 5.24422C0.380535 5.24658 0.379321 5.249 0.378081 5.25147C0.351126 5.3052 0.311743 5.38369 0.311743 5.4676V22.9799C0.311743 23.8987 1.04146 24.6287 1.9605 24.6287H23.8509C24.771 24.6287 25.4997 23.8678 25.4997 22.9799L25.4994 5.48752C25.5117 5.45306 25.5137 5.41949 25.5102 5.38873H25.5645L25.4511 5.23048L22.8898 1.65659L22.8891 1.6557C22.5439 1.18502 22.0084 0.9 21.4384 0.9L15.2436 0.900208H4.4026ZM15.7989 5.51111V10.7522L12.9682 9.22143L12.9202 9.19546L12.8724 9.22181L10.0426 10.781V5.54104L11.1494 1.69576H14.7214L15.7989 5.51111ZM3.5907 2.10054L3.59071 2.10055L3.59125 2.09977C3.77891 1.83174 4.07389 1.69576 4.40287 1.69576H10.3165L9.36062 5.06965H1.47003L3.5907 2.10054ZM16.2363 11.4862L16.2447 11.4825L16.2523 11.4775C16.4564 11.3415 16.5948 11.1029 16.5948 10.8582L16.5944 5.86528H24.7336L24.7338 22.9798C24.7338 23.4585 24.334 23.8329 23.8807 23.8329H1.96051C1.48175 23.8329 1.10736 23.433 1.10736 22.9798V5.86528H9.24655V10.8582C9.24655 11.1353 9.38706 11.3431 9.58906 11.4775C9.69853 11.5505 9.83832 11.5836 9.97209 11.5836C10.0775 11.5836 10.2144 11.5501 10.3214 11.4801L12.9207 10.0783L15.5229 11.4817C15.7691 11.6217 16.013 11.5818 16.2363 11.4862ZM21.4386 1.69576C21.7617 1.69576 22.0606 1.85729 22.252 2.10227L24.3715 5.06967H16.5107L15.5548 1.69578L21.4386 1.69576Z" fill="#DBA362" stroke="#DBA362" stroke-width="0.2"/>
+                                  <path id="Vector_2" d="M10.538 5.06959H10.438V5.16959V5.76519V5.86519H10.538H15.3033H15.4033V5.76519V5.16959V5.06959H15.3033H10.538Z" fill="#DBA362" stroke="#DBA362" stroke-width="0.2"/>
+                                  </g>
+                                  </g>
+                                  </svg>
+                              <h1 className='citas-inf'>800</h1>
+                              <a className='inf-a'>Total Productos</a>
+                          </div>
+                    </div>
+                    <div className='linea'></div>
+                    <div className='inventario-pendiente'>
+                          <div className='inf'>
+                          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="30" height="30" rx="4" fill="#ECEAFF"/>
+                            <path d="M14.8118 2C12.3254 2 9.94082 2.98774 8.18294 4.74572C6.42475 6.50391 5.43701 8.88846 5.43701 11.3751C5.43701 16.375 13.9869 25.7498 14.3496 26.1751C14.4689 26.3038 14.6367 26.3762 14.8121 26.3752C14.9874 26.3762 15.1552 26.3038 15.2745 26.1751L16.062 25.2813V25.7501C16.062 26.0816 16.1938 26.3996 16.4282 26.634C16.6625 26.8684 16.9804 27 17.3121 27H24.812C25.1435 27 25.4613 26.8684 25.6957 26.634C25.9303 26.3996 26.0619 26.0816 26.0619 25.7501V18.2502C26.0619 17.9187 25.9303 17.6006 25.6957 17.3663C25.4613 17.1319 25.1434 17.0003 24.812 17.0003H22.1682C23.5056 14.6877 24.1869 12.8004 24.1869 11.3753C24.1869 9.72968 23.7538 8.11297 22.931 6.68787C22.1082 5.26262 20.9246 4.07924 19.4995 3.2564C18.0744 2.43355 16.4577 2.00043 14.812 2.00043L14.8118 2ZM24.8119 25.7495H17.3119V18.2496H19.1869V20.7497C19.1876 20.9663 19.3003 21.1672 19.4849 21.2804C19.6695 21.3938 19.8997 21.4034 20.0931 21.3059L21.0617 20.8246L22.0304 21.3059H22.0306C22.1176 21.3505 22.2139 21.3741 22.3118 21.3745C22.4288 21.3749 22.5437 21.3425 22.6431 21.2808C22.8262 21.1663 22.9373 20.9656 22.9369 20.7497V18.2496H24.8119L24.8119 25.7495ZM21.687 18.2496V19.7371L21.3743 19.5684C21.1975 19.4793 20.9887 19.4793 20.8118 19.5684L20.468 19.7371V18.2496H21.687ZM19.812 16.9997H17.3119C16.9803 16.9997 16.6624 17.1313 16.428 17.3657C16.1937 17.6001 16.0618 17.9181 16.0618 18.2496V23.3495C15.5556 23.9746 15.1181 24.4682 14.8119 24.8121C13.0307 22.7808 6.68682 15.2936 6.68682 11.3749C6.68682 8.472 8.23556 5.79014 10.7494 4.33837C13.2633 2.8866 16.3604 2.88692 18.874 4.33837C21.3875 5.78981 22.9366 8.47189 22.9366 11.3749C22.9366 12.6811 22.1617 14.6249 20.7115 16.9998L19.812 16.9997Z" fill="#817AF3" fill-opacity="0.6"/>
+                            <path d="M14.8118 6.99988C13.6514 6.99988 12.5388 7.46088 11.7183 8.28118C10.8978 9.10168 10.4368 10.2146 10.4368 11.3749C10.4368 12.535 10.8978 13.6479 11.7183 14.4684C12.5388 15.2889 13.6514 15.7497 14.8118 15.7497C15.9721 15.7497 17.0848 15.2889 17.9053 14.4684C18.7258 13.6479 19.1868 12.535 19.1868 11.3749C19.1868 10.2146 18.7258 9.10168 17.9053 8.28118C17.0848 7.46091 15.9721 6.99988 14.8118 6.99988ZM14.8118 14.4998C13.9829 14.4998 13.1881 14.1706 12.6022 13.5845C12.0161 12.9985 11.6869 12.2036 11.6869 11.3749C11.6869 10.546 12.0161 9.75122 12.6022 9.1651C13.1882 8.57915 13.9829 8.24979 14.8118 8.24979C15.6407 8.24979 16.4355 8.57917 17.0214 9.1651C17.6075 9.75122 17.9367 10.546 17.9367 11.3749C17.9367 12.2036 17.6075 12.9986 17.0214 13.5845C16.4354 14.1706 15.6407 14.4998 14.8118 14.4998Z" fill="#817AF3" fill-opacity="0.6"/>
+                            </svg>
+
+                          
+                              <h1 className="citas-inf">200</h1>
+                              <a className='inf-a'>Productos no disponibles</a>
+                          </div>
+                      </div>
                  </div>
               </div>
+              <div className='tabla'style={Styles}>
+                  <h1>Viva Chiapas</h1>
+              </div>
              </div>
+           
               
             </section>
  );

@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@200&display=swap');
+
 h4, h5 {
     font-weight: 100;
 }
@@ -22,6 +25,7 @@ h5 {
     font-family: cursive;
     background-color:  rgb(212, 255, 221);
 }
+
 
 .seccion-derecha {
     width: 50%;
@@ -65,6 +69,7 @@ h5 {
     border-radius: 8px ;
     border: 1px solid gainsboro;
 }
+
 
 a {
     font-size: 13px;

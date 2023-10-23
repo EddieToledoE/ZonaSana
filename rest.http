@@ -1,0 +1,158 @@
+### Crear Cliente
+POST http://localhost:3000/api/clientes
+Content-Type: application/json
+
+{
+	"nombre":"Eliseo",
+	"apellido":"Negrito",
+	"telefono":9611914842,
+	"direccion":{
+		"cp":29000,
+		"calle":"Av. San Francisco",
+		"municipio":"Petatlan",
+		"estado":"Guerrero",
+		"observacion":"prueba del error de los modelos"
+	}
+}
+### Obtener todos los clientes
+GET http://localhost:3000/api/clientes
+
+### Obtener cliente especifico
+GET http://localhost:3000/api/clientes/612
+
+### Actualizar cliente por id
+PUT http://localhost:3000/api/clientes/653494c227abe78056297320
+Content-Type: application/json
+
+{
+	"nombre":"Yazmin",
+	"apellido":"Reyes",
+	"telefono":9611914842,
+	"direccion":{
+		"cp":29000,
+		"calle":"Av. wintersito",
+		"municipio":"Petatlan",
+		"estado":"Guerrero",
+		"observacion":"actualizacion"
+	}
+}
+### Borrar cliente por id
+DELETE http://localhost:3000/api/clientes/653494c227abe78056297320
+  
+
+
+
+### Crear Paciente
+POST http://localhost:3000/api/pacientes
+Content-Type: application/json
+
+{
+    "nombre":"Renzo",
+    "apellido":"Alva",
+    "telefono":9610987651,
+    "edad":20,
+    "codigo_ajeno":1000,
+    "codigo_propio":9999
+}
+### Obtener todos los pacientes
+GET http://localhost:3000/api/pacientes
+
+### Obtener paciente especifico
+GET http://localhost:3000/api/pacientes/6535803465be24ff62998a4b
+
+### Actualizar paciente por id
+PUT http://localhost:3000/api/pacientes/6535803465be24ff62998a4b
+Content-Type: application/json
+
+{
+    "nombre":"Luis Deivid",
+    "apellido":"Vazquez",
+    "telefono":9618902353,
+    "edad":19,
+    "codigo_ajeno":123,
+    "codigo_propio":456
+}
+### Borrar paciente por id
+DELETE http://localhost:3000/api/pacientes/6535803465be24ff62998a4b
+
+### Crear Producto
+POST http://localhost:3000/api/productos
+Content-Type: application/json
+
+{
+	"cantidad_stock":5,
+	"precio_costo":50,
+	"precio_venta":65,
+	"tipo":"Pastillas",
+	"producto":{
+		"nombre":"Zorritone",
+		"marca":"ZZZ",
+		"descripcion":"Dulces para la tos"
+	}
+}
+
+### Obtener todos los productos
+GET http://localhost:3000/api/productos
+
+### Obtener producto especifico
+GET http://localhost:3000/api/productos/6535897383fe825ccb9193af
+
+### Actualizar producto por id
+PUT http://localhost:3000/api/productos/65358c0983fe825ccb9193cb
+Content-Type: application/json
+
+{
+	"cantidad_stock":5,
+	"precio_costo":40,
+	"precio_venta":65,
+	"tipo":"Pastillas",
+	"producto":{
+		"nombre":"Zorritone",
+		"marca":"Zazas",
+		"descripcion":"Dulces para la tos y dolor de garganta"
+	}
+}
+### Borrar producto por id
+DELETE http://localhost:3000/api/productos/65358a0783fe825ccb9193b4
+
+### Crear Usuario
+POST http://localhost:3000/api/usuarios
+Content-Type: application/json
+
+{
+	"email":"Chado@outlook.es",
+	"contraseña":"Contra123",
+	"persona":{
+		"nombre":"Chado",
+		"apellido":"Fox",
+		"puesto":"Dev"
+	}
+}
+
+### Obtener todos los productos
+GET http://localhost:3000/api/usuarios/
+
+### Obtener producto especifico
+GET http://localhost:3000/api/usuarios/6535906dfaf0d6cd35c6c1a2
+
+### Actualizar producto por id
+PUT http://localhost:3000/api/usuarios/6535906dfaf0d6cd35c6c1a2
+Content-Type: application/json
+
+{
+	"email":"Chado@correo.es",
+	"contraseña":"Contra123",
+	"persona":{
+		"nombre":"Chado",
+		"apellido":"Fox",
+		"puesto":"Dev"
+	}
+}
+### Borrar producto por id
+DELETE http://localhost:3000/api/usuarios/6535906dfaf0d6cd35c6c1a2
+
+
+
+
+
+

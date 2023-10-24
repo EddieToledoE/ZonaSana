@@ -8,9 +8,7 @@ import { closeBar, openBar } from '../store/barSlice'; // Importa las acciones
 import { useState, useEffect } from "react";
 
 function Header() {
-
   const dispatch = useDispatch();
-  
   const handleToggleBar = () => {
     console.log('Action dispatched: closeBar');
     dispatch(openBar()); 
@@ -21,7 +19,7 @@ function Header() {
           <div className="Contenedor-Principal">
         
           <div className="Lupa-icon">
-          <svg onClick={handleToggleBar} width="44" height="44" viewBox="-4 0 34 24">
+          <svg className="svg-icon" onClick={handleToggleBar} width="44" height="44" viewBox="-4 0 34 24">
 							<path fill="#12B76A" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314
 								c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743
 								s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314

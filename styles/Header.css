@@ -118,6 +118,7 @@ input:focus {
     outline-color: #a6d97a;
 
 }
+
 @media only screen and (max-width: 800px ) {
     .buscador{
         width: 100%;
@@ -131,6 +132,7 @@ input:focus {
         margin-left: 0px;
        
     }
+  
     .Header{
        margin-left:0px;
        top: 0;

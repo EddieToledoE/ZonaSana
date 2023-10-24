@@ -1,0 +1,164 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@200&display=swap');
+.Header{
+
+        margin-top: 2px;
+        display: flex;
+        width: 100%;
+        height: 100px;
+        background: #FFF;
+        top: 4px;
+        position: relative;
+      
+}
+.Header{
+ box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.75);
+-webkit-box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.75);
+-moz-box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.75);
+}
+.Header{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  
+    
+}
+.Contenedor-Principal{
+    padding: 10px;
+    width: 95%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    position: relative;
+   
+    position: relative;
+    
+}
+.Lupa-icon{
+   border: 1px solid var(--grey-grey-50, #F0F1F3);
+   border-top-left-radius: 4px; 
+   border-bottom-left-radius: 4px;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   width: 100px;
+   justify-content: center;
+   position: relative;
+
+}
+.notificaciones{  
+    margin-left: 9%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.perfil{
+    border: 2px solid var(--grey-grey-50, #a6d97a);
+    width: 40px;
+    height: 40px;
+    right: 10px;
+    margin-left:10px;
+    border-radius: 50%;
+    position: initial;
+    display: flex;
+}
+.items{
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: end;
+    align-items: center;
+ 
+}
+.entrada{
+    height: 40px;
+    display: flex;
+    position: relative;
+}
+.svg-icon{
+    display: none;
+}
+.buscador{
+    width: 600px;
+    background: none; 
+    border: none; 
+}
+.div-buscador{
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--grey-grey-50, #F0F1F3);
+    border-top-right-radius: 4px; 
+    border-bottom-right-radius: 4px;
+    position: relative;
+   
+}
+::placeholder{
+    color: #858D9D;
+    font-family: 'Inter', sans-serif;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 100;
+  }
+input{
+    color: #505154;
+    font-family: 'Inter', sans-serif;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 100;
+  }
+input:focus {
+    color: #505154;   
+ 
+    outline-color: #a6d97a;
+
+}
+
+@media only screen and (max-width: 800px ) {
+    .buscador{
+        width: 100%;
+        
+    }
+    .div-buscador{
+       
+    }
+   
+    .notificaciones{  
+        margin-left: 0px;
+       
+    }
+  
+    .Header{
+       margin-left:0px;
+       top: 0;
+       margin-top: 0;
+       width:100%;
+       flex: 0 0 1; 
+       
+    }
+    .Contenedor-Principal{
+        width: 100%;
+        margin: 0px;
+        flex: 0 0 1;
+       
+    }
+    .items{
+        margin-left:4px;
+        width: auto;
+    }
+    .svg-icon{
+        display: flex;
+    }
+   .Lupa-icon{
+    border: none;
+   }
+   .lupa-svg{
+    display: none;
+   }
+    /* Pueden agregar mas reglas especificas para pantallas pequeñas*/
+  }

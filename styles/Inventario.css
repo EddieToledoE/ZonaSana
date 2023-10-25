@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@200&display=swap");
+
+.Inventario-General {
+  width: 1096px;
+  height: 188px;
+  background-color: white;
+  border-radius: 5px;
+  position: relative;
+  margin: 40px;
+  top: 500 px;
+  right: 200;
+  box-shadow: -6px 5px 10px -2px rgba(143, 120, 120, 0.74);
+  -webkit-box-shadow: -6px 5px 10px -2px rgba(143, 120, 120, 0.74);
+  -moz-box-shadow: -6px 5px 10px -2px rgba(143, 120, 120, 0.74);
+}
+
+.Txt-General {
+  font-family: "Inter", sans-serif;
+  text-align: start;
+}
+
+.Lista-Invgeneral {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+
+#liCategoria {
+  font-family: "Inter", sans-serif;
+  color: green;
+}
+
+#liTotal {
+  font-family: "Inter", serif;
+  color: orange;
+}
+
+#liVendido {
+  font-family: "Inter", sans-serif;
+  color: blue;
+}
+
+#liStock {
+  font-family: "Inter", sans-serif;
+  color: red;
+}
+
+.Inventario-Productos {
+  width: 1096px;
+  height: 606px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 40px;
+}
+
+.Txt-General {
+  font-family: "Inter", sans-serif;
+  text-align: start;
+}
+
+.Btns-Productos {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+}
+
+#btnAnadir {
+  background-color: #1366d9;
+  font-family: "Inter", sans-serif;
+  color: aliceblue;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btnFiltro {
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border-color: gray;
+}
+
+#btnDescarga {
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border-color: gray;
+}

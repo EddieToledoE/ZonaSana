@@ -1,0 +1,69 @@
+.Form-Agregar {
+    width: 500px;
+    height: 782px;
+    background-color: white;
+    border-radius: 5px;
+    border-color: black;
+    border-radius: 5px;
+    margin: 40px;
+  }
+  
+  .Foto-Form {
+    width: 212px;
+    height: 81px;
+    border-radius: 5px;
+    border-color: black;
+    background-color: antiquewhite;
+  }
+  
+  .Form-Inventario {
+    font-family: "Inter", sans-serif;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    font-family: "Inter", sans-serif;
+    display: inline;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input {
+    width: 40%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .input,
+  .label {
+    margin-bottom: 15px;
+  }
+  
+  .Btns-Form {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    margin: 10px;
+  }
+  
+  #btnCancelar {
+    background-color: transparent;
+    font-family: "Inter", sans-serif;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border-color: gray;
+  }
+  
+  #btnAgregar {
+    background-color: #1366d9;
+    font-family: "Inter", sans-serif;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border-color: gray;
+  }

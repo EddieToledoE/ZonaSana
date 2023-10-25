@@ -6,16 +6,22 @@ import head from '../styles/Header.css';
 import { useDispatch } from 'react-redux';
 import { closeBar, openBar } from '../store/barSlice'; // Importa las acciones
 import { useState, useEffect } from "react";
+import {useSelector} from 'react-redux';
 
 function Header() {
+  const isBarOpen = useSelector((state) => state.bar.isBarOpen);
+
+  const Header = isBarOpen? 'Header-true' : 'Header';
+
   const dispatch = useDispatch();
+
   const handleToggleBar = () => {
     console.log('Action dispatched: closeBar');
     dispatch(openBar()); 
    
   };
     return(
-        <header className="Header">
+        <header className={Header}>
           <div className="Contenedor-Principal">
         
           <div className="Lupa-icon">

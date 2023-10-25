@@ -7,16 +7,18 @@ import {closeBar,openBar} from '../store/barSlice'; // Importa las acciones
 
 function Bar() {  
     const isBarOpen = useSelector((state) => state.bar.isBarOpen);
-    const barStyles = {
+   /* const barStyles = {
       
         display: isBarOpen? 'flex' : 'none'
         // Otros estilos según sea necesario
         
-      };
-    
+      }; */
+
+      const sidebarClass = isBarOpen ? 'Bar-Open' : 'Bar';
+
     return(
 
-        <div className='Bar' style={barStyles}>
+        <div className={sidebarClass}>
                     <div className="Logo">
                         <a className="edi"> Zona Sana</a>
                     </div>

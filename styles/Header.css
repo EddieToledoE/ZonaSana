@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@200&display=swap');
-.Header{
+.Header, .Header-true{
 
         margin-top: 2px;
         display: flex;
@@ -11,12 +11,12 @@
         position: relative;
       
 }
-.Header{
+.Header, .Header-true{
  box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.75);
 -webkit-box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.75);
 -moz-box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.75);
 }
-.Header{
+.Header, .Header-true{
     display: flex;
     position: relative;
     align-items: center;
@@ -133,13 +133,16 @@ input:focus {
        
     }
   
-    .Header{
+    .Header, .Header-true{
        margin-left:0px;
        top: 0;
        margin-top: 0;
        width:100%;
        flex: 0 0 1; 
        
+    }
+    .Header-true{
+        opacity: 0.5;
     }
     .Contenedor-Principal{
         width: 100%;

@@ -13,10 +13,7 @@ export default function Home() {
   // importamos el objeto useDispatch para poder mandar los cambios de estados
   const windowWidth = window.innerWidth;
   const dispatch = useDispatch();
-  if (windowWidth >= 800) {
-  //Si cumple las condiciones se manda el cambio de estado 
-    dispatch(openBar());
-  }
+  
   const handleDivClick = () => {
     const windowWidth = window.innerWidth;
 
@@ -26,37 +23,26 @@ export default function Home() {
     //Si cumple las condiciones se manda el cambio de estado 
       dispatch(closeBar());
     }
-    
   }; 
-  const barStyles = {
-    opacity: windowWidth <= 800 ? (isBarOpen ? '0.5' : '1') : '1',
-    backgroundColor: windowWidth <= 800 ? (isBarOpen ? 'rgba(0, 0, 0, 0.6)' : '') : ''
-
-
-    
-    // Aplicar estilos de ser necesario
-  };
-  const Styles = {
-   
-    opacity: windowWidth <= 800 ? (isBarOpen ? '0.5' : '1') : '1',
-    
-    // Aplicar estilos de ser necesario
-  };
+  const hola = isBarOpen ? 'hola-true':'hola';
+  const grafica = isBarOpen ? 'grafica-true':'grafica';
+  const avisos = isBarOpen? 'avisos-true' : 'avisos';
+  const tabla = isBarOpen? 'tabla-true' : 'tabla';
   return(
             <section className="seccion1" >
              <div className='bar1' >
                 <Bar/>
              </div>
-             <div className='hola '
-                style={barStyles}
+             <div className={hola}
+                
                onClick={handleDivClick}>
             
                <Header/>
              
-               <div className='grafica' style={Styles}>
+               <div className={grafica}>
                    <h1>Buildeando la grafica</h1>
                </div>
-              <div className='avisos'style={Styles} >
+              <div className={avisos} >
                  <div className='citas'>
                       <div className='Citas'>
                         <a className='titulo-citas'>Citas</a>
@@ -123,7 +109,7 @@ export default function Home() {
                       </div>
                  </div>
               </div>
-              <div className='tabla'style={Styles}>
+              <div className={tabla}>
                   <h1>Viva Chiapas</h1>
               </div>
              </div>

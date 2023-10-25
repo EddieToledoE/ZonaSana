@@ -3,8 +3,7 @@
     :root{
         background-color: #F0F1F3;
     }
-.Bar{
-    
+.Bar, .Bar-Open{
     display: flex;
     width: 240px;
     height: 92vh;
@@ -15,8 +14,6 @@
     flex-shrink: 0;
     border-radius: 0px 8px 8px 0px;
     background: #FFF;
-   
-   
 }
 .Bar{
     box-shadow: 1px 0px 3px 0px rgba(207,198,198,0.44);
@@ -48,7 +45,7 @@
 }
 .Close{
     display: flex;
-   align-items: end;
+     align-items: end;
     justify-content: center;
     display: flex;
     height:250px;
@@ -132,16 +129,27 @@ a{
       overflow: hidden;
     }
     .Bar{
+        transform: translateX(-100%); /* Mueve el elemento fuera de la vista hacia la izquierda */
         width: 200px;
-        height: 720px;
+        height: 93%;
         position: fixed;
         z-index: 999;
         overflow: hidden;
         -webkit-transition: width 0.3s ease;
-        transition: width 0.3s ease;
+        transition: transform 0.5s;
         
-        
-        
+    }
+    .Bar-Open
+    {
+        width: 200px;
+        height: 93%;
+        position: fixed;
+        z-index: 999;
+        overflow: hidden;
+        -webkit-transition: width 0.3s ease;
+       
+        transform: translateX(0);
+        transition: transform 0.5s;
     }
    
     .Close-Enlaces{

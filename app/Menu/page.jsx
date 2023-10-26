@@ -11,7 +11,7 @@ export default function Home() {
   //Logica para mandar y recibir los estados de la libreria "Redux"
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
   // importamos el objeto useDispatch para poder mandar los cambios de estados
-  const windowWidth = window.innerWidth;
+  
   const dispatch = useDispatch();
   
   const handleDivClick = () => {
@@ -34,14 +34,12 @@ export default function Home() {
                 <Bar/>
              </div>
              <div className={hola}
-                
                onClick={handleDivClick}>
-            
                <Header/>
              
-               <div className={grafica}>
+              <div className={grafica}>
                    <h1>Buildeando la grafica</h1>
-               </div>
+              </div>
               <div className={avisos} >
                  <div className='citas'>
                       <div className='Citas'>

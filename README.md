@@ -5,6 +5,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
+instalar mui-table 
+npm install @mui/icons-material
+npm install mui-datatables @mui/material @emotion/react @emotion/styled
+
 npm run dev
 # or
 yarn dev

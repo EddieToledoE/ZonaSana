@@ -1,7 +1,7 @@
 
 'use client'
 import Header from '@/pages/Header';
-import 'app/Home.css'
+import  estios from  'app/Home.css'
 import Grafica from '@/pages/Grafica';
 import Bar from '@/pages/Bar-1';
 import {closeBar,openBar } from '@/store/barSlice';

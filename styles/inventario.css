@@ -82,7 +82,6 @@ body{
 .cantidad{
   font-size: 13px;
   color: var(--grey-grey-600, #5D6679);
-
   font-weight: 500;
   line-height: 22px; /* 150% */
   cursor: pointer;
@@ -115,6 +114,7 @@ body{
   background: #FFF;
   margin-top: 15px;
   border-radius: 8px;
+  margin-bottom: 10px;
   
 
 }
@@ -131,6 +131,7 @@ body{
   position: relative;
   background: #FFF;
   border-radius: 8px;
+
  
 
 }

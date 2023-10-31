@@ -16,7 +16,7 @@ const ChartComponent = ({initialData}) => {
         labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo','Junio','Julio'],
         datasets: [
           {
-            label: 'Ventas Mensuales',
+            label: 'Envios Mensuales',
             data: initialData,
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)',

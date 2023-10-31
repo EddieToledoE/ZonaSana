@@ -21,6 +21,7 @@
     "@mui/styles": "^5.14.15",
     "@mui/x-data-grid": "^6.16.3",
     "@reduxjs/toolkit": "^1.9.7",
+    "chart.js": "^4.4.0",
     "i18next": "^23.6.0",
     "i18next-http-backend": "^2.3.1",
     "mui-datatables": "^4.3.0",

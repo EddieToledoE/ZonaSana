@@ -6,9 +6,9 @@ import {closeBar,openBar } from '@/store/barSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import Providers from '@/store/provider';
 import Header from "@/pages/Header";
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
-
-
+import { DataGrid, GridColumnHeaderFilterIconButton, GridPagination, GridToolbar, GridToolbarExport, GridToolbarFilterButton } from '@mui/x-data-grid';
+import {GridToolbarContainer,GridToolbarDensitySelector,} from '@mui/x-data-grid';
+import { Grid } from "@mui/material";
 
 export default function Inventario(){
     const isBarOpen = useSelector((state) => state.bar.isBarOpen);
@@ -28,7 +28,59 @@ export default function Inventario(){
     }; 
     const main = isBarOpen ? 'hola-true':'hola';
     const inv = isBarOpen ? 'inv-open':'inv';
-//Logica para la Tabla 
+  //Funcion para el toolbar
+  function boton() {
+    alert("Viva Tiktok");
+    
+  }
+//Estilos para la tabla 
+// Función para personalizar la traducción del botón de filtro
+
+
+
+function CustomToolbar() {
+  return (
+    <GridToolbarContainer>
+      <div className="tool">
+      <button className="Agregar">Añadir Producto</button>
+         
+         <div className="filtro-boton"> 
+             <div className="svg-b">
+             <svg className="fil" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path d="M5 10H15M2.5 5H17.5M7.5 15H12.5" stroke="#5D6679" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+             </svg>
+             </div>
+             <div className="titulo-boton">
+               <label className="f">Filtro</label>
+             </div>
+             <div className="boton">
+             <GridToolbarFilterButton/>
+             </div>
+              </div>
+         
+               <div className="Descargar">
+                  <label className="D">Descargar</label>
+                  <div className="buttonD">
+                  <GridToolbarExport></GridToolbarExport>
+                  </div> 
+               </div> 
+      </div>
+    </GridToolbarContainer>
+  );
+}
+function Pagination() {
+    return(
+      <GridPagination>
+        sx={{
+          borderColor: 'blue', // Cambia 'boderColor' a 'borderColor'
+          border: '1px solid red', // Cambia 'border' y 'borderColor'
+          color: 'red',
+          marginLeft: '100px', // Cambia 'margingLeft' a 'marginLeft'
+        }}
+      </GridPagination>
+    )
+}
+
 const rows = [
     {
       id: 1,
@@ -37,28 +89,46 @@ const rows = [
       Cantidad: '43 Paquetes',
       PrecioVenta: '12.00',
       ID:'111111',
-      Disponibiidad:'en stock'
+      Disponibilidad:'en stock'
     },
     {
-        id: 1,
+        id: 2,
         Nombre: 'Ndsadose',
         PrecioCompra: '$38',
         Cantidad: '43 Paquetes',
         PrecioVenta: '12.00',
         ID:'111111',
-        Disponibiidad:'en stock'
+        Disponibilidad:'En stock'
       },
       {
-        id: 1,
+        id: 3,
         Nombre: 'Nosdsade',
         PrecioCompra: '$38',
         Cantidad: '43 Paquetes',
         PrecioVenta: '12.00',
         ID:'111111',
-        Disponibiidad:'en stock'
+        Disponibilidad:'en stock'
       },
       {
-        id: 1,
+        id: 4,
+        Nombre: 'Nossdse',
+        PrecioCompra: '$38',
+        Cantidad: '43 Paquetes',
+        PrecioVenta: '12.00',
+        ID:'11111313342111',
+        Disponibilidad:'En stock'
+      },
+      {
+        id: 5,
+        Nombre: 'Holaaae',
+        PrecioCompra: '$38',
+        Cantidad: '43 Paquetes',
+        PrecioVenta: '12.00',
+        ID:'11121211111',
+        Disponibilidad:'En stock'
+      },
+      {
+        id: 6,
         Nombre: 'Nossdse',
         PrecioCompra: '$38',
         Cantidad: '43 Paquetes',
@@ -67,25 +137,7 @@ const rows = [
         Disponibilidad:'En stock'
       },
       {
-        id: 1,
-        Nombre: 'Nossdse',
-        PrecioCompra: '$38',
-        Cantidad: '43 Paquetes',
-        PrecioVenta: '12.00',
-        ID:'111212111',
-        Disponibilidad:'En stock'
-      },
-      {
-        id: 1,
-        Nombre: 'Nossdse',
-        PrecioCompra: '$38',
-        Cantidad: '43 Paquetes',
-        PrecioVenta: '12.00',
-        ID:'111212111',
-        Disponibilidad:'En stock'
-      },
-      {
-        id: 1,
+        id: 7,
         Nombre: 'Nossdse',
         PrecioCompra: '$38',
         Cantidad: '43 Paquetes',
@@ -93,7 +145,7 @@ const rows = [
         ID:'111212111',
         Disponibilidad:'En stock'
       }, {
-        id: 1,
+        id: 8,
         Nombre: 'Nossdse',
         PrecioCompra: '$38',
         Cantidad: '43 Paquetes',
@@ -102,7 +154,7 @@ const rows = [
         Disponibilidad:'En stock'
       },
       {
-        id: 1,
+        id: 9,
         Nombre: 'Nossdse',
         PrecioCompra: '$38',
         Cantidad: '43 Paquetes',
@@ -110,7 +162,7 @@ const rows = [
         ID:'111212111',
         Disponibilidad:'En stock'
       }, {
-        id: 1,
+        id: 10,
         Nombre: 'Nossdse',
         PrecioCompra: '$38',
         Cantidad: '43 Paquetes',
@@ -166,7 +218,6 @@ const rows = [
                     <div className="Tabla">
                     <DataGrid
                     columns={[
-                      
                     { field: 'Nombre', hideable: false, width: 200 },
                     { field: 'PrecioCompra', width: 200 },
                     { field: 'Cantidad', width: 200 },
@@ -176,7 +227,14 @@ const rows = [
                     ]}
                     rows={rows}
                     slots={{
-                    // toolbar: GridToolbar,
+                       toolbar:CustomToolbar,
+                       pagination:Pagination
+                    }}
+                    localeText={{
+                      footerPagination: 'Página {{page}} de {{pageCount}}',
+                      filterOperatorAfter: 'Filtro',
+                      toolbarFiltersLabel:'filtro'
+                       // Personaliza el mensaje de paginación
                     }}
                     sx={{
                         boxShadow: 0,

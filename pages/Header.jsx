@@ -1,12 +1,13 @@
 
 'use client'
-
 import React from "react";
 import head from '../styles/Header.css';
 import { useDispatch } from 'react-redux';
 import { closeBar, openBar } from '../store/barSlice'; // Importa las acciones
 import { useState, useEffect } from "react";
 import {useSelector} from 'react-redux';
+import Image from "next/image";
+
 
 function Header() {
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
@@ -20,6 +21,38 @@ function Header() {
     dispatch(openBar()); 
    
   };
+  const imageStyle = {
+    borderRadius: '50%',
+    position:'absolute',
+    cursor:'pointer'
+   
+  }
+  //Logica para tomar la imagen que se carga
+  const [image, setImage] = useState(localStorage.getItem('imagenCargada')||undefined);
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageDataURL = e.target.result;
+        localStorage.setItem('imagenCargada', imageDataURL); // Almacenar la imagen en LocalStorage
+        setImage(imageDataURL);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  useEffect(() => {
+    const savedImage = localStorage.getItem('imagenCargada');
+    if (savedImage) {
+      setImage(savedImage);
+    }
+  }, []);
+  //--------------------------------------------------
+  const imageLoader = ({ src, width, quality }) => {
+    return `https://img.freepik.com/vector-gratis/${src}?w=${width}}`
+  }
+  
     return(
         <header className={Header}>
           <div className="Contenedor-Principal">
@@ -51,7 +84,18 @@ function Header() {
                 </svg>
               </div>  
             <div className="perfil">
-                
+            
+              <label className="input-perfil">
+              <input type="file" accept="image/*" onChange={handleImageUpload} className="input-f"></input>
+              <Image
+              style={imageStyle}
+              src={image}
+              width={40}
+              height={40}
+              objectFit="cover"
+              objectPosition="center top"
+              />
+              </label>                  
             </div>
            </div>
               

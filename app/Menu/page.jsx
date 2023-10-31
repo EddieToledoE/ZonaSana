@@ -6,7 +6,7 @@ import Grafica from '@/pages/Grafica';
 import Bar from '@/pages/Bar-1';
 import {closeBar,openBar } from '@/store/barSlice';
 import { useSelector, useDispatch } from 'react-redux';
-
+import Image from 'next/image';
 export default function Home() {
   //Logica para mandar y recibir los estados de la libreria "Redux"
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
@@ -107,6 +107,7 @@ export default function Home() {
                       </div>
                  </div>
               </div>
+             
               <div className={tabla}>
                   <h1>Viva Chiapas</h1>
               </div>

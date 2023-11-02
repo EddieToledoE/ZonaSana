@@ -33,6 +33,7 @@ export default function Home() {
              <div className='bar1' >
                 <Bar/>
              </div>
+           
              <div className={hola}
                onClick={handleDivClick}>
                <Header/>

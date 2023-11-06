@@ -1,11 +1,11 @@
 'use client'
 import React from "react";
 import estilos from '@/styles/inventario.css'
-import Bar from "@/pages/Bar-1";
+import Bar from "@/components/Bar-1";
 import {closeBar,openBar } from '@/store/barSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import Providers from '@/store/provider';
-import Header from "@/pages/Header";
+import Header from "@/components/Header";
 import { DataGrid, GridColumnHeaderFilterIconButton, GridPagination, GridToolbar, GridToolbarExport, GridToolbarFilterButton } from '@mui/x-data-grid';
 import {GridToolbarContainer,GridToolbarDensitySelector,} from '@mui/x-data-grid';
 import { Grid } from "@mui/material";

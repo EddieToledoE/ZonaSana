@@ -1,12 +1,22 @@
 
 'use client'
-import Header from '@/pages/Header';
+import Header from '@/components/Header';
 import  estios from  'app/Home.css'
-import Grafica from '@/pages/Grafica';
-import Bar from '@/pages/Bar-1';
+import Grafica from '@/components/Grafica';
+import Bar from '@/components/Bar-1';
 import {closeBar,openBar } from '@/store/barSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import Image from 'next/image';
+//Todo los imports para la tabla
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { red } from '@mui/material/colors';
+
 export default function Home() {
   //Logica para mandar y recibir los estados de la libreria "Redux"
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
@@ -28,6 +38,13 @@ export default function Home() {
   const grafica = isBarOpen ? 'grafica-true':'grafica';
   const avisos = isBarOpen? 'avisos-true' : 'avisos';
   const tabla = isBarOpen? 'tabla-true' : 'tabla';
+  const imageStyle = {
+    borderRadius: '2px',
+    position:'absolute',
+   
+
+   
+  }
   return(
             <section className="seccion1" >
              <div className='bar1' >
@@ -76,7 +93,7 @@ export default function Home() {
                  </div>
                  <div className='inventario'>
                       <div className='Citas'>
-                        <a className='titulo-citas'>Citas</a>
+                        <a className='titulo-citas'>Inventario</a>
                       </div>
                     <div className='citas-pendientes'>
                           <div className='inf'>
@@ -110,7 +127,110 @@ export default function Home() {
               </div>
              
               <div className={tabla}>
-                  <h1>Viva Chiapas</h1>
+                <div className='mas-vendidos'>
+                  <div className='titulos'>
+                      <h3>Productos mas vendidos</h3>
+                  </div>
+                  <div className='contenedor-tabla'>
+                  <TableContainer sx={{boxShadow:0}} component={Paper}>
+      <Table sx={{ minWidth: 650, }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell sx={{color:'#5D6679'}}>Nombre</TableCell>
+            <TableCell sx={{color:'#5D6679'}}>Cantidad Vendida</TableCell>
+            <TableCell sx={{color:'#5D6679'}}>Cantidad en stock</TableCell>
+            <TableCell sx={{color:'#5D6679'}}>Precio</TableCell>
+           
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow
+              key={row.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell sx={{color:'#5D6679'}} component="th" scope="row">
+                {row.nombre}
+                 
+              </TableCell>
+              <TableCell sx={{color:'#5D6679'}}>{row.CantidadVendida}</TableCell>
+              <TableCell sx={{color:'#5D6679'}} >{row.CantidadenStock}</TableCell>
+              <TableCell sx={{color:'#5D6679'}}>${row.precio}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+                  </div>
+                </div>
+                <div className='pocas-unidades'>
+                  <div className='titulos'>
+                      <h3>Citas</h3>
+                  </div>
+                  <div className='contenedor-tabla1'>
+                      <div className='fila'>
+                          <div className='imagen-card'>
+                          <Image
+                             style={imageStyle}
+                            src="/images/Hola.png"
+                            width={50}
+                            height={50}
+                         
+                            />
+                          </div>
+                          <div className='informacion-card'>
+                            <h3 className='card-nombre'>Potis Rojas</h3>
+                            <p className='card-cantidad'>Unidades Actuales:12</p>
+                          </div>
+                         
+                          <div className='estado'>
+                            <p>bajo</p>
+                          </div>
+                        
+                      </div>
+                      <div className='fila'>
+                      <div className='imagen-card'>
+                          <Image
+                             style={imageStyle}
+                            src="/images/Hola.png"
+                            width={50}
+                            height={50}
+                         
+                            />
+                          </div>
+                          <div className='informacion-card'>
+                            <h3 className='card-nombre'>Potis Rojas</h3>
+                            <p className='card-cantidad'>Unidades Actuales:12</p>
+                          </div>
+                         
+                          <div className='estado'>
+                            <p>bajo</p>
+                          </div>
+                        
+                      </div>
+                      <div className='fila'>
+                      <div className='imagen-card'>
+                          <Image
+                             style={imageStyle}
+                            src="/images/Hola.png"
+                            width={50}
+                            height={50}
+                         
+                            />
+                          </div>
+                          <div className='informacion-card'>
+                            <h3 className='card-nombre'>Potis Rojas</h3>
+                            <p className='card-cantidad'>Unidades Actuales:12</p>
+                          </div>
+                         
+                          <div className='estado'>
+                            <p>bajo</p>
+                          </div>
+                        
+                      </div>
+
+                  </div>
+                </div>
               </div>
              </div>
            
@@ -119,3 +239,13 @@ export default function Home() {
  );
  
 }
+function createData(nombre, CantidadVendida, CantidadenStock, precio) {
+  return { nombre, CantidadVendida, CantidadenStock, precio};
+}
+
+const rows = [
+  createData('Yaz color #000', 159, 6.0, 24,),
+  createData('Eddi asado', 159, 6.0, 24,),
+  createData('Deivid Cremas', 159, 6.0, 24,),
+];
+

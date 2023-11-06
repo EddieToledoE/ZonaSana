@@ -68,7 +68,6 @@ body{
     font-weight: 550;
     line-height: 24px; /* 150% */
     font-family: 'Inter', sans-serif;
-  
 }
 .inventario{
   width: 100%;
@@ -161,17 +160,140 @@ a{
   width: 100%;
 }
 .tabla, .tabla-true{
-    background: #FFF;
-    margin-top: 10px;
+    margin-top: 1px;
     width: 100%;
-    height: 290px;
+    height: 400px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 
 }
+.mas-vendidos{
+  background: #FFF;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px;
+}
+.pocas-unidades{
+  background: #FFF;
+  width: 50%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 8px;
+}
+.titulos{
+  display: flex;
+  height: 15%;
+  width: 100%;
+  border-radius: 8px 8px 0px 0px;
+  align-items: center;
+  margin-top: 5px;
 
+}
+.titulos h3{
+  color: var(--grey-grey-600, #383E49);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  margin-left: 15px;
+}
+.contenedor-tabla{
+   height: 100%;
+   display: flex;
+   width: 100%;
+   margin-top: 10px;
+   border-top: 1px solid #F0F1F3;
+
+}
+.contenedor-tabla1{
+  height: 100%;
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+  
+   border-radius: 0px  0px  8px  8px;
+}
+
+.fila{
+  
+  height: 30%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 0px;
+ 
+}
+.imagen-card{
+  width: 20%;
+  height: 100%;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.informacion-card{
+  display: flex;
+  flex-direction: column;
+
+  width: 60%;
+  height: 100%;
+  align-items: start;
+  justify-content: center;
+}
+.card-nombre,.card-cantidad{
+   margin-left: 10%;
+
+}
+.card-nombre{
+    color: var(--grey-grey-800, #383E49);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; 
+}
+.card-cantidad{
+      color: var(--grey-grey-500, #667085);
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+}
+
+.estado{
+    display: flex;
+    display: flex;
+    padding: 2px 8px 2px 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 16px;
+    background: var(--error-error-50, #FEECEB);
+}
+.estado p{
+  color: var(--error-error-700, #AA3028);
+text-align: center;
+
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 18px; /* 150% */
+}
 @media (max-width: 800px) {
   .hola,.hola-true {
     border: none;
@@ -224,8 +346,10 @@ a{
   }
 .inventario{
   width: 100%;
+  height: 50%;
   margin: 0px;
   margin-top: 2px;
+ 
  }
  .inf-a{
   font-size: 15px;

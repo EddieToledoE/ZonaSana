@@ -63,7 +63,7 @@
     width: 40px;
     height: 40px;
     right: 10px;
-    margin-left:10px;
+    margin-left:20px;
     border-radius: 50%;
     position: initial;
     display: flex;
@@ -100,15 +100,18 @@
     height: 40px;
     display: flex;
     position: relative;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+   
+  
 }
+
+
 .svg-icon{
     display: none;
 }
-.buscador{
-    width: 600px;
-    background: none; 
-    border: none; 
-}
+
 .div-buscador{
     display: flex;
     align-items: center;
@@ -116,6 +119,10 @@
     border-top-right-radius: 4px; 
     border-bottom-right-radius: 4px;
     position: relative;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  
    
 }
 ::placeholder{
@@ -142,19 +149,27 @@ input:focus {
 }
 
 @media only screen and (max-width: 800px ) {
-    .buscador{
-        width: 100%;
-        
-    }
+ 
     .div-buscador{
        
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       justify-items: center;
+     
+      
     }
-   
+    .entrada{
+        padding: 0px;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: center;
+    }
     .notificaciones{  
         margin-left: 0px;
        
     }
-  
     .Header, .Header-true{
        margin-left:0px;
        top: 0;

@@ -2,13 +2,13 @@
 
 import React from "react";
 import Estilos from '@/styles/Estadistica.css';
-import Bar from "@/pages/Bar-1";
-import Header from "@/pages/Header";
+import Bar from "@/components/Bar-1";
+import Header from "@/components/Header";
 import {closeBar,openBar } from '@/store/barSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import Providers from '@/store/provider';
-import Grafica from '@/pages/Grafica';
-import Grafica2 from '@/pages/Grafica2';
+import Grafica from '@/components/Grafica';
+import Grafica2 from '@/components/Grafica2';
 
 
 export default function Estadistica() {

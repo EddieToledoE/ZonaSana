@@ -238,7 +238,7 @@ a{
 .imagen-card{
   width: 20%;
   height: 100%;
-  margin-left: 4px;
+  margin-left: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -253,10 +253,7 @@ a{
   align-items: start;
   justify-content: center;
 }
-.card-nombre,.card-cantidad{
-   margin-left: 10%;
 
-}
 .card-nombre{
     color: var(--grey-grey-800, #383E49);
     font-family: Inter;

@@ -9,7 +9,8 @@ import Header from "@/components/Header";
 import { DataGrid, GridColumnHeaderFilterIconButton, GridPagination, GridToolbar, GridToolbarExport, GridToolbarFilterButton } from '@mui/x-data-grid';
 import {GridToolbarContainer,GridToolbarDensitySelector,} from '@mui/x-data-grid';
 import { Grid } from "@mui/material";
-
+import registrarEsti from '@/styles/registrar.css'
+import Registrar from '@/components/registrarInv'
 export default function Inventario(){
     const isBarOpen = useSelector((state) => state.bar.isBarOpen);
     // importamos el objeto useDispatch para poder mandar los cambios de estados
@@ -36,13 +37,21 @@ export default function Inventario(){
 //Estilos para la tabla 
 // Función para personalizar la traducción del botón de filtro
 
+function registrar() {  
+return (
+  <div className="A1">
+    <h1>Hola sdad es una ventana para poder registrar</h1>
+  <div> Holaaaaa</div>
+  </div>
 
+);
+}
 
 function CustomToolbar() {
   return (
     <GridToolbarContainer>
       <div className="tool">
-      <button className="Agregar">Añadir Producto</button>
+      <button  className="Agregar">Añadir Producto</button>
          
          <div className="filtro-boton"> 
              <div className="svg-b">
@@ -198,6 +207,7 @@ const rows = [
                             </div>
                         </div>
                         
+                           
                         <div className="inv-inf2">
                         <div className="linea"></div>
                         <div className="Categorias">
@@ -213,6 +223,9 @@ const rows = [
                         </div>
                     </div>
 
+                </div>
+                <div className="Registrar-Contenedor">
+                   <Registrar></Registrar>
                 </div>
             <div className="Tabla-Contenedor">
                     <div className="Tabla">
@@ -252,3 +265,6 @@ const rows = [
             </section>
         )
 }
+
+
+

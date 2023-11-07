@@ -58,10 +58,12 @@
     flex-direction: column;
 }
 
+
 ul{
   list-style: none;
 }
-a{
+a{  
+    
     text-decoration: none;
 }
 .Paginas-Enlaces{
@@ -83,6 +85,9 @@ a{
     margin-top: 30px;
 
 }
+
+
+
 .Close-Enlaces{
     display: flex;
     width: 186px;

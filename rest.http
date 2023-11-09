@@ -1,0 +1,13 @@
+### Crear usuario 
+POST http://localhost:3000/api/auth/registro
+Content-Type: application/json
+
+{
+	"email":"Winter@outlook.es",
+	"contraseña":"Win123",
+	"persona":{
+		"nombre":"Winter",
+		"apellido":"Fox",
+		"puesto":"Scrum Master"
+	}
+}

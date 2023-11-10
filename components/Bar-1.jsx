@@ -216,7 +216,7 @@ function Bar() {
                     fill="#12B76A"
                   />
                 </svg>
-                Incompleta
+                Ventas
               </a>
             </li>
           </ul>

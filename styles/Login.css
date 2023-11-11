@@ -5,6 +5,7 @@
     font-weight: 100;
 }
 
+
 .h5-5 {
     font-size: 13px;
 }
@@ -65,7 +66,7 @@
 #usuario, #contraseña {
     padding-left: 3%;
     width: 97%;
-    height: 15%;
+    height: 5vh;
     border-radius: 8px ;
     border: 1px solid gainsboro;
 }
@@ -87,7 +88,7 @@
     border-radius: 8px;
     border: 1px solid transparent;
     width: 100%;
-    height: 15%;
+    height: 5vh;
     transition: box-shadow 0.2s;
     transition: background-color 0.3s;
 }
@@ -96,14 +97,30 @@
     box-shadow: 0px 0px 5px rgb(0, 187, 125);
 }
 
-.no-cuenta {
-    padding-right: 5px;
+.alerta-incorrecta {
+    display: flex;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    color: red;
+    justify-content: center;
+    padding-bottom: 5px;
 }
 
-.crear {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.cargando {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid aquamarine;
+    border-top-color: transparent;
+    animation: spin 1.2s    
+        linear infinite;
+}
+
+@keyframes spin {
+    to{
+        transform: rotate(360deg);
+    }
 }
 
 @media only screen and (max-width: 800px) {

@@ -8,7 +8,7 @@ const handler = NextAuth({
         CredentialsProvider({
             name: "Credentials",
             credentials: {
-                email: {
+                email: { 
                     label: "Correo",
                     type: "email",
                     placeholder: "Correo@gmail.com",

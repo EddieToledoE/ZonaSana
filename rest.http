@@ -3,11 +3,19 @@ POST http://localhost:3000/api/auth/registro
 Content-Type: application/json
 
 {
-	"email":"Winter@outlook.es",
-	"contraseña":"Win123",
+	"email":"Teddy_03@outlook.es",
+	"contraseña":"Gatitor1",
 	"persona":{
-		"nombre":"Winter",
-		"apellido":"Fox",
-		"puesto":"Scrum Master"
+		"nombre":"Eddie",
+		"apellido":"Toledo",
+		"puesto":"Dev"
 	}
+}
+
+### Contraseña Perdida
+PUT   http://localhost:3000/api/auth/pass
+Content-Type: application/json
+
+{
+	"email":"Teddy_03@outlook.es"
 }

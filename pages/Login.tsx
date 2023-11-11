@@ -60,7 +60,7 @@ export default function page() {
               <label htmlFor="contraseña">
                 <h4 className="h4-4">Contraseña:</h4>
                 <input
-                 id="contraseña "
+                 id="contraseña"
                   name="contraseña"
                   type="password"
                   placeholder="Contraseña"

@@ -129,6 +129,7 @@
     align-items: center;        
 }
 .cancelar{
+    cursor: pointer;
     display: flex;
     width: 110px;
     padding: 10px 8px;
@@ -140,6 +141,7 @@
     margin-right: 10px;
 }
 .submit{
+cursor: pointer;
 display: inline-flex;
 padding: 10px 16px;
 justify-content: center;

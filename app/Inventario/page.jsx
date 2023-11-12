@@ -178,9 +178,9 @@ export default function Inventario() {
             </div>
           </div>
         </div>
-        <div className="Registrar-Contenedor">
+        {/* <div className="Registrar-Contenedor">
           <Registrar />
-        </div>
+        </div> */}
         <div className="Tabla-Contenedor">
           <div className="Tabla">
             <DataGrid

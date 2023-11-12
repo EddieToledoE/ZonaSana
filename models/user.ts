@@ -20,6 +20,9 @@ const UsuarioSchema = new Schema(
             required: [true, "Contrasena necesaria"],
             minlength: [8, "La contraseña debe tener al menos 8 caracteres."],
         },
+        url: {
+            type: String
+        },
         persona: [
             {
                 nombre: {

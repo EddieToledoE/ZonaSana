@@ -12,9 +12,13 @@ import Buscar from "@/components/completar";
 
 function Header() {
   const [usuario, setUsuario] = useState("");
-
+  const [image, setImage] = useState("");
+  const [puesto, setPuesto] = useState("");
+  console.log(image);
   const session = useSession();
   useEffect(() => {
+    setImage(session.data?.user.url);
+    setPuesto(session.data?.user.persona[0].puesto);
     setUsuario(session.data?.user.persona[0].nombre);
   }, [session.data]);
 
@@ -34,32 +38,9 @@ function Header() {
     cursor: "pointer",
   };
   //Logica para tomar la imagen que se carga
-  const [image, setImage] = useState(
-    localStorage.getItem("imagenCargada") || undefined
-  );
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const imageDataURL = e.target.result;
-        localStorage.setItem("imagenCargada", imageDataURL); // Almacenar la imagen en LocalStorage
-        setImage(imageDataURL);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-  useEffect(() => {
-    const savedImage = localStorage.getItem("imagenCargada");
-    if (savedImage) {
-      setImage(savedImage);
-    }
-  }, []);
   //--------------------------------------------------
-  const imageLoader = ({ src, width, quality }) => {
-    return `https://img.freepik.com/vector-gratis/${src}?w=${width}}`;
-  };
+
   function informe() {
     <div className="Alert"></div>;
   }
@@ -122,22 +103,17 @@ function Header() {
               </svg>
             </Badge>
           </div>
-          <div className="notificaciones">
-            <h1>USER :{usuario} </h1>
+          <div className="Usuario-header">
+            <h1>{usuario} </h1>
+            <h2>{puesto}</h2>
           </div>
           <div className="perfil">
             <label className="input-perfil">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                className="input-f"
-              ></input>
               <Image
                 style={imageStyle}
                 src={image}
-                width={40}
-                height={40}
+                width={60}
+                height={60}
                 objectFit="cover"
                 objectPosition="center top"
               />

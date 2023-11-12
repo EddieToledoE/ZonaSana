@@ -60,8 +60,8 @@
 }
 .perfil{
     border: 2px solid var(--grey-grey-50, #a6d97a);
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     right: 10px;
     margin-left:20px;
     border-radius: 50%;

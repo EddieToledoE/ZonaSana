@@ -103,7 +103,7 @@ function Bar() {
               </a>
             </li>
             <li className="Paginas">
-              <a className="Paginas-Enlaces">
+              <Link className="Paginas-Enlaces" href='/Envios'>
                 <svg
                   width="24"
                   height="24"
@@ -119,7 +119,7 @@ function Bar() {
                   />
                 </svg>
                 Envios
-              </a>
+              </Link>
             </li>
             <li className="Paginas">
               <Link className="Paginas-Enlaces" href="/Citas">

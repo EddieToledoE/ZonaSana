@@ -5,6 +5,7 @@ Content-Type: application/json
 {
 	"email":"Teddy_03@outlook.es",
 	"contraseña":"Gatitor1",
+	"url":"https://res.cloudinary.com/dwjnodqln/image/upload/v1699737730/i8xvwjujmexnqhb39xvh.jpg",
 	"persona":{
 		"nombre":"Eddie",
 		"apellido":"Toledo",

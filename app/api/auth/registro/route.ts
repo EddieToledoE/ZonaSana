@@ -3,8 +3,8 @@ import Usuario from "@/models/user";
 import bcrypt from "bcryptjs";
 import { connectarBD } from "@/libs/mongodb";
 export async function POST(request: Request) {
-    const { email, contraseña, persona } = await request.json();
-    console.log(email, contraseña, persona);
+    const { email, contraseña, persona, url } = await request.json();
+    console.log(email, contraseña, persona, url);
 
     if (!contraseña || contraseña.length < 8)
         return NextResponse.json(
@@ -34,6 +34,7 @@ export async function POST(request: Request) {
             email: email,
             contraseña: contracifrada,
             persona: persona,
+            url: url
         });
         const usuarioguardado = await user.save();
         console.log(usuarioguardado);

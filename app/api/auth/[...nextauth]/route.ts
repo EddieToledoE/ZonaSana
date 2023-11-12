@@ -19,11 +19,11 @@ const handler = NextAuth({
                 await connectarBD();
                 console.log(credentials)
                 const UsuarioEncontrado = await Usuario.findOne({ email: credentials?.email })
-                if (!UsuarioEncontrado) throw new Error("Usuario no encontrado")
+                if (!UsuarioEncontrado) throw new Error("¡ Usuario no encontrado !")
                 const coincidencia = await bcrypt.compare(credentials!.contraseña,
                     UsuarioEncontrado.contraseña)
 
-                if (!coincidencia) throw new Error("La contraseña no coincide")
+                if (!coincidencia) throw new Error("¡ La contraseña no coincide !")
                 return UsuarioEncontrado
             },
         }),

@@ -8,6 +8,7 @@ import Providers from "@/store/provider";
 import Header from "@/components/Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 import {
   DataGrid,
   GridColumnHeaderFilterIconButton,
@@ -20,7 +21,7 @@ import {
   GridToolbarContainer,
   GridToolbarDensitySelector,
 } from "@mui/x-data-grid";
-import { Avatar, Grid } from "@mui/material";
+import { Avatar, Button, Grid } from "@mui/material";
 import registrarEsti from "@/styles/registrar.css";
 import Registrar from "@/components/registrarInv";
 export default function Inventario() {
@@ -208,8 +209,18 @@ export default function Inventario() {
                 },
                 { field: "precio_costo", headerName: "Costo", width: 200 },
                 { field: "precio_venta", headerName: "Venta", width: 200 },
-                { field: "descripcion", headerName: "Descripcion", width: 380 },
+                { field: "descripcion", headerName: "Descripcion", width: 300 },
                 { field: "categoria", headerName: "Categoria", width: 200 },
+                {
+                  field: "actions",
+                  headerName: "Vista completa",
+                  width: 200,
+                  renderCell: (params) => (
+                    <Link href={`/Inventario/${params.row._id}`}>
+                      <Button>Hola</Button>
+                    </Link>
+                  ),
+                },
               ]}
               rows={clientes}
               slots={{

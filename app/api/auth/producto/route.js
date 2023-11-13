@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import Producto from "@/models/producto";
 import { connectarBD } from "@/libs/mongodb";
-import { writeFile } from "fs/promises";
-import path, { resolve } from "path";
 import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({

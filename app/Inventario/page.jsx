@@ -178,16 +178,16 @@ export default function Inventario() {
             </div>
           </div>
         </div>
-        {/* <div className="Registrar-Contenedor">
+         <div className="Registrar-Contenedor">
           <Registrar />
-        </div> */}
+        </div> 
         <div className="Tabla-Contenedor">
           <div className="Tabla">
             <DataGrid
               columns={[
                 {
                   field: "url",
-                  headerName: "Imagen",
+                  headerName: "",
                   hideable: false,
                   width: 60,
                   renderCell: (params) => <Avatar src={params.row.url} />,
@@ -206,10 +206,10 @@ export default function Inventario() {
                   headerName: "Cantidad",
                   width: 200,
                 },
-                { field: "precio_costo", headerName: "Costo", width: 200 },
-                { field: "precio_venta", headerName: "Venta", width: 200 },
-                { field: "descripcion", headerName: "Descripcion", width: 380 },
-                { field: "categoria", headerName: "Categoria", width: 200 },
+                { field: "precio_costo", headerName: "Costo", width: 150 },
+                { field: "precio_venta", headerName: "Venta", width: 150 },
+                { field: "descripcion", headerName: "Descripcion", width: 250 },
+                { field: "categoria", headerName: "Categoria", },
               ]}
               rows={clientes}
               slots={{

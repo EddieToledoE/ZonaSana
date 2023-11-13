@@ -53,8 +53,7 @@ export default function Home() {
       </div>
 
       <div className={hola} onClick={handleDivClick}>
-        <Header />
-
+        <Header/>
         <div className={grafica}>
           <h1>Buildeando la grafica</h1>
         </div>
@@ -338,4 +337,5 @@ const rows = [
   createData("Yaz color #000", 159, 6.0, 24),
   createData("Eddi asado", 159, 6.0, 24),
   createData("Deivid Cremas", 159, 6.0, 24),
+ 
 ];

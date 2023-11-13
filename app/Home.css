@@ -14,7 +14,6 @@ body{
 .hola, .hola-true{
   display: flex;
   position: relative;
-
   width: 100%;
   height: 100vh;
   flex-direction: column;
@@ -22,7 +21,6 @@ body{
   padding-left: 10px;
   background-color: #F0F1F3;
 }
-
 
 .grafica, .grafica-true{
   background: #FFF;
@@ -168,15 +166,17 @@ a{
     align-items: center;
     justify-content: center;
 
+
 }
 .mas-vendidos{
   background: #FFF;
-  width: 90%;
+  width: 100%;
   height: 90%;
-  display: flex;
+  display:flex;
   justify-content: center;
   flex-direction: column;
   border-radius: 8px;
+
 }
 .pocas-unidades{
   background: #FFF;
@@ -211,7 +211,7 @@ a{
 }
 .contenedor-tabla{
    height: 100%;
-   display: flex;
+   display: block;
    width: 100%;
    margin-top: 10px;
    border-top: 1px solid #F0F1F3;
@@ -353,6 +353,10 @@ line-height: 18px; /* 150% */
   font-style: normal;
   font-weight: 550;
   line-height: 10px; /* 150% */
+ }
+ .tabla{
+  display: flex;
+  flex-direction: column;
  }
 
 

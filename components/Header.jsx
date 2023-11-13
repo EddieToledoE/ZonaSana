@@ -103,10 +103,7 @@ function Header() {
               </svg>
             </Badge>
           </div>
-          <div className="Usuario-header">
-            <h1>{usuario} </h1>
-            <h2>{puesto}</h2>
-          </div>
+        
           <div className="perfil">
             <label className="input-perfil">
               <Image

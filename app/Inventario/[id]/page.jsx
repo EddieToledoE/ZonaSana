@@ -107,6 +107,7 @@ export default function Inventario() {
         <div className="Tabla-Contenedor">
           <div>
             <h1>{producto.nombre}</h1>
+            <h1>{producto.descripcion}</h1>
             {/* Renderiza el resto de la información del producto */}
           </div>
         </div>

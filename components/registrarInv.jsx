@@ -7,7 +7,7 @@ import Axios, { AxiosError } from "axios";
 import Logo from "@/public/images/Zs.jpeg";
 const Swal = require("sweetalert2");
 
-function registrar() {
+const registrar =({ onCambioClick })=> {
   const [errorgeneral, setError] = useState();
   const [archivo, setArchivo] = useState(null);
   const [nombreProducto, setNombreProducto] = useState("");
@@ -208,7 +208,7 @@ function registrar() {
         </div>
       </form>
       <div className="botonesr">
-        <button className="cancelar">Cancelar</button>
+        <button className="cancelar" onClick={onCambioClick}>Cancelar</button>
         <button onClick={handleSubmit} type="button" className="submit">
           Agregar
         </button>

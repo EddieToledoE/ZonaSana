@@ -34,21 +34,24 @@ function Envios() {
     const protector = isBarOpen ? 'protectorOpen' : 'protector';
     const avisos = isBarOpen ? "avisos-true" : "avisos";
     const [claseDiv, setClaseDiv] = useState('Registrar-close');
-
+    const [claseF,setclaseF] = useState ('Fondo-Close');
     // Función para cambiar la clase en el componente padre
     const cambiarClaseEnPadre = () => {
       setClaseDiv('Registrar-close');
+      setclaseF('Fondo-Close');
       console.log("Se modifico la clase");
       console.log(claseDiv);
     };
     const cambiarClase = () =>{
         setClaseDiv("Registrar-envio");
+        setclaseF('Fondo-Open');
         console.log("Hola mundo")
         console.log(claseDiv);
     }
 
   return (
     <section className='seccion1'>
+           <div className={claseF}></div>
         <div className='bar1'>
             <Bar/>
         </div>

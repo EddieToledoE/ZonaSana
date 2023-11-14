@@ -9,6 +9,11 @@ import Header from "@/components/Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+
+
+import { useGridApiEventHandler } from "@mui/x-data-grid";
+import { useGridApiRef } from "@mui/x-data-grid";
 import {
   DataGrid,
   GridColumnHeaderFilterIconButton,
@@ -25,6 +30,20 @@ import { Avatar, Button, Grid } from "@mui/material";
 import registrarEsti from "@/styles/registrar.css";
 import Registrar from "@/components/registrarInv";
 export default function Inventario() {
+  const router = useRouter()
+  const handleCellDoubleClick = (params, event) => {
+    // Verifica que no se haya presionado la tecla Ctrl para evitar conflicto con eventos predeterminados
+    if (!event.ctrlKey) {
+    // Evita el comportamiento predeterminado del evento (navegación por enlace)
+      event.defaultMuiPrevented = true;
+   
+      // Obtén el ID del elemento de la fila
+      const itemId = params.row._id;
+      
+      // Navegación utilizando navigation.navigate de next/navigation al hacer doble clic
+      navigation.navigate(`/Inventario/${itemId}`);
+    }
+  };
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
   // importamos el objeto useDispatch para poder mandar los cambios de estados
 
@@ -42,6 +61,21 @@ export default function Inventario() {
   };
   const main = isBarOpen ? "hola-true" : "hola";
   const inv = isBarOpen ? "inv-open" : "inv";
+  const [claseDiv, setClaseDiv] = useState('Registrar-close');
+  const [claseF,setclaseF] = useState ('Fondo-Close');
+  // Función para cambiar la clase en el componente padre
+  const cambiarClaseEnPadre = () => {
+    setClaseDiv('Registrar-close');
+    setclaseF('Fondo-Close');
+    console.log("Se modifico la clase");
+    console.log(claseDiv);
+  };
+  const cambiarClase = () =>{
+      setClaseDiv("Registrar-envio");
+      setclaseF('Fondo-Open');
+      console.log("Hola mundo")
+      console.log(claseDiv);
+  }
   //Funcion para el toolbar
   function boton() {
     alert("Viva Tiktok");
@@ -78,7 +112,7 @@ export default function Inventario() {
     return (
       <GridToolbarContainer>
         <div className="tool">
-          <button className="Agregar">Añadir Producto</button>
+          <button className="Agregar" onClick={cambiarClase}>Añadir Producto</button>
 
           <div className="filtro-boton">
             <div className="svg-b">
@@ -131,10 +165,14 @@ export default function Inventario() {
     );
   }
 
-  //Estilos para la tabla
+//Evento para cuando se clickea sobre una fila
+
+
+
 
   return (
     <section className="Home">
+         <div className={claseF}></div>
       <div className="bar1">
         <Bar />
       </div>
@@ -179,12 +217,13 @@ export default function Inventario() {
             </div>
           </div>
         </div>
-         <div className="Registrar-Contenedor">
-          <Registrar />
+         <div className={claseDiv}>
+          <Registrar onCambioClick={cambiarClaseEnPadre} />
         </div> 
         <div className="Tabla-Contenedor">
           <div className="Tabla">
-            <DataGrid
+            <DataGrid 
+           onCellDoubleClick={handleCellDoubleClick}
               columns={[
                 {
                   field: "url",
@@ -199,29 +238,23 @@ export default function Inventario() {
                   field: "nombre",
                   headerName: "Nombre",
                   hideable: false,
-                  width: 200,
+                  width: 150,
                 },
                 {
                   field: "cantidad_stock",
                   type: "singleSelect",
                   headerName: "Cantidad",
-                  width: 200,
+                  width: 150,
                 },
+                
                 { field: "precio_costo", headerName: "Costo", width: 200 },
                 { field: "precio_venta", headerName: "Venta", width: 200 },
-                { field: "descripcion", headerName: "Descripcion", width: 300 },
-                { field: "categoria", headerName: "Categoria", width: 200 },
-                {
-                  field: "actions",
-                  headerName: "Vista completa",
-                  width: 200,
-                  renderCell: (params) => (
-                    <Link href={`/Inventario/${params.row._id}`}>
-                      <Button>Hola</Button>
-                    </Link>
-                  ),
-                },
+                { field: "descripcion", headerName: "Descripcion", width: 200 },
+                { field: "categoria", headerName: "Categoria", width: 0 },
+                
+               
               ]}
+        
               rows={clientes}
               slots={{
                 toolbar: CustomToolbar,
@@ -240,7 +273,9 @@ export default function Inventario() {
                 borderRadius: 2,
                 borderColor: "#FFF",
               }}
+           
             />
+            
           </div>
         </div>
       </div>

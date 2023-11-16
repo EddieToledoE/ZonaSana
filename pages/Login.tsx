@@ -1,92 +1,168 @@
 "use client";
-import  { FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import "styles/Login.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 export default function page() {
+
+  const [ingresar, setIngresar] = useState(true);
+  const [recuperarC, setRecuperarC] = useState(false);
+
+  const recuperarContraseña = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    setIngresar(false)
+    setRecuperarC(true)
+  }
+
+  const regresarLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    setIngresar(true)
+    setRecuperarC(false)
+  }
+
+
   const [error, setError] = useState("");
   const router = useRouter();
+  const [cargando, setCargando] = useState(false);
 
-  const handleSubmit = async (e:FormEvent<HTMLFormElement>)=>{
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
+    setError("")
+    setCargando(true);
     try {
-      const res = await signIn("credentials",{
+      const res = await signIn("credentials", {
         email: formData.get('email'),
         contraseña: formData.get('contraseña'),
-        redirect:false
+        redirect: false
 
       })
-      if(res?.error) return setError(res.error as string)
-      if (res?.ok) return router.push("/Menu")
+      if (res?.error) {
+        setCargando(false)
+        return setError(res.error as string)
+      }
+      if (res?.ok) {
 
-   
+        return router.push("/Menu")
+      }
+
+
     } catch (error) {
       console.log(error)
     }
   }
   return (
     <div className="login">
-       {error && <div>
-            {error}
-            </div>}
       <section className="seccion-izquierda">
-        <h1 className="h1-1">Zona sana</h1>
+        <div className="contenido-izquierda">
+          <h1 className="h1-1">Zona sana</h1>
+          <Image className="imagen" alt="Logo" src={"/logo.png"} width={400} height={400} />
+        </div>
       </section>
       <section className="seccion-derecha">
-        <div className="informacion1">
+
+      {/* Contenido de Iniciar Sesión */}
+        {ingresar && <div className="contenido-derecha">
           <div className="encabezado">
-            <Image alt="Logo" src={"/usuario.png"} width={24} height={24} />
-            <h2 className="h2-2">Ingresa a tu cuenta</h2>
-            <span>Bienvenido, Ingresa tus credenciales</span>
+            <div className="contenido-encabezado">
+              <Image alt="user" src={"/usuario.png"} width={50} height={50} className="user" /> <br /><br />
+              <h2 className="h2-2">Inicio de sesión</h2> <br />
+              <span>BIENVENIDO, Ingresa tus credenciales</span>
+            </div>
           </div>
           <br />
-          <br /> 
-          <form onSubmit={handleSubmit}  className="formulario" action="">
+          <br />
+          <form onSubmit={handleSubmit} className="formulario" action="">
             <div className="campos">
               <label htmlFor="usuario">
-                <h4 className="h4-4">Usuario:</h4>
-                <input
-                id="usuario"
-                  name="email"
-                  type="text"
-                  placeholder="Usuario"
-                />
+                <div className="contenedor-input">
+                  <input
+                    id="usuario"
+                    name="email"
+                    type="text"
+                    placeholder="Correo"
+                  />
+                  <Image alt="user" src={"/correo.png"} width={24} height={24} className="user" />
+                </div>
               </label>
               <br />
               <br />
               <label htmlFor="contraseña">
-                <h4 className="h4-4">Contraseña:</h4>
-                <input
-                 id="contraseña"
-                  name="contraseña"
-                  type="password"
-                  placeholder="Contraseña"
-                />
+                <div className="contenedor-input">
+                  <input
+                    id="contraseña"
+                    name="contraseña"
+                    type="password"
+                    placeholder="Contraseña"
+                  />
+                  <Image alt="user" src={"/bloquear.png"} width={24} height={24} className="user" />
+                </div>
               </label>
               <br /> <br />
               <label className="recordar" htmlFor="recordar">
-                <div className="recordar">
-                  <input id="recordar" type="checkbox" />
-                  <h5>Recordar</h5>
-                </div>
-                <a className="a-a" href="">
+                <button type="button" className="a-a" onClick={recuperarContraseña}>
                   Olvide mi contraseña
-                </a>
-              </label>{" "}
-              <br />
-                <button className="button1"> Ingresar</button>
-                <br />
-                <br />
-              <div className="crear">
-                <h5 className="no-cuenta">¿No tienes cuenta? </h5>{" "}
-                <a href=""> Crear</a>
+                </button>
+              </label><br /><br />
+              <button className="button1"> Ingresar</button><br /><br />
+              {cargando && <div style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '15px' }}>
+                <div className="cargando"></div>
+              </div>}
+              {error && <div className="alerta-incorrecta">
+                {error}
+              </div>}
+              <div className="imagen-debajo">
+                <Image className="imagen" alt="Logo" src={"/logo.png"} width={100} height={100} />
               </div>
             </div>
           </form>
-        </div>
+        </div>}
+
+
+      {/* Contenido del Recuperar contraseña */}
+        {recuperarC && <div className="contenido-derecha">
+          
+        <div className="encabezado">
+            <div className="contenido-encabezado">
+              <Image alt="user" src={"/usuario.png"} width={50} height={50} className="user" /> <br />
+              <br />
+              <h2 className="h2-2">Recuperar contraseña</h2> <br /><br />
+              <span>A continuacion ingresa tu corrreo para recuperar tu cuenta</span>
+            </div>
+          </div><br /><br />
+          <form className="formulario" action="">
+            <div className="campos">
+              <label htmlFor="usuario">
+                <div className="contenedor-input">
+                  <input
+                    id="usuario"
+                    name="email"
+                    type="text"
+                    placeholder="Correo"
+                  />
+                  <Image alt="user" src={"/correo.png"} width={24} height={24} className="user" />
+                </div>
+              </label> <br /> <br />
+              <div className="botones-rc">
+                <button className="button2" type="button" onClick={regresarLogin}>Regresar</button>
+                <button className="button3">Enviar</button>
+              </div><br /><br />
+              {/* {cargando && <div style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '15px' }}>
+                <div className="cargando"></div>
+              </div>}
+              {error && <div className="alerta-incorrecta">
+                {error}
+              </div>} */}
+              <div className="imagen-debajo">
+                <Image className="imagen" alt="Logo" src={"/logo.png"} width={100} height={100} />
+              </div>
+            </div>
+          </form>
+        </div>}
+
+
       </section>
     </div>
   );

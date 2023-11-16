@@ -15,21 +15,21 @@
 }
 .Top-Detalles{
     display: flex;
-    border: 2px solid;
+    margin-top: 10px;
     height: 10%;
     width: 100%;
     align-items: center;
     justify-content: space-between;
 }
 .Titulo-Detalles{
-    border: 2px solid;
+  
     height: 80%;
     margin-top: 10px;
     margin-left: 10px;
 }
 .Titulo-Detalles h1{
     font-family: Inter;
-    font-size: 14px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 600;
     line-height: 19px; /* 150% */
@@ -40,12 +40,12 @@
 }
 .Detalles-Opciones{
     height: 100%;
-    border: 2px solid;
+  
     display: flex;
     align-items: center;
     margin-right: 10px;
 }
-.Detalles-Opciones button {
+.Opciones-Editar-Button{
     display: flex;
     padding: 10px 16px;
     justify-content: center;
@@ -58,11 +58,18 @@
 .Opciones-Editar-Button{
     border: 1px solid #afb3bd;
     color: white;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: transparent;
     color: var(--grey-grey-600, #5D6679);
 }
 .Opciones-Eliminar-Button{
+    display: flex;
+    padding: 10px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 60%;
+    margin-right: 10px;
 border-radius: 4px;
 border: 1px solid #FBDADA;
 background: #FF8585;
@@ -83,7 +90,7 @@ box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
     display: flex;
     width: 100%;
     height: 5%;
-    border: 2px solid;
+    margin-top: 10px;
     align-items: end;
 }
 .Detalles-Generales-titulo{
@@ -106,7 +113,8 @@ line-height: 24px; /* 150% */
 .Detalles-Informacion{
     display: flex;
     width: 99%;
-    border: 2px solid;
+    margin-top: 10px;
+  
    
    
 }
@@ -115,10 +123,11 @@ line-height: 24px; /* 150% */
     flex-direction: column;
     width: 50%;
     height: 100%;
-    border: 2px solid blue;
+    
 }
 .Detalles-Principales-T{
     display: flex;
+    margin-left: 10px;
 }
 .Detalles-Principales-T h3{
     color: var(--grey-grey-700, #48505E);
@@ -135,7 +144,7 @@ line-height: 24px; /* 150% */
 .Detalles-Atributos-Renglones{
     display: flex;
     margin: 15px;
-    border: 2px solid yellow;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -163,7 +172,7 @@ line-height: 24px; /* 150% */
     flex-direction: column;
     width: 100%;
     height: 100%;
-    border: 2px solid green;
+
     align-items: end;
     justify-content: space-between;
 }   
@@ -172,14 +181,14 @@ line-height: 24px; /* 150% */
     background: #FFF;
     height: 150px;
     width: 150px;
-    margin-right: 40px;
+    margin-right: 100px;
     margin-top: 40px;
 }
 .Detalles-Stock{
-    margin-right: 20px;
+    margin-right: 60px;
     flex-direction: column;
     display: flex;
-    border: 2px solid;
+   
     width: 30%;
     margin-top: 10px;
     
@@ -195,6 +204,7 @@ line-height: 24px; /* 150% */
     font-style: normal;
     font-weight: 400;
     line-height: 24px; /* 150% */
+    margin: 5px;
 }
 .Stock-Renglones p{
         color: var(--grey-grey-600, #5D6679);
@@ -204,3 +214,99 @@ line-height: 24px; /* 150% */
         font-weight: 500;
         line-height: 24px; /* 150% */
 }
+.Detalles-Final{
+    width: 99%;
+    height: 100%;
+    margin-top: 10px;
+  
+}
+.Detalles-Final p{
+    color: var(--grey-grey-600, #5D6679);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.Detalles-Final h3{
+    margin-left: 10px;
+    color: var(--grey-grey-400, #323335);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    margin-top: 10px;
+}
+.Detalles-Editar-Close{
+    display: none;
+    visibility:hidden;
+}
+
+.Editar-Descripcion-Close{
+    display: none;
+
+}
+.Opciones-Editar-Button-Close{
+  display: none;
+}
+.Opciones-Eliminar-Button-Close{
+   display: none;
+}
+.Detalles-Editando-Close{
+    display: none;
+}
+.Detalles-Editar-Open{
+    width: 100px;
+    display: flex;
+    gap: 0;
+    text-align: end;
+}
+.Detalles-Editando-Open{
+        display: flex;
+        padding: 10px 16px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        height: 70%;
+        margin-right: 10px;
+        border-radius: 4px;
+        border: 1px solid #FBDADA;
+        color: white;
+        box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+.Detalles-Editando-Close{
+    display: none;
+}
+
+
+@keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+ .cargando{
+    z-index: 10;
+    border: 6px solid #ffffff;
+    border-radius: 100%;
+    border-top-color: #7967d2;
+    border-bottom-color:  #7967d2;
+    width: 100px;
+    height: 100px;
+    animation: loading 1.5s infinite linear;
+  }
+  .contenedor_carga{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  
+  }

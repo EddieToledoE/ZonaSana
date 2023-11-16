@@ -225,7 +225,7 @@ function Bar() {
       <div className="Close">
         <ul className="Close-Options">
           <li className="Close-li">
-            <a href="/Ajustes" className="Close-Enlaces">
+            <a href="#" className="Close-Enlaces">
               <svg
                 width="20"
                 height="20"

@@ -291,6 +291,7 @@ font-style: normal;
 font-weight: 500;
 line-height: 18px; /* 150% */
 }
+
 @media (max-width: 800px) {
   .hola,.hola-true {
     border: none;

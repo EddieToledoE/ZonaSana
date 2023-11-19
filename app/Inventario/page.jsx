@@ -9,8 +9,7 @@ import Header from "@/components/Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 import { useGridApiEventHandler } from "@mui/x-data-grid";
 import { useGridApiRef } from "@mui/x-data-grid";
@@ -30,16 +29,16 @@ import { Avatar, Button, Grid } from "@mui/material";
 import registrarEsti from "@/styles/registrar.css";
 import Registrar from "@/components/registrarInv";
 export default function Inventario() {
-  const router = useRouter()
+  const router = useRouter();
   const handleCellDoubleClick = (params, event) => {
     // Verifica que no se haya presionado la tecla Ctrl para evitar conflicto con eventos predeterminados
     if (!event.ctrlKey) {
-    // Evita el comportamiento predeterminado del evento (navegación por enlace)
+      // Evita el comportamiento predeterminado del evento (navegación por enlace)
       event.defaultMuiPrevented = true;
-   
+
       // Obtén el ID del elemento de la fila
       const itemId = params.row._id;
-      
+
       // Navegación utilizando navigation.navigate de next/navigation al hacer doble clic
       navigation.navigate(`/Inventario/${itemId}`);
     }
@@ -61,21 +60,21 @@ export default function Inventario() {
   };
   const main = isBarOpen ? "hola-true" : "hola";
   const inv = isBarOpen ? "inv-open" : "inv";
-  const [claseDiv, setClaseDiv] = useState('Registrar-close');
-  const [claseF,setclaseF] = useState ('Fondo-Close');
+  const [claseDiv, setClaseDiv] = useState("Registrar-close");
+  const [claseF, setclaseF] = useState("Fondo-Close");
   // Función para cambiar la clase en el componente padre
   const cambiarClaseEnPadre = () => {
-    setClaseDiv('Registrar-close');
-    setclaseF('Fondo-Close');
+    setClaseDiv("Registrar-close");
+    setclaseF("Fondo-Close");
     console.log("Se modifico la clase");
     console.log(claseDiv);
   };
-  const cambiarClase = () =>{
-      setClaseDiv("Registrar-envio");
-      setclaseF('Fondo-Open');
-      console.log("Hola mundo")
-      console.log(claseDiv);
-  }
+  const cambiarClase = () => {
+    setClaseDiv("Registrar-envio");
+    setclaseF("Fondo-Open");
+    console.log("Hola mundo");
+    console.log(claseDiv);
+  };
   //Funcion para el toolbar
   function boton() {
     alert("Viva Tiktok");
@@ -112,7 +111,9 @@ export default function Inventario() {
     return (
       <GridToolbarContainer>
         <div className="tool">
-          <button className="Agregar" onClick={cambiarClase}>Añadir Producto</button>
+          <button className="Agregar" onClick={cambiarClase}>
+            Añadir Producto
+          </button>
 
           <div className="filtro-boton">
             <div className="svg-b">
@@ -165,14 +166,11 @@ export default function Inventario() {
     );
   }
 
-//Evento para cuando se clickea sobre una fila
-
-
-
+  //Evento para cuando se clickea sobre una fila
 
   return (
     <section className="Home">
-         <div className={claseF}></div>
+      <div className={claseF}></div>
       <div className="bar1">
         <Bar />
       </div>
@@ -217,13 +215,13 @@ export default function Inventario() {
             </div>
           </div>
         </div>
-         <div className={claseDiv}>
+        <div className={claseDiv}>
           <Registrar onCambioClick={cambiarClaseEnPadre} />
-        </div> 
+        </div>
         <div className="Tabla-Contenedor">
           <div className="Tabla">
-            <DataGrid 
-           onCellDoubleClick={handleCellDoubleClick}
+            <DataGrid
+              onCellDoubleClick={handleCellDoubleClick}
               columns={[
                 {
                   field: "url",
@@ -246,15 +244,12 @@ export default function Inventario() {
                   headerName: "Cantidad",
                   width: 150,
                 },
-                
+
                 { field: "precio_costo", headerName: "Costo", width: 200 },
                 { field: "precio_venta", headerName: "Venta", width: 200 },
                 { field: "descripcion", headerName: "Descripcion", width: 200 },
                 { field: "categoria", headerName: "Categoria", width: 0 },
-                
-               
               ]}
-        
               rows={clientes}
               slots={{
                 toolbar: CustomToolbar,
@@ -273,9 +268,7 @@ export default function Inventario() {
                 borderRadius: 2,
                 borderColor: "#FFF",
               }}
-           
             />
-            
           </div>
         </div>
       </div>

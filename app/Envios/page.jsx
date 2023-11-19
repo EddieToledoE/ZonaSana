@@ -1,72 +1,83 @@
-'use client'
-import React from 'react'
-import Bar from '@/components/Bar-1.jsx';
-import estilos from '@/styles/Envios.css';
-import styles from '@/app/Home.css'
-import Header from '@/components/Header.jsx';
+"use client";
+import React from "react";
+import Bar from "@/components/Bar-1.jsx";
+import estilos from "@/styles/Envios.css";
+import styles from "@/app/Home.css";
+import Header from "@/components/Header.jsx";
 import { closeBar, openBar } from "@/store/barSlice";
 import { useSelector, useDispatch } from "react-redux";
-import estiloinfo from '@/styles/Inventario.css';
-import WhereToVoteIcon from '@mui/icons-material/WhereToVote';
-import { red } from '@mui/material/colors';
-import Pedidos from 'components/hacerPedido';
-import { DataGrid, GridColumnHeaderFilterIconButton, GridPagination, GridToolbar, GridToolbarExport, GridToolbarFilterButton } from '@mui/x-data-grid';
-import {GridToolbarContainer,GridToolbarDensitySelector,} from '@mui/x-data-grid';
+import estiloinfo from "@/styles/Inventario.css";
+import WhereToVoteIcon from "@mui/icons-material/WhereToVote";
+import { red } from "@mui/material/colors";
+import Pedidos from "components/hacerPedido";
+import Cliente from "components/registrarCliente";
+import {
+  DataGrid,
+  GridColumnHeaderFilterIconButton,
+  GridPagination,
+  GridToolbar,
+  GridToolbarExport,
+  GridToolbarFilterButton,
+} from "@mui/x-data-grid";
+import {
+  GridToolbarContainer,
+  GridToolbarDensitySelector,
+} from "@mui/x-data-grid";
 import { Grid } from "@mui/material";
-import { useState } from 'react';
+import { useState } from "react";
 function Envios() {
-    const isBarOpen = useSelector((state) => state.bar.isBarOpen);
-    const dispatch = useDispatch();
+  const isBarOpen = useSelector((state) => state.bar.isBarOpen);
+  const dispatch = useDispatch();
 
-    const handleDivClick = () => {
-      const windowWidth = window.innerWidth;
-  
-      //Condicion para que cambie de estado unicamente cuando isBarOpen sea true y la pantalla tenga un width maximo de 800 px
-      if (isBarOpen && windowWidth <= 800) {
-        console.log("Div clickeado");
-        //Si cumple las condiciones se manda el cambio de estado
-        dispatch(closeBar());
-      }
-    };
+  const handleDivClick = () => {
+    const windowWidth = window.innerWidth;
 
-    const hola = isBarOpen ? "hola-true" : "hola";
-    const inv = isBarOpen ? "inv-open" : "inv";
-    const protector = isBarOpen ? 'protectorOpen' : 'protector';
-    const avisos = isBarOpen ? "avisos-true" : "avisos";
-    const [claseDiv, setClaseDiv] = useState('Registrar-close');
-    const [claseF,setclaseF] = useState ('Fondo-Close');
-    // Función para cambiar la clase en el componente padre
-    const cambiarClaseEnPadre = () => {
-      setClaseDiv('Registrar-close');
-      setclaseF('Fondo-Close');
-      console.log("Se modifico la clase");
-      console.log(claseDiv);
-    };
-    const cambiarClase = () =>{
-        setClaseDiv("Registrar-envio");
-        setclaseF('Fondo-Open');
-        console.log("Hola mundo")
-        console.log(claseDiv);
+    //Condicion para que cambie de estado unicamente cuando isBarOpen sea true y la pantalla tenga un width maximo de 800 px
+    if (isBarOpen && windowWidth <= 800) {
+      console.log("Div clickeado");
+      //Si cumple las condiciones se manda el cambio de estado
+      dispatch(closeBar());
     }
+  };
+
+  const hola = isBarOpen ? "hola-true" : "hola";
+  const inv = isBarOpen ? "inv-open" : "inv";
+  const protector = isBarOpen ? "protectorOpen" : "protector";
+  const avisos = isBarOpen ? "avisos-true" : "avisos";
+  const [claseDiv, setClaseDiv] = useState("Registrar-close");
+  const [claseF, setclaseF] = useState("Fondo-Close");
+  // Función para cambiar la clase en el componente padre
+  const cambiarClaseEnPadre = () => {
+    setClaseDiv("Registrar-close");
+    setclaseF("Fondo-Close");
+    console.log("Se modifico la clase");
+    console.log(claseDiv);
+  };
+  const cambiarClase = () => {
+    setClaseDiv("Registrar-envio");
+    setclaseF("Fondo-Open");
+    console.log("Hola mundo");
+    console.log(claseDiv);
+  };
 
   return (
-    <section className='seccion1'>
-          <div className={claseF}></div>
-        <div className='bar1'>
-            <Bar/>
-        </div>
-       
-        <div className={hola} onClick={handleDivClick}>
-           <Header/>
-     
-           <div className={avisos}>
+    <section className="seccion1">
+      <div className={claseF}></div>
+      <div className="bar1">
+        <Bar />
+      </div>
+
+      <div className={hola} onClick={handleDivClick}>
+        <Header />
+
+        <div className={avisos}>
           <div className="citas">
             <div className="Citas">
               <a className="titulo-citas">Envios</a>
             </div>
             <div className="citas-pendientes">
               <div className="inf">
-              <svg
+                <svg
                   width="30"
                   height="30"
                   viewBox="0 0 30 30"
@@ -84,7 +95,7 @@ function Envios() {
                     fill="#24B8F1"
                     fill-opacity="0.6"
                   />
-                </svg>  
+                </svg>
                 <h1 className="citas-inf">21</h1>
                 <a className="inf-a">Completados</a>
               </div>
@@ -92,16 +103,30 @@ function Envios() {
             <div className="linea"></div>
             <div className="inventario-pendiente">
               <div className="inf">
-              <svg 
-               width="26"
-               height="25"
-               viewBox="0 0 24 24"
-               fill="none" xmlns="http://www.w3.org/2000/svg"
-               stroke="#c87f19"><g id="SVGRepo_bgCarrier"
-                 stroke-width="0"></g><g id="SVGRepo_tracerCarrier" 
-                 stroke-linecap="round" stroke-linejoin="round"></g><g 
-                 id="SVGRepo_iconCarrier">
-                 <path d="M4.51555 7C3.55827 8.4301 3 10.1499 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V6M12 12L8 8" stroke="#DBA362" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                <svg
+                  width="26"
+                  height="25"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#c87f19"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M4.51555 7C3.55827 8.4301 3 10.1499 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V6M12 12L8 8"
+                      stroke="#DBA362"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
 
                 <h1 className="citas-inf">21</h1>
                 <a className="inf-a">Pendientes</a>
@@ -114,127 +139,132 @@ function Envios() {
             </div>
             <div className="citas-pendientes">
               <div className="inf">
-               <button className='Envios-Button' onClick={cambiarClase}>Hacer un envio</button>
+                <button className="Envios-Button" onClick={cambiarClase}>
+                  Hacer un envio
+                </button>
               </div>
             </div>
             <div className="linea"></div>
             <div className="inventario-pendiente">
               <div className="inf">
-                
+                <div className="inf">
+                  <button className="Envios-Button" onClick={cambiarClase}>
+                    Registrar Cliente
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div className={claseDiv}>
-           <Pedidos onCambioClick={cambiarClaseEnPadre}/>
+          <Pedidos onCambioClick={cambiarClaseEnPadre} />
         </div>
-        <div className='Tabla-Contenedor'>
-        <DataGrid
-                    columns={[
-                    { field: 'Nombre', hideable: false, width: 200 },
-                    { field: 'NCita', width: 200 },
-                    { field: 'Fecha', width: 200 },
-                    { field: 'Hora',width: 180 },
-                    { field: 'ID',width: 180 },
-                    { field: 'Telefono',  },
-                    ]}
-                    rows={rows}
-                    slots={{
-                     
-                    }}
-                    localeText={{
-                      footerPagination: 'Página {{page}} de {{pageCount}}',
-                      filterOperatorAfter: 'Filtro',
-                      toolbarFiltersLabel:'filtro'
-                       // Personaliza el mensaje de paginación
-                    }}
-                    sx={{
-                        boxShadow: 0,
-                        borderRadius: 2,
-                        borderColor: '#FFF'
-                      }}
-                    />   
+        {/* <div className={claseDiv}>
+          <Cliente onCambioClick={cambiarClaseEnPadre} />
+        </div> */}
+        <div className="Tabla-Contenedor">
+          <DataGrid
+            columns={[
+              { field: "Nombre", hideable: false, width: 200 },
+              { field: "NCita", width: 200 },
+              { field: "Fecha", width: 200 },
+              { field: "Hora", width: 180 },
+              { field: "ID", width: 180 },
+              { field: "Telefono" },
+            ]}
+            rows={rows}
+            slots={{}}
+            localeText={{
+              footerPagination: "Página {{page}} de {{pageCount}}",
+              filterOperatorAfter: "Filtro",
+              toolbarFiltersLabel: "filtro",
+              // Personaliza el mensaje de paginación
+            }}
+            sx={{
+              boxShadow: 0,
+              borderRadius: 2,
+              borderColor: "#FFF",
+            }}
+          />
         </div>
-        
-      
-        </div>
-        <div className={protector} onClick={handleDivClick}></div>
-        
+      </div>
+      <div className={protector} onClick={handleDivClick}></div>
     </section>
-  )
+  );
 }
 const rows = [
-  
-    {
-      id: 3,
-       Nombre: 'Nossdse',
-      NCita: '38',
-      Fecha: '05/12/2023',
-      Hora: '12:00PM',
-      ID:'111212111',
-      Telefono:'9611239304'
-    },
-    {
-      id: 4,
-       Nombre: 'Nossdse',
-      NCita: '38',
-      Fecha: '05/12/2023',
-      Hora: '12:00PM',
-      ID:'111212111',
-      Telefono:'9611239304'
-    },
-    {
-      id: 5,
-       Nombre: 'Nossdse',
-      NCita: '38',
-      Fecha: '05/12/2023',
-      Hora: '12:00PM',
-      ID:'111212111',
-      Telefono:'9611239304'
-    },
-    {
-      id: 6,
-      Nombre: 'Nossdse',
-      NCita: '38',
-      Fecha: '05/12/2023',
-      Hora: '12:00PM',
-      ID:'111212111',
-      Telefono:'9611239304'
-    },
-    {
-      id: 7,
-      Nombre: 'Nossdse',
-      NCita: '38',
-      Fecha: '05/12/2023',
-      Hora: '12:00PM',
-      ID:'111212111',
-      Telefono:'9611239304'
-    }, {
-      id: 8,
-      Nombre: 'Nossdse',
-      NCita: '38',
-      Fecha: '05/12/2023',
-      Hora: '12:00PM',
-      ID:'111212111',
-      Telefono:'9611239304'
-    },
-    {
-      id: 9,
-      Nombre: 'Nossdse',
-      NCita: '38',
-      Fecha: '05/12/2023',
-      Hora: '12:00PM',
-      ID:'111212111',
-      Telefono:'9611239304'
-    }, {
-      id: 10,
-      Nombre: 'Nossdse',
-      NCita: '38',
-      Fecha: '05/12/2023',
-      Hora: '12:00PM',
-      ID:'111212111',
-      Telefono:'9611239304'
-    },
+  {
+    id: 3,
+    Nombre: "Nossdse",
+    NCita: "38",
+    Fecha: "05/12/2023",
+    Hora: "12:00PM",
+    ID: "111212111",
+    Telefono: "9611239304",
+  },
+  {
+    id: 4,
+    Nombre: "Nossdse",
+    NCita: "38",
+    Fecha: "05/12/2023",
+    Hora: "12:00PM",
+    ID: "111212111",
+    Telefono: "9611239304",
+  },
+  {
+    id: 5,
+    Nombre: "Nossdse",
+    NCita: "38",
+    Fecha: "05/12/2023",
+    Hora: "12:00PM",
+    ID: "111212111",
+    Telefono: "9611239304",
+  },
+  {
+    id: 6,
+    Nombre: "Nossdse",
+    NCita: "38",
+    Fecha: "05/12/2023",
+    Hora: "12:00PM",
+    ID: "111212111",
+    Telefono: "9611239304",
+  },
+  {
+    id: 7,
+    Nombre: "Nossdse",
+    NCita: "38",
+    Fecha: "05/12/2023",
+    Hora: "12:00PM",
+    ID: "111212111",
+    Telefono: "9611239304",
+  },
+  {
+    id: 8,
+    Nombre: "Nossdse",
+    NCita: "38",
+    Fecha: "05/12/2023",
+    Hora: "12:00PM",
+    ID: "111212111",
+    Telefono: "9611239304",
+  },
+  {
+    id: 9,
+    Nombre: "Nossdse",
+    NCita: "38",
+    Fecha: "05/12/2023",
+    Hora: "12:00PM",
+    ID: "111212111",
+    Telefono: "9611239304",
+  },
+  {
+    id: 10,
+    Nombre: "Nossdse",
+    NCita: "38",
+    Fecha: "05/12/2023",
+    Hora: "12:00PM",
+    ID: "111212111",
+    Telefono: "9611239304",
+  },
 ];
- 
-export default Envios
+
+export default Envios;

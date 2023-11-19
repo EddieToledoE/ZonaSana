@@ -84,8 +84,8 @@ export default function Inventario() {
 
   if (!producto) {
     return ( <div className="contenedor_carga">
-    <div className="cargando"></div>
-    </div>)
+             <div className="cargando"></div>
+            </div>)
     ;
   }
   return (

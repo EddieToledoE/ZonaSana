@@ -40,12 +40,14 @@ function Header() {
   //Logica para tomar la imagen que se carga
 
   //--------------------------------------------------
+  
 
   function informe() {
     <div className="Alert"></div>;
   }
   return (
     <header className={Header}>
+        
       <div className="Contenedor-Principal">
         <div className="encabezado-ajustes">
         <svg

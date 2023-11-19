@@ -4,13 +4,15 @@ import { FormEvent, useState } from "react";
 import Bar from "@/components/Bar-1";
 import Header from "@/components/Header_ajustes";
 import '@/styles/Ajustes.css';
+import { useSelector, useDispatch } from "react-redux";
+import { closeBar, openBar } from "@/store/barSlice";
 
 export default function Registro
   () {
 
   const [error, setError] = useState()
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     e.currentTarget;
     const formdata = new FormData(e.currentTarget);
@@ -43,6 +45,21 @@ export default function Registro
     }
 
   };
+      //Implementacion de metodo para ocultar la barra
+      const isBarOpen = useSelector((state) => state.bar.isBarOpen);
+      const dispatch = useDispatch();
+  
+      const handleDivClick = () => {
+        const windowWidth = window.innerWidth;
+    
+        //Condicion para que cambie de estado unicamente cuando isBarOpen sea true y la pantalla tenga un width maximo de 800 px
+        if (isBarOpen && windowWidth <= 800) {
+          console.log("Div clickeado");
+          //Si cumple las condiciones se manda el cambio de estado
+          dispatch(closeBar());
+        }
+      };
+      const protector = isBarOpen ? 'protectorOpen' : 'protector';
 
   return (
     <section className="Container">
@@ -96,6 +113,7 @@ export default function Registro
         </section>
 
       </div>
+      <div className={protector} onClick={handleDivClick}></div>
     </section>
   );
 }

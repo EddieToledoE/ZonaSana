@@ -4,11 +4,13 @@ import head from "../styles/Header.css";
 import { useDispatch } from "react-redux";
 import { useSession } from "next-auth/react";
 import { closeBar, openBar } from "../store/barSlice"; // Importa las acciones
+
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import Badge from "@mui/material/Badge";
 import Buscar from "@/components/completar";
+
 
 function Header() {
   const [usuario, setUsuario] = useState("");
@@ -29,8 +31,11 @@ function Header() {
   const dispatch = useDispatch();
 
   const handleToggleBar = () => {
-    console.log("Action dispatched: closeBar");
+
+
     dispatch(openBar());
+   
+    
   };
   const imageStyle = {
     borderRadius: "50%",

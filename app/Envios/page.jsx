@@ -51,7 +51,7 @@ function Envios() {
 
   return (
     <section className='seccion1'>
-           <div className={claseF}></div>
+          <div className={claseF}></div>
         <div className='bar1'>
             <Bar/>
         </div>

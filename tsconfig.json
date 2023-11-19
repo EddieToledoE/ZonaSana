@@ -32,7 +32,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/Login.jsx", "libs/mongodb.js", "models/user.js", "app/Ajustes/page.jsx", "app/api/auth/pass/route.js", "app/api/auth/registro/route.js"  ],
   "exclude": [
     "node_modules"
   ]

@@ -14,7 +14,6 @@ function Header() {
   const [usuario, setUsuario] = useState("");
   const [image, setImage] = useState("");
   const [puesto, setPuesto] = useState("");
-  console.log(image);
   const session = useSession();
   useEffect(() => {
     setImage(session.data?.user.url);
@@ -103,7 +102,7 @@ function Header() {
               </svg>
             </Badge>
           </div>
-        
+
           <div className="perfil">
             <label className="input-perfil">
               <Image

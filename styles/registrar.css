@@ -153,3 +153,15 @@ background: var(--primary-primary-600, #1366D9);
 margin-right: 10px;
 color: white;
 }
+.datos-telefono{
+    display: inline-block;
+
+}
+.datos-telefono img{
+    display: inline-block;
+    width: 30px;
+}
+
+.productos-agregar{
+    display: flex;
+}

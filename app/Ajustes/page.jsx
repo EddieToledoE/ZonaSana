@@ -10,8 +10,6 @@ import { closeBar, openBar } from "@/store/barSlice";
 export default function Registro() {
   const [error, setError] = useState();
 
-  const [error, setError] = useState()
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     e.currentTarget;

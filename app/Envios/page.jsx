@@ -6,7 +6,7 @@ import styles from "@/app/Home.css";
 import Header from "@/components/Header.jsx";
 import { closeBar, openBar } from "@/store/barSlice";
 import { useSelector, useDispatch } from "react-redux";
-import estiloinfo from "@/styles/Inventario.css";
+import estiloinfo from "@/styles/inventario.css";
 import WhereToVoteIcon from "@mui/icons-material/WhereToVote";
 import { red } from "@mui/material/colors";
 import Pedidos from "components/hacerPedido";
@@ -24,7 +24,7 @@ import {
   GridToolbarDensitySelector,
 } from "@mui/x-data-grid";
 import { Grid } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function Envios() {
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ function Envios() {
     setclaseF("Fondo-Close");
     console.log("Se modifico la clase");
     console.log(claseDiv);
-  };  
+  };
   const cambiarClase = () => {
     setClaseDiv("Registrar-envio");
     setclaseF("Fondo-Open");
@@ -72,6 +72,24 @@ function Envios() {
     console.log("Hola mundo");
     console.log(claseDiv);
   };
+
+  const [envios, setEnvios] = useState([]);
+
+  const ruta = "http://localhost:3000/api/auth/envio";
+  const getData = async () => {
+    try {
+      const response = await axios.get(ruta);
+      const data = response.data;
+      setEnvios(data);
+    } catch (error) {
+      console.error("Error al obtener los datos:", error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <section className="seccion1">
       <div className={claseF}></div>
@@ -171,20 +189,20 @@ function Envios() {
         <div className={claseDiv}>
           <Pedidos onCambioClick={cambiarClaseEnPadre} />
         </div>
-         <div className={claseDiv2}>
+        <div className={claseDiv2}>
           <Cliente onCambioClick={cambiarClaseEnPadre2} />
-        </div> 
+        </div>
         <div className="Tabla-Contenedor">
           <DataGrid
             columns={[
-              { field: "Nombre", hideable: false, width: 200 },
+              { field: "cliente", hideable: false, width: 200 },
               { field: "NCita", width: 200 },
               { field: "Fecha", width: 200 },
               { field: "Hora", width: 180 },
               { field: "ID", width: 180 },
               { field: "Telefono" },
             ]}
-            rows={rows}
+            rows={envios}
             slots={{}}
             localeText={{
               footerPagination: "Página {{page}} de {{pageCount}}",
@@ -204,79 +222,5 @@ function Envios() {
     </section>
   );
 }
-const rows = [
-  {
-    id: 3,
-    Nombre: "Nossdse",
-    NCita: "38",
-    Fecha: "05/12/2023",
-    Hora: "12:00PM",
-    ID: "111212111",
-    Telefono: "9611239304",
-  },
-  {
-    id: 4,
-    Nombre: "Nossdse",
-    NCita: "38",
-    Fecha: "05/12/2023",
-    Hora: "12:00PM",
-    ID: "111212111",
-    Telefono: "9611239304",
-  },
-  {
-    id: 5,
-    Nombre: "Nossdse",
-    NCita: "38",
-    Fecha: "05/12/2023",
-    Hora: "12:00PM",
-    ID: "111212111",
-    Telefono: "9611239304",
-  },
-  {
-    id: 6,
-    Nombre: "Nossdse",
-    NCita: "38",
-    Fecha: "05/12/2023",
-    Hora: "12:00PM",
-    ID: "111212111",
-    Telefono: "9611239304",
-  },
-  {
-    id: 7,
-    Nombre: "Nossdse",
-    NCita: "38",
-    Fecha: "05/12/2023",
-    Hora: "12:00PM",
-    ID: "111212111",
-    Telefono: "9611239304",
-  },
-  {
-    id: 8,
-    Nombre: "Nossdse",
-    NCita: "38",
-    Fecha: "05/12/2023",
-    Hora: "12:00PM",
-    ID: "111212111",
-    Telefono: "9611239304",
-  },
-  {
-    id: 9,
-    Nombre: "Nossdse",
-    NCita: "38",
-    Fecha: "05/12/2023",
-    Hora: "12:00PM",
-    ID: "111212111",
-    Telefono: "9611239304",
-  },
-  {
-    id: 10,
-    Nombre: "Nossdse",
-    NCita: "38",
-    Fecha: "05/12/2023",
-    Hora: "12:00PM",
-    ID: "111212111",
-    Telefono: "9611239304",
-  },
-];
 
 export default Envios;

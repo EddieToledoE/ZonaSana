@@ -6,7 +6,7 @@ import styles from "@/app/Home.css";
 import Header from "@/components/Header.jsx";
 import { closeBar, openBar } from "@/store/barSlice";
 import { useSelector, useDispatch } from "react-redux";
-import estiloinfo from "@/styles/Inventario.css";
+import estiloinfo from "@/styles/inventario.css";
 import WhereToVoteIcon from "@mui/icons-material/WhereToVote";
 import { red } from "@mui/material/colors";
 import Pedidos from "components/hacerPedido";

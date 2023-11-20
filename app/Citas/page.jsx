@@ -26,7 +26,8 @@ import { Grid } from "@mui/material";
 
 export default function Inventario() {
   const [pacientes, setPacientes] = useState([]);
-
+  const [claseDiv, setClaseDiv] = useState("Registrar-close");
+  const [claseF, setclaseF] = useState("Fondo-Close");
   const ruta = "http://localhost:3000/api/auth/paciente";
   const getData = async () => {
     try {
@@ -64,12 +65,24 @@ export default function Inventario() {
   }
   //Estilos para la tabla
   // Función para personalizar la traducción del botón de filtro
+  const cambiarClaseEnPadre = () => {
+    setClaseDiv("Registrar-close");
+    setclaseF("Fondo-Close");
+    console.log("Se modifico la clase");
+    console.log(claseDiv);
+  };
+  const cambiarClase = () => {
+    setClaseDiv("Registrar-envio");
+    setclaseF("Fondo-Open");
+    console.log("Hola mundo");
+    console.log(claseDiv);
+  };
 
   function CustomToolbar() {
     return (
       <GridToolbarContainer>
         <div className="tool">
-          <button onClick={getData} className="Agregar">
+          <button onClick={cambiarClase} className="Agregar">
             Añadir Paciente
           </button>
 
@@ -133,7 +146,9 @@ export default function Inventario() {
       </div>
       <div className={main} onClick={handleDivClick}>
         <Header></Header>
-        <RegistrarPaciente />
+        <div className={claseDiv}>
+           <RegistrarPaciente onCambioClick={cambiarClaseEnPadre} />
+        </div>
         <div className="Tabla-Contenedor">
           <div className="Tabla">
             <DataGrid

@@ -113,18 +113,20 @@ const registrar = ({ onCambioClick }) => {
             <label className="titulo-input">Telefono</label>
           </div>
           <div className="entradatext">
-            <PhoneInput
-              className="datos-telefono"
-              placeholder="Número de teléfono"
-              defaultCountry="MX"
-              international
+          <input
+              className="datos-inv"
+              type="number"
+              min={0}
+              placeholder="ej +52"
               value={telefono}
               labels={es}
-              onChange={setTelefono}
-            />
+              onChange={(event) => setTelefono(event.target.value)}
+            ></input>
           </div>
         </div>
-        <h2>Direccion</h2>
+        <div className="titulor">
+        <h3>Direccion:</h3>
+      </div>
         <div className="text">
           <div className="t-in">
             <label className="titulo-input">Codigo Postal:</label>
@@ -191,6 +193,9 @@ const registrar = ({ onCambioClick }) => {
             ></input>
           </div>
         </div>
+      </div>
+      <div className="text">
+
       </div>
       <div className="botonesr">
         <button className="cancelar" onClick={onCambioClick}>

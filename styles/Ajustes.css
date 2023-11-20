@@ -18,7 +18,7 @@
     padding: 2%;
 }
 
-h1 {
+.h1_ajustes{
     font-size: 24px;
     font-family: Inter;
     font-weight: 500;
@@ -26,7 +26,7 @@ h1 {
     opacity: .8;
 }
 
-h2 {
+.h2_ajustes {
     font-size: 19px;
     font-family: Inter;
     font-weight: 500;
@@ -34,7 +34,7 @@ h2 {
     opacity: .8;
 }
 
-h3 {
+.h3_ajustes {
     text-transform: uppercase;
     padding-left: 1vh;
     padding-bottom: 1vh;
@@ -78,11 +78,11 @@ h3 {
     display: flex;
 }
 
-input::placeholder {
+.Ajustes_input::placeholder {
     font-size: 15px;
 }
 
-input {
+.Ajustes_input {
     font-size: 15px;
     box-sizing: border-box;
     padding-left: 2%;
@@ -93,7 +93,7 @@ input {
     height: 35px;
 }
 
-label {
+.label_Ajustes {
     display: block;
     box-sizing: border-box;
     padding-top: 3vh;

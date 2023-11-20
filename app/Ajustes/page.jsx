@@ -66,32 +66,32 @@ export default function Registro() {
         <section className="seccion-contenido">
           <div className="contenido">
             <div className="contenido-registrar">
-              <h1>REGISTRAR NUEVO EMPLEADO</h1>
+              <h1 className="h1_ajustes">REGISTRAR NUEVO EMPLEADO</h1>
               <form className="formulario-registro" onSubmit={handleSubmit}>
                 <div className="contenedor-formulario">
                   <section className="seccion-izquierda">
-                    <h2>Datos empleado</h2>
-                    <label htmlFor="nombre">
-                      <h3>Nombre</h3>
-                      <input
+                    <h2 className="h2_ajustes">Datos empleado</h2>
+                    <label className="label_Ajustes" htmlFor="nombre">
+                      <h3 className="h3_ajustes">Nombre</h3>
+                      <input className="Ajustes_input"
                         type="text"
                         placeholder="Nombre"
                         name="nombre"
                         id="nombre"
                       />
                     </label>
-                    <label htmlFor="apellido">
-                      <h3>Apellido</h3>
-                      <input
+                    <label className="label_Ajustes" htmlFor="apellido">
+                      <h3 className="h3_ajustes">Apellido</h3>
+                      <input className="Ajustes_input"
                         type="text"
                         placeholder="Apellido"
                         name="apellido"
                         id="apellido"
                       />
                     </label>
-                    <label htmlFor="puesto">
-                      <h3>Puesto</h3>
-                      <input
+                    <label className="label_Ajustes" htmlFor="puesto">
+                      <h3 className="h3_ajustes">Puesto</h3>
+                      <input className="Ajustes_input"
                         type="text"
                         placeholder="Puesto"
                         name="puesto"
@@ -100,19 +100,19 @@ export default function Registro() {
                     </label>
                   </section>
                   <section className="seccion-derecha">
-                    <h2>Datos usuario</h2>
-                    <label htmlFor="email">
-                      <h3>Email</h3>
-                      <input
+                    <h2 className="h2_ajustes">Datos usuario</h2>
+                    <label className="label_Ajustes" htmlFor="email">
+                      <h3 className="h3_ajustes">Email</h3>
+                      <input className="Ajustes_input"
                         type="email"
                         placeholder="Email"
                         name="email"
                         id="email"
                       />
                     </label>
-                    <label htmlFor="contraseña">
-                      <h3>Contraseña</h3>
-                      <input
+                    <label className="label_Ajustes" htmlFor="contraseña">
+                      <h3 className="h3_ajustes">Contraseña</h3>
+                      <input className="Ajustes_input"
                         type="password"
                         placeholder="Contraseña"
                         name="contraseña"
@@ -120,7 +120,7 @@ export default function Registro() {
                       />
                     </label>
                     {error && (
-                      <label>
+                      <label className="label_Ajustes">
                         <div className="alerta-incorrecta">{error}</div>
                       </label>
                     )}

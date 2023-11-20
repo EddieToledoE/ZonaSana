@@ -207,6 +207,9 @@ const registrar =({ onCambioClick })=> {
           </div>
         </div>
       </form>
+      <div className="text">
+        
+      </div>
       <div className="botonesr">
         <button className="cancelar" onClick={onCambioClick}>Cancelar</button>
         <button onClick={handleSubmit} type="button" className="submit">

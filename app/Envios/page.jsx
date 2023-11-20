@@ -45,6 +45,7 @@ function Envios() {
   const protector = isBarOpen ? "protectorOpen" : "protector";
   const avisos = isBarOpen ? "avisos-true" : "avisos";
   const [claseDiv, setClaseDiv] = useState("Registrar-close");
+  const [claseDiv2, setClaseDiv2] = useState("Registrar-close2");
   const [claseF, setclaseF] = useState("Fondo-Close");
   // Función para cambiar la clase en el componente padre
   const cambiarClaseEnPadre = () => {
@@ -52,14 +53,25 @@ function Envios() {
     setclaseF("Fondo-Close");
     console.log("Se modifico la clase");
     console.log(claseDiv);
-  };
+  };  
   const cambiarClase = () => {
     setClaseDiv("Registrar-envio");
     setclaseF("Fondo-Open");
     console.log("Hola mundo");
     console.log(claseDiv);
   };
-
+  const cambiarClaseEnPadre2 = () => {
+    setClaseDiv2("Registrar-close2");
+    setclaseF("Fondo-Close");
+    console.log("Se modifico la clase");
+    console.log(claseDiv);
+  };
+  const cambiarClase2 = () => {
+    setClaseDiv2("Registrar-envio2");
+    setclaseF("Fondo-Open");
+    console.log("Hola mundo");
+    console.log(claseDiv);
+  };
   return (
     <section className="seccion1">
       <div className={claseF}></div>
@@ -148,7 +160,7 @@ function Envios() {
             <div className="inventario-pendiente">
               <div className="inf">
                 <div className="inf">
-                  <button className="Envios-Button" onClick={cambiarClase}>
+                  <button className="Envios-Button" onClick={cambiarClase2}>
                     Registrar Cliente
                   </button>
                 </div>
@@ -159,9 +171,9 @@ function Envios() {
         <div className={claseDiv}>
           <Pedidos onCambioClick={cambiarClaseEnPadre} />
         </div>
-        {/* <div className={claseDiv}>
-          <Cliente onCambioClick={cambiarClaseEnPadre} />
-        </div> */}
+         <div className={claseDiv2}>
+          <Cliente onCambioClick={cambiarClaseEnPadre2} />
+        </div> 
         <div className="Tabla-Contenedor">
           <DataGrid
             columns={[

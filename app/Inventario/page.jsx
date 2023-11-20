@@ -79,8 +79,7 @@ export default function Inventario() {
   function boton() {
     alert("Viva Tiktok");
   }
-  //Estilos para la tabla
-  // Función para personalizar la traducción del botón de filtro
+ 
   const [clientes, setClientes] = useState([]);
 
   const ruta = "http://localhost:3000/api/auth/producto";

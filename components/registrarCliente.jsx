@@ -1,5 +1,5 @@
 import estilos from "@/styles/registrar.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PhoneInput from "react-phone-number-input";
 import es from "react-phone-number-input/locale/es.json";
 const Swal = require("sweetalert2");
@@ -19,15 +19,6 @@ const registrar = ({ onCambioClick }) => {
 
   const handleGuardar = async (e) => {
     e.preventDefault();
-    const datosDireccion = {
-      cp: cp,
-      calle: calle,
-      municipio: municipio,
-      estado: estado,
-      observacion: observacion,
-    };
-    setDireccion(datosDireccion);
-
     const result = await Swal.fire({
       title: "¿Estás seguro?",
       text: "¿Quieres agregar este nuevo cliente? " + nombre,
@@ -36,7 +27,6 @@ const registrar = ({ onCambioClick }) => {
       confirmButtonText: "Sí, agregar",
       cancelButtonText: "Cancelar",
     });
-
     if (result.isConfirmed) {
       console.log(nombre, apellido, telefono, direccion);
       try {
@@ -44,7 +34,13 @@ const registrar = ({ onCambioClick }) => {
           nombre: nombre,
           apellido: apellido,
           telefono: telefono,
-          direccion: direccion,
+          direccion: {
+            cp: cp,
+            calle: calle,
+            municipio: municipio,
+            estado: estado,
+            observacion: observacion,
+          },
         });
         if (res.data) {
           console.log(res.data);
@@ -113,7 +109,7 @@ const registrar = ({ onCambioClick }) => {
             <label className="titulo-input">Telefono</label>
           </div>
           <div className="entradatext">
-          <input
+            <input
               className="datos-inv"
               type="number"
               min={0}
@@ -125,8 +121,8 @@ const registrar = ({ onCambioClick }) => {
           </div>
         </div>
         <div className="titulor">
-        <h3>Direccion:</h3>
-      </div>
+          <h3>Direccion:</h3>
+        </div>
         <div className="text">
           <div className="t-in">
             <label className="titulo-input">Codigo Postal:</label>
@@ -194,9 +190,7 @@ const registrar = ({ onCambioClick }) => {
           </div>
         </div>
       </div>
-      <div className="text">
-
-      </div>
+      <div className="text"></div>
       <div className="botonesr">
         <button className="cancelar" onClick={onCambioClick}>
           Cancelar

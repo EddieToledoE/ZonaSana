@@ -15,6 +15,7 @@ const registrar = ({ onCambioClick }) => {
   const [categoria, setCategoria] = useState("");
   const [precioCompra, setPrecioCompra] = useState(0);
   const [cantidad, setCantidad] = useState(0);
+  const [alerta, setAlerta] = useState(3);
   const [precioVenta, setPrecioVenta] = useState(0);
   const [descripcion, setDescripcion] = useState("");
 
@@ -29,6 +30,7 @@ const registrar = ({ onCambioClick }) => {
     formData.append("marca", marca);
     formData.append("nombre", nombreProducto);
     formData.append("descripcion", descripcion);
+    formData.append("cantidad_alerta", alerta);
     formData.append("archivo", archivo); // Agregar el archivo
     // Mostrar SweetAlert para confirmar la acción
     const result = await Swal.fire({
@@ -102,13 +104,14 @@ const registrar = ({ onCambioClick }) => {
           <Image src={Logo} alt="Imagen" width={80} height={80} />
         </div>
         <input
-          placeholder=""
+          placeholder="Imagen necesaria"
           type="file"
           onChange={(e) => {
             setArchivo(e.target.files[0]);
           }}
           name=""
           id=""
+          required
         />
       </div>
       <form>
@@ -116,7 +119,7 @@ const registrar = ({ onCambioClick }) => {
         <div className="Entradas-datos">
           <div className="text">
             <div className="t-in">
-              <label className="titulo-input">Nombre Producto :</label>
+              <label className="titulo-input">Nombre Producto:</label>
             </div>
             <div className="entradatext">
               <input
@@ -142,15 +145,35 @@ const registrar = ({ onCambioClick }) => {
           </div>
           <div className="text">
             <div className="t-in">
-              <label className="titulo-input">Categoria :</label>
+              <label className="titulo-input">Categoría:</label>
             </div>
             <div className="entradatext">
-              <input
+              <select
                 className="datos-inv"
-                type="text"
-                placeholder="Selecciona una Categoria"
                 onChange={(event) => setCategoria(event.target.value)}
-              ></input>
+              >
+                <option value="" disabled selected>
+                  Selecciona una categoría
+                </option>
+                <option value="Suplementos nutricionales">
+                  Suplementos nutricionales
+                </option>
+                <option value="Hierbas y plantas medicinales">
+                  Hierbas y plantas medicinales
+                </option>
+                <option value="Aceites esenciales">Aceites esenciales</option>
+                <option value="Bienestar gastrointestinal">
+                  Bienestar gastrointestinal
+                </option>
+                <option value="Salud mental">Salud mental</option>
+                <option value="Salud articular y muscular">
+                  Salud articular y muscular
+                </option>
+                <option value="Belleza y cuidado personal">
+                  Belleza y cuidado personal
+                </option>
+                <option value="Energía y vitalidad">Energía y vitalidad</option>
+              </select>
             </div>
           </div>
           <div className="text">
@@ -189,6 +212,20 @@ const registrar = ({ onCambioClick }) => {
                 type="number"
                 placeholder="Ingresa el precio de venta"
                 onChange={(event) => setPrecioVenta(event.target.value)}
+              ></input>
+            </div>
+          </div>
+          <div className="text">
+            <div className="t-in">
+              <label className="titulo-input">Cantidad poco stock :</label>
+            </div>
+            <div className="entradatext">
+              <input
+                className="datos-inv"
+                type="number"
+                min={3}
+                placeholder="Se considera poco stock"
+                onChange={(event) => setAlerta(event.target.value)}
               ></input>
             </div>
           </div>

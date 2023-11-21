@@ -6,6 +6,11 @@ const ProductoSchema = new Schema(
       required: [true, "Cantidad necesaria"],
       min: 1,
     },
+    cantidad_alerta: {
+      type: Number,
+      required: [true, "Cantidad necesaria"],
+      min: 3,
+    },
     precio_costo: {
       type: Number,
       required: [true, "El costo es necesario"],

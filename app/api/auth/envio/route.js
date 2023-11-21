@@ -7,9 +7,9 @@ export async function GET() {
 
   try {
     const ObtenerEnvios = await Envio.find()
-      .populate("cliente", "nombre") // Poblar el campo 'cliente' y seleccionar solo 'nombre' y 'apellido'
-      .populate("producto_enviado._id", "nombre"); // Poblar el campo 'producto_enviado.producto' y seleccionar solo 'nombre'
-
+      .populate("cliente", "nombre apellido telefono direccion")
+      .populate("producto_enviado._id", "nombre marca url");
+    // Pobla // Poblar el campo 'producto_enviado.producto' y seleccionar solo 'nombre'
     console.log(ObtenerEnvios);
     return NextResponse.json(ObtenerEnvios);
   } catch (error) {

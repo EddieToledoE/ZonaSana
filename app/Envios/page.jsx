@@ -11,6 +11,7 @@ import WhereToVoteIcon from "@mui/icons-material/WhereToVote";
 import { red } from "@mui/material/colors";
 import Pedidos from "components/hacerPedido";
 import Cliente from "components/registrarCliente";
+import Axios from "axios";
 import {
   DataGrid,
   GridColumnHeaderFilterIconButton,
@@ -23,7 +24,7 @@ import {
   GridToolbarContainer,
   GridToolbarDensitySelector,
 } from "@mui/x-data-grid";
-import { Grid } from "@mui/material";
+import { Avatar, Grid } from "@mui/material";
 import { useState, useEffect } from "react";
 function Envios() {
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
@@ -78,7 +79,7 @@ function Envios() {
   const ruta = "http://localhost:3000/api/auth/envio";
   const getData = async () => {
     try {
-      const response = await axios.get(ruta);
+      const response = await Axios.get(ruta);
       const data = response.data;
       setEnvios(data);
     } catch (error) {
@@ -89,6 +90,42 @@ function Envios() {
   useEffect(() => {
     getData();
   }, []);
+
+  const [cantidadTotal, setCantidadTotal] = useState(0);
+  const [cantidadEntregados, setCantidadEntregados] = useState(0);
+  const [cantidadNoEntregados, setCantidadNoEntregados] = useState(0);
+
+  useEffect(() => {
+    const obtenerCantidades = async () => {
+      try {
+        const response = await Axios.get(
+          "http://localhost:3000/api/auth/envio/contador"
+        );
+
+        setCantidadTotal(response.data.cantidadTotal);
+        setCantidadEntregados(response.data.cantidadEntregados);
+        setCantidadNoEntregados(response.data.cantidadNoEntregados);
+      } catch (error) {
+        console.error("Error al obtener cantidades:", error);
+        // Manejar el error según tus necesidades
+      }
+    };
+
+    obtenerCantidades();
+  }, []);
+  const handleCellDoubleClick = (params, event) => {
+    // Verifica que no se haya presionado la tecla Ctrl para evitar conflicto con eventos predeterminados
+    if (!event.ctrlKey) {
+      // Evita el comportamiento predeterminado del evento (navegación por enlace)
+      event.defaultMuiPrevented = true;
+
+      // Obtén el ID del elemento de la fila
+      const itemId = params.row._id;
+
+      // Navegación utilizando navigation.navigate de next/navigation al hacer doble clic
+      navigation.navigate(`/Envios/${itemId}`);
+    }
+  };
 
   return (
     <section className="seccion1">
@@ -126,7 +163,7 @@ function Envios() {
                     fill-opacity="0.6"
                   />
                 </svg>
-                <h1 className="citas-inf">21</h1>
+                <h1 className="citas-inf">{cantidadEntregados}</h1>
                 <a className="inf-a">Completados</a>
               </div>
             </div>
@@ -158,7 +195,7 @@ function Envios() {
                   </g>
                 </svg>
 
-                <h1 className="citas-inf">21</h1>
+                <h1 className="citas-inf">{cantidadNoEntregados}</h1>
                 <a className="inf-a">Pendientes</a>
               </div>
             </div>
@@ -194,13 +231,47 @@ function Envios() {
         </div>
         <div className="Tabla-Contenedor">
           <DataGrid
+            onCellDoubleClick={handleCellDoubleClick}
             columns={[
-              { field: "cliente", hideable: false, width: 200 },
-              { field: "NCita", width: 200 },
-              { field: "Fecha", width: 200 },
-              { field: "Hora", width: 180 },
-              { field: "ID", width: 180 },
-              { field: "Telefono" },
+              {
+                field: "rastreo",
+                headerName: "Número de rastreo",
+                hideable: false,
+                width: 200,
+              },
+              { field: "fecha", headerName: "Fecha", width: 200 },
+              { field: "valor", headerName: "Valor", width: 200 },
+              { field: "estatus", headerName: "Estatus", width: 200 },
+              {
+                field: "cliente",
+                headerName: "Cliente",
+                width: 200,
+                renderCell: (params) =>
+                  `${params.row.cliente.nombre} ${params.row.cliente.apellido}`, // Accede al nombre del cliente
+              },
+              {
+                field: "clientetelefono",
+                headerName: "Telefono",
+                width: 200,
+                renderCell: (params) => params.row.cliente.telefono, // Accede al nombre del cliente
+              },
+              {
+                field: "producto_enviado",
+                headerName: "Productos Enviados",
+                width: 200,
+                renderCell: (params) => (
+                  <>
+                    {params.row.producto_enviado.map((producto, index) => (
+                      <Avatar
+                        key={index}
+                        alt={`Producto ${index + 1}`}
+                        src={producto._id.url}
+                        style={{ marginRight: "8px" }} // Ajusta según sea necesario
+                      />
+                    ))}
+                  </>
+                ),
+              },
             ]}
             rows={envios}
             slots={{}}
@@ -210,6 +281,8 @@ function Envios() {
               toolbarFiltersLabel: "filtro",
               // Personaliza el mensaje de paginación
             }}
+            autoPageSize
+            getRowId={(row) => row._id}
             sx={{
               boxShadow: 0,
               borderRadius: 2,

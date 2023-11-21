@@ -24,6 +24,9 @@
     margin-right: 10px;
     color: white;
   }
+  .tablaavataresenvio{
+    height: min-content;
+  }
   
    @keyframes salto {
     0%, 20%, 50%, 80%, 100% {

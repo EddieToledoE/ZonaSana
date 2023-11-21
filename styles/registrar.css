@@ -133,6 +133,15 @@
         box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
         
 }
+#datos-inv{
+     border-radius: 3px;
+        border: 1px solid var(--gray-300, #D0D5DD);
+        background: var(--White, #FFF);
+        height: 90%;
+        width: 100%;
+        padding-left:10px;
+        box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
 .t-in label{
         color: var(--grey-grey-700, #48505E);
         font-family: Inter;

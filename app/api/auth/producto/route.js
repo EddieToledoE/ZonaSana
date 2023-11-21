@@ -18,6 +18,7 @@ export async function POST(request) {
   const nombre = data.get("nombre");
   const descripcion = data.get("descripcion");
   const imagen = data.get("archivo");
+  const cantidad_alerta = data.get("cantidad_alerta");
   console.log(
     cantidad_stock,
     precio_costo,
@@ -26,7 +27,8 @@ export async function POST(request) {
     marca,
     nombre,
     descripcion,
-    imagen
+    imagen,
+    cantidad_alerta
   );
   if (!imagen) {
     return NextResponse.json("No se ha subido ninguna imagen", { status: 400 });
@@ -78,6 +80,7 @@ export async function POST(request) {
       nombre,
       descripcion,
       url,
+      cantidad_alerta,
     });
     const Productoguardado = await producto.save();
     console.log(Productoguardado);

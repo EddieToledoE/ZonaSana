@@ -41,6 +41,7 @@ export default function Inventario() {
   const Details = isBarOpen ? "Details-Open" : "Details";
   const [editar, setEditar] = useState("Detalles-Editar-Close");
   const [descripcion_p, setdescripcion_p] = useState("Editar-Descripcion-Open");
+  const [descripcion, setDescripcion] = useState("");
   const [boton, setboton] = useState("Opciones-Editar-Button");
   const [botoneliminar, setbotoneliminar] = useState(
     "Opciones-Eliminar-Button"
@@ -50,7 +51,7 @@ export default function Inventario() {
   const handleBorrar = async () => {
     const result = await Swal.fire({
       title: "¿Estás seguro?",
-      text: "Se eliminará :" + nombre,
+      text: "Se eliminará este envio :",
       icon: "question",
       showCancelButton: true,
       confirmButtonText: "Sí, borrar",
@@ -59,9 +60,9 @@ export default function Inventario() {
     // Si el usuario confirma, realizar la acción
     if (result.isConfirmed) {
       try {
-        const response = await axios.delete(`/api/auth/producto/${id}`);
+        const response = await axios.delete(`/api/auth/envio/${id}`);
         if (response) {
-          return router.push("/Inventario");
+          return router.push("/Envios");
         }
       } catch (error) {
         console.error("Error al borrar el producto:", error);
@@ -71,7 +72,7 @@ export default function Inventario() {
   const handleEditar = async () => {
     const result = await Swal.fire({
       title: "¿Estás seguro?",
-      text: "Se editará :" + nombre,
+      text: "Se editará este envio :",
       icon: "question",
       showCancelButton: true,
       confirmButtonText: "Sí, editar",
@@ -79,15 +80,11 @@ export default function Inventario() {
     });
     if (result.isConfirmed) {
       try {
-        const response = await axios.put(`/api/auth/producto/${id}`, {
-          nombre: nombre,
-          marca: marca,
-          categoria: categoria,
-          precio_venta: precioventa,
-          precio_costo: preciocosto,
-          descripcion: descripcion,
-          cantidad_stock: cantidad,
-          cantidad_alerta: alerta,
+        const response = await axios.put(`/api/auth/envio/${id}`, {
+          rastreo: rastreo,
+          fecha: fecha,
+          valor: valor,
+          estatus: estatus,
         });
         if (response) {
           Swal.fire(
@@ -117,35 +114,46 @@ export default function Inventario() {
     setbotones("Detalles-Editando-Close");
     setbotoneliminar("Opciones-Eliminar-Button");
   };
-  const [preciocostofijo, setPreciocostofijo] = useState(0);
-  const [precioventafijo, setPrecioventafijo] = useState(0);
+  const [rastreo, setRastreo] = useState(0);
+  const [fecha, setFecha] = useState("");
+  const [valor, setValor] = useState(0);
+  const [estatus, setEstatus] = useState("");
   const [nombre, setNombre] = useState("");
-  const [marca, setMarca] = useState("");
-  const [categoria, setCategoria] = useState("");
-  const [preciocosto, setPreciocosto] = useState(0);
-  const [precioventa, setPrecioventa] = useState(0);
-  const [descripcion, setDescripcion] = useState("");
-  const [cantidad, setCantidad] = useState(0);
-  const [url, setUrl] = useState("");
-  const [alerta, setAlerta] = useState(0);
+  const [apellido, setApellido] = useState("");
+  const [telefono, setTelefono] = useState(0);
+  const [cp, setCp] = useState(0);
+  const [calle, setCalle] = useState("");
+  const [municipio, setMunicipio] = useState("");
+  const [estado, setEstado] = useState("");
+  const [observacion, setObservacion] = useState("");
+  const [productoEnviado, setProductoEnviado] = useState([]);
   //Funcion para el toolbar
   //Estilos para la tabla
   // Función para personalizar la traducción del botón de filtro
   useEffect(() => {
     const obtenerProducto = async () => {
       try {
-        const response = await axios.get(`/api/auth/producto/${id}`);
-        setNombre(response.data.nombre);
-        setMarca(response.data.marca);
-        setCategoria(response.data.categoria);
-        setPreciocosto(response.data.precio_costo);
-        setPrecioventa(response.data.precio_venta);
-        setDescripcion(response.data.descripcion);
-        setCantidad(response.data.cantidad_stock);
-        setPreciocostofijo(response.data.precio_costo);
-        setPrecioventafijo(response.data.precio_venta);
-        setUrl(response.data.url);
-        setAlerta(response.data.cantidad_alerta);
+        const response = await axios.get(`/api/auth/envio/${id}`);
+        setRastreo(response.data.rastreo);
+        setFecha(response.data.fecha);
+        setEstatus(response.data.estatus);
+        setValor(response.data.valor);
+        setNombre(response.data.cliente.nombre);
+        setApellido(response.data.cliente.apellido);
+        setTelefono(response.data.cliente.telefono);
+        setProductoEnviado(response.data.producto_enviado || []);
+
+        if (
+          response.data.cliente.direccion &&
+          response.data.cliente.direccion.length > 0
+        ) {
+          const primeraDireccion = response.data.cliente.direccion[0];
+          setCp(primeraDireccion.cp);
+          setCalle(primeraDireccion.calle);
+          setMunicipio(primeraDireccion.municipio);
+          setEstado(primeraDireccion.estado);
+          setObservacion(primeraDireccion.observacion);
+        }
       } catch (error) {
         console.error("Error al obtener el producto:", error);
       }
@@ -156,7 +164,7 @@ export default function Inventario() {
     }
   }, [idDinamico]);
 
-  if (!url) {
+  if (!rastreo) {
     return (
       <div className="contenedor_carga">
         <div className="cargando"></div>
@@ -174,7 +182,9 @@ export default function Inventario() {
         <div className={Details}>
           <div className="Top-Detalles">
             <div className="Titulo-Detalles">
-              <h1>{nombre}</h1>
+              <h1>
+                Pedido de : {nombre} {apellido}
+              </h1>
             </div>
             <div className="Detalles-Opciones">
               <button onClick={cambiarClase} className={boton}>
@@ -235,136 +245,90 @@ export default function Inventario() {
 
               <div className="Detalles-Atributos">
                 <div className="Detalles-Atributos-Renglones">
-                  <h3>Nombre del Producto:</h3>
-                  <p className={descripcion_p}>{nombre}</p>
-                  <input
-                    value={nombre}
-                    onChange={(event) => setNombre(event.target.value)}
-                    className={editar}
-                    type="text"
-                    placeholder={nombre}
-                  ></input>
-                </div>
-                <div className="Detalles-Atributos-Renglones">
-                  <h3>Marca:</h3>
-                  <p className={descripcion_p}>{marca}</p>
-                  <input
-                    value={marca}
-                    onChange={(event) => setMarca(event.target.value)}
-                    className={editar}
-                    type="text"
-                    placeholder={marca}
-                  ></input>
-                </div>
-                <div className="Detalles-Atributos-Renglones">
-                  <h3>Categoria:</h3>
-                  <p className={descripcion_p}>{categoria}</p>
+                  <h3>Estatus</h3>
+                  <p className={descripcion_p}>{estatus}</p>
                   <select
                     className={editar}
-                    value={categoria}
                     id="datos-inv"
-                    onChange={(event) => setCategoria(event.target.value)}
+                    value={estatus}
+                    onChange={(event) => setEstatus(event.target.value)}
                   >
-                    <option value="" disabled selected>
-                      Selecciona una categoría
+                    <option value="" disabled hidden>
+                      Selecciona un estatus
                     </option>
-                    <option value="Suplementos nutricionales">
-                      Suplementos nutricionales
-                    </option>
-                    <option value="Hierbas y plantas medicinales">
-                      Hierbas y plantas medicinales
-                    </option>
-                    <option value="Aceites esenciales">
-                      Aceites esenciales
-                    </option>
-                    <option value="Bienestar gastrointestinal">
-                      Bienestar gastrointestinal
-                    </option>
-                    <option value="Salud mental">Salud mental</option>
-                    <option value="Salud articular y muscular">
-                      Salud articular y muscular
-                    </option>
-                    <option value="Belleza y cuidado personal">
-                      Belleza y cuidado personal
-                    </option>
-                    <option value="Energía y vitalidad">
-                      Energía y vitalidad
-                    </option>
+                    <option value="En Preparación">En Preparación</option>
+                    <option value="Enviado">Enviado</option>
+                    <option value="En Camino">En Camino</option>
+                    <option value="Entregado">Entregado</option>
                   </select>
                 </div>
                 <div className="Detalles-Atributos-Renglones">
-                  <h3>Precio Compra:</h3>
-                  <p className={descripcion_p}>{preciocosto}</p>
+                  <h3>Fecha:</h3>
+                  <p className={descripcion_p}>{fecha}</p>
                   <input
-                    value={preciocosto}
-                    onChange={(event) => setPreciocosto(event.target.value)}
+                    value={fecha}
+                    onChange={(event) => setFecha(event.target.value)}
                     className={editar}
-                    type="number"
-                    placeholder={preciocosto}
-                    max={precioventafijo}
-                    min={1}
+                    type="date"
+                    placeholder={fecha}
                   ></input>
                 </div>
                 <div className="Detalles-Atributos-Renglones">
-                  <h3>Precio Venta:</h3>
-                  <p className={descripcion_p}>{precioventa}</p>
+                  <h3>Número de rastreo:</h3>
+                  <p className={descripcion_p}>{rastreo}</p>
                   <input
-                    value={precioventa}
-                    onChange={(event) => setPrecioventa(event.target.value)}
+                    value={rastreo}
+                    onChange={(event) => setRastreo(event.target.value)}
                     className={editar}
                     type="number"
-                    placeholder={precioventa}
-                    min={preciocostofijo}
+                    placeholder={rastreo}
+                  ></input>
+                </div>
+                <div className="Detalles-Atributos-Renglones">
+                  <h3>Valor:</h3>
+                  <p className={descripcion_p}>{valor}</p>
+                  <input
+                    value={valor}
+                    onChange={(event) => setValor(event.target.value)}
+                    className={editar}
+                    type="number"
+                    placeholder={valor}
+                    min={1}
                   ></input>
                 </div>
               </div>
             </div>
             <div className="Detalles-Parte2">
               <div className="Detalles-Imagen">
-                <Image src={url} width={120} height={120} />
-              </div>
-              <div className="Detalles-Stock">
-                <div className="Stock-Renglones">
-                  <h3>Stock disponible</h3>
-                  <p>{cantidad}</p>
-                  <input
-                    value={cantidad}
-                    onChange={(event) => setCantidad(event.target.value)}
-                    className={editar}
-                    type="number"
-                    placeholder={cantidad}
-                    min={1}
-                  ></input>
-                </div>
-                <div className="Stock-Renglones">
-                  <h3>Se considera poco stock:</h3>
-                  <p>{alerta}</p>
-                  <input
-                    value={alerta}
-                    onChange={(event) => setAlerta(event.target.value)}
-                    className={editar}
-                    type="number"
-                    placeholder={alerta}
-                    min={1}
-                  ></input>
-                </div>
-                <div className="Stock-Renglones">
-                  <h3>Vendidos</h3>
-                  <p>32</p>
-                </div>
+                {productoEnviado.map((producto, index) => (
+                  <div
+                    style={{ display: "flex", flexDirection: "column" }}
+                    key={index}
+                  >
+                    <p>Nombre: {producto._id.nombre}</p>
+                    <p>Marca: {producto._id.marca}</p>
+                    <img
+                      width={120}
+                      height={120}
+                      src={producto._id.url}
+                      alt={`Imagen de ${producto._id.nombre}`}
+                    />
+                    <p>Cantidad: {producto.cantidad}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
           <div className="Detalles-Final">
-            <h3>Detalles del producto:</h3>
+            <h3>Informacion del cliente</h3>
             <p>{descripcion}</p>
-            <input
-              value={descripcion}
-              onChange={(event) => setDescripcion(event.target.value)}
-              className={editar}
-              type="text"
-              placeholder={descripcion}
-            ></input>
+            <h1>Direccion : </h1>
+            <h2>{cp}</h2>
+            <h2>{calle}</h2>
+            <h2>{municipio}</h2>
+            <h2>{estado}</h2>
+            <h2>{observacion}</h2>
+            <h2>Telefono : +{telefono}</h2>
           </div>
         </div>
       </div>

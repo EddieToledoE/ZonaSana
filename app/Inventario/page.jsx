@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Providers from "@/store/provider";
 import Header from "@/components/Header";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import Axios from "axios";
 import Link from "next/link";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
@@ -79,13 +79,13 @@ export default function Inventario() {
   function boton() {
     alert("Viva Tiktok");
   }
- 
+
   const [clientes, setClientes] = useState([]);
 
   const ruta = "http://localhost:3000/api/auth/producto";
   const getData = async () => {
     try {
-      const response = await axios.get(ruta);
+      const response = await Axios.get(ruta);
       const data = response.data;
       setClientes(data);
     } catch (error) {
@@ -95,6 +95,30 @@ export default function Inventario() {
 
   useEffect(() => {
     getData();
+  }, []);
+
+  const [cantidadTotal, setCantidadTotal] = useState(0);
+  const [pocostock, setPocostock] = useState(0);
+  const [nadastock, setNadastock] = useState(0);
+  const [cantidadmenor11, setCantidadmenor11] = useState(0);
+  useEffect(() => {
+    const obtenerCantidades = async () => {
+      try {
+        const response = await Axios.get(
+          "http://localhost:3000/api/auth/producto/contador"
+        );
+
+        setCantidadTotal(response.data.cantidadTotal);
+        setNadastock(response.data.cantidadConCeroStock);
+        setPocostock(response.data.cantidadBajosDeStock);
+        setCantidadmenor11(response.data.cantidadConMenosDeOnceStock);
+      } catch (error) {
+        console.error("Error al obtener cantidades:", error);
+        // Manejar el error según tus necesidades
+      }
+    };
+
+    obtenerCantidades();
   }, []);
 
   function registrar() {
@@ -183,33 +207,33 @@ export default function Inventario() {
             <div className="inv-inf1">
               <div className="Categorias">
                 <h3 className="titulo" style={{ color: "#12B76A" }}>
-                  Categorias
+                  Total Productos
                 </h3>
-                <h4 className="cantidad">121</h4>
+                <h4 className="cantidad">{cantidadTotal}</h4>
               </div>
               <div className="linea"></div>
               <div className="Total-P">
                 <h3 className="titulo" style={{ color: "#E19133" }}>
-                  Total Productos
+                  Productos con menos de 11 en existencia
                 </h3>
-                <h4 className="cantidad">241</h4>
+                <h4 className="cantidad">{cantidadmenor11}</h4>
               </div>
             </div>
 
             <div className="inv-inf2">
               <div className="linea"></div>
-              <div className="Categorias">
-                <h3 className="titulo" style={{ color: "#448DF2" }}>
-                  Mas vendido
-                </h3>
-                <h4 className="cantidad">21</h4>
-              </div>
-              <div className="linea"></div>
               <div className="Total-P">
-                <h3 className="titulo" style={{ color: "#F36960" }}>
+                <h3 className="titulo" style={{ color: "#E19133" }}>
                   Poco Stock
                 </h3>
-                <h4 className="cantidad">341</h4>
+                <h4 className="cantidad">{pocostock}</h4>
+              </div>
+              <div className="linea"></div>
+              <div className="Categorias">
+                <h3 className="titulo" style={{ color: "#F36960" }}>
+                  Agotados
+                </h3>
+                <h4 className="cantidad">{nadastock}</h4>
               </div>
             </div>
           </div>
@@ -247,7 +271,7 @@ export default function Inventario() {
                 { field: "precio_costo", headerName: "Costo", width: 200 },
                 { field: "precio_venta", headerName: "Venta", width: 200 },
                 { field: "descripcion", headerName: "Descripcion", width: 200 },
-                { field: "categoria", headerName: "Categoria", width: 0 },
+                { field: "categoria", headerName: "Categoria", width: 200 },
               ]}
               rows={clientes}
               slots={{

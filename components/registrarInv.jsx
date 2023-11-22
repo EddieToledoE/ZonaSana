@@ -94,6 +94,22 @@ const registrar = ({ onCambioClick }) => {
       // Mostrar SweetAlert de éxito
     }
   };
+  const [imagenSeleccionada, setImagenSeleccionada] = useState(Logo);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setArchivo(file);
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagenSeleccionada(reader.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+  
   return (
     <div className="RegistrarMain">
       <div className="titulor">
@@ -101,18 +117,26 @@ const registrar = ({ onCambioClick }) => {
       </div>
       <div className="Main-items">
         <div className="Imagen-producto">
-          <Image src={Logo} alt="Imagen" width={80} height={80} />
+          <Image src={imagenSeleccionada}
+           alt="Imagen"
+            width={80}
+             height={80}
+             style={{ objectFit: 'cover', borderRadius: '50%' }}
+             
+            />
         </div>
-        <input
+        <input className="prducto-foto-inv"
           placeholder="Imagen necesaria"
           type="file"
-          onChange={(e) => {
-            setArchivo(e.target.files[0]);
-          }}
+          onChange={handleFileChange}
           name=""
-          id=""
+          id="archivo"
           required
         />
+         <label className="labelSubir" for="archivo" >
+           Subir Archivo
+      </label>
+     
       </div>
       <form>
         {errorgeneral && <div>{errorgeneral}</div>}
@@ -251,6 +275,7 @@ const registrar = ({ onCambioClick }) => {
         </button>
         <button onClick={handleSubmit} type="button" className="submit">
           Agregar
+          
         </button>
       </div>
     </div>

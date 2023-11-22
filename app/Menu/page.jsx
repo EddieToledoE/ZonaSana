@@ -20,6 +20,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { red } from "@mui/material/colors";
 import { faListOl } from "@fortawesome/free-solid-svg-icons";
+import Slider from '@/components/slider';
 export default function Home() {
   //Logica para mandar y recibir los estados de la libreria "Redux"
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
@@ -76,7 +77,7 @@ export default function Home() {
       <div className={hola} onClick={handleDivClick}>
         <Header />
         <div className={grafica}>
-          <h1>Buildeando la grafica</h1>
+          <Slider/>
         </div>
         <div className={avisos}>
           <div className="citas">

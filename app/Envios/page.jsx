@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Bar from "@/components/Bar-1.jsx";
-import estilos from "@/styles/Envios.css";
+import diseño from '@/styles/Envios.css';
 import styles from "@/app/Home.css";
 import Header from "@/components/Header.jsx";
 import { closeBar, openBar } from "@/store/barSlice";

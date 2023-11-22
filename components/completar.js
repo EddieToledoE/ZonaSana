@@ -7,6 +7,7 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 export default function CustomInputAutocomplete() {
   const [productos, setProductos] = useState([]);
+  const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
 useEffect(() => {
     const obtenerProductos = async () => {
@@ -21,20 +22,23 @@ useEffect(() => {
     obtenerProductos();
   }, []);
 
-
+  
   const router = useRouter();
   function enter(event) {
-   
+    // Ejecutar la acción que desees al presionar Enter aquí
     if (event.key === 'Enter') {
-      // Ejecutar la acción que desees al presionar Enter aquí
-      console.log('Se presionó la tecla Enter');
-     // navigation.navigate(`/Menu`);
-      const inv = productos.name
-      navigation.navigate(`/Inventario`);
-    // Realizar una llamada a función, ejecutar un código, etc.
+      
+      console.log(productoSeleccionado._id);
+     // navigation.navigate(`/Menu/Inventario/detalles`);
+      navigation.navigate(`/Inventario/${productoSeleccionado._id}`);
+   
+
     }
   }
- 
+
+  const handleOnChange = (event, newValue) => {
+    setProductoSeleccionado(newValue); // Actualizar el estado con el nuevo producto seleccionado
+  };
  
   return (
       <Autocomplete
@@ -53,11 +57,18 @@ useEffect(() => {
         style={{width:'100%',border:'none'}}
         id="custom-input-demo"
         options={productos}
-        getOptionLabel={(option)=>option.nombre}
-        renderInput={(params) =>  (
+        getOptionLabel={(option) => option.nombre} // Mostrar el nombre del producto
+        value={productoSeleccionado} // Establecer el producto seleccionado
+        onChange={handleOnChange} // Manejar el cambio de producto
+        renderInput={(params) => (
           <div ref={params.InputProps.ref}>
-            <input type="text" {...params.inputProps}
-             placeholder=' Busca un producto' />
+            <input
+              type="text"
+              {...params.inputProps}
+              placeholder={
+                productoSeleccionado ? "" : "Selecciona un producto"
+              }
+            />
           </div>
         )}
       />

@@ -69,13 +69,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
         width: 75px;
         height: 75px;
         flex-shrink: 0;
-        border-radius: 10px;
+        border-radius: 50%;
         border: 1px dashed #9D9D9D;
         background: #FFF;
+      
 }
 .input3{
     margin: 10px;
@@ -350,10 +350,12 @@ margin-top: 10px;
 }
 .ListaP{
     display: flex;
- 
+    border: 2px solid;
     height: 40px;
     margin-top: 10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: 0;
+    justify-content:space-between;
+    width: 90%;
+    overflow: auto;
 }

@@ -82,7 +82,7 @@ export default function Inventario() {
 
   const [clientes, setClientes] = useState([]);
 
-  const ruta = "http://localhost:3000/api/auth/producto";
+  const ruta = "/api/auth/producto";
   const getData = async () => {
     try {
       const response = await Axios.get(ruta);
@@ -104,9 +104,7 @@ export default function Inventario() {
   useEffect(() => {
     const obtenerCantidades = async () => {
       try {
-        const response = await Axios.get(
-          "http://localhost:3000/api/auth/producto/contador"
-        );
+        const response = await Axios.get("/api/auth/producto/contador");
 
         setCantidadTotal(response.data.cantidadTotal);
         setNadastock(response.data.cantidadConCeroStock);
@@ -265,6 +263,12 @@ export default function Inventario() {
                   field: "cantidad_stock",
                   type: "singleSelect",
                   headerName: "Cantidad",
+                  width: 150,
+                },
+                {
+                  field: "cantidad_alerta",
+                  type: "singleSelect",
+                  headerName: "Alerta",
                   width: 150,
                 },
 

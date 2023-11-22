@@ -43,7 +43,7 @@ function Bar() {
                     stroke-width="1.5"
                   />
                 </svg>
-                Menu
+                Inicio
               </Link>
             </li>
             <li className="Paginas">
@@ -103,7 +103,7 @@ function Bar() {
               </a>
             </li>
             <li className="Paginas">
-              <Link className="Paginas-Enlaces" href='/Envios'>
+              <Link className="Paginas-Enlaces" href="/Envios">
                 <svg
                   width="24"
                   height="24"
@@ -171,7 +171,7 @@ function Bar() {
               </Link>
             </li>
             <li className="Paginas">
-              <a className="Paginas-Enlaces">
+              <Link className="Paginas-Enlaces" href="/Ventas">
                 <svg
                   width="24"
                   height="24"
@@ -216,8 +216,8 @@ function Bar() {
                     fill="#12B76A"
                   />
                 </svg>
-                Incompleta
-              </a>
+                Ventas
+              </Link>
             </li>
           </ul>
         </div>

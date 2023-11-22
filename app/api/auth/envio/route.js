@@ -4,7 +4,6 @@ import Envio from "@/models/Envio";
 
 export async function GET() {
   connectarBD();
-
   try {
     const ObtenerEnvios = await Envio.find()
       .populate("cliente", "nombre apellido telefono direccion")

@@ -51,6 +51,7 @@ const registrar = ({ onCambioClick }) => {
             "El Envio se ha registrado correctamente.",
             "success"
           );
+          window.location.reload();
         } else {
           console.log("La respuesta no contiene datos JSON válidos.");
         }
@@ -178,7 +179,7 @@ const registrar = ({ onCambioClick }) => {
             <input
               className="datos-inv"
               type="number"
-              min={0}
+              min={1}
               defaultValue={1}
               onChange={(event) => setRasteo(event.target.value)}
               placeholder="Número de rastreo"

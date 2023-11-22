@@ -64,9 +64,10 @@ export default function Home() {
           console.log(res.data);
           Swal.fire(
             "Agregado",
-            "El Envio se ha registrado correctamente.",
+            "La venta se ha registrado correctamente.",
             "success"
           );
+          window.location.reload();
         } else {
           console.log("La respuesta no contiene datos JSON válidos.");
         }

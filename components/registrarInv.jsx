@@ -18,10 +18,23 @@ const registrar = ({ onCambioClick }) => {
   const [alerta, setAlerta] = useState(3);
   const [precioVenta, setPrecioVenta] = useState(0);
   const [descripcion, setDescripcion] = useState("");
+  const [fotoSeleccionada, setFotoSeleccionada] = useState(false);
 
   // Funciones onChange para cada in
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!fotoSeleccionada) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor, selecciona una foto.",
+      });
+      return;
+    }
+
+    console.log(
+      "El precio compra es" + precioCompra + "El precio venta es" + precioVenta
+    );
     const formData = new FormData();
     formData.append("cantidad_stock", cantidad);
     formData.append("precio_costo", precioCompra);
@@ -33,6 +46,14 @@ const registrar = ({ onCambioClick }) => {
     formData.append("cantidad_alerta", alerta);
     formData.append("archivo", archivo); // Agregar el archivo
     // Mostrar SweetAlert para confirmar la acción
+    if (precioCompra > precioVenta) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El precio de compra no puede ser mayor que el de venta.",
+      });
+      return;
+    }
     const result = await Swal.fire({
       title: "¿Estás seguro?",
       text: "¿Quieres agregar este producto? " + nombreProducto,
@@ -67,6 +88,7 @@ const registrar = ({ onCambioClick }) => {
             "El producto se ha agregado correctamente.",
             "success"
           );
+          window.location.reload();
         } else {
           console.log("La respuesta no contiene datos JSON válidos.");
         }
@@ -79,13 +101,13 @@ const registrar = ({ onCambioClick }) => {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Ha ocurrio un error de conexion," + errorgeneral,
+            text: "Ha ocurrio un error ",
           });
         } else {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Ha ocurrio un error," + error,
+            text: "Ha ocurrio un error,",
           });
         }
       }
@@ -99,6 +121,7 @@ const registrar = ({ onCambioClick }) => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setArchivo(file);
+    setFotoSeleccionada(true);
 
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -109,7 +132,7 @@ const registrar = ({ onCambioClick }) => {
       reader.readAsDataURL(file);
     }
   };
-  
+
   return (
     <div className="RegistrarMain">
       <div className="titulor">
@@ -117,15 +140,16 @@ const registrar = ({ onCambioClick }) => {
       </div>
       <div className="Main-items">
         <div className="Imagen-producto">
-          <Image src={imagenSeleccionada}
-           alt="Imagen"
+          <Image
+            src={imagenSeleccionada}
+            alt="Imagen"
             width={80}
-             height={80}
-             style={{ objectFit: 'cover', borderRadius: '50%' }}
-             
-            />
+            height={80}
+            style={{ objectFit: "cover", borderRadius: "50%" }}
+          />
         </div>
-        <input className="prducto-foto-inv"
+        <input
+          className="prducto-foto-inv"
           placeholder="Imagen necesaria"
           type="file"
           onChange={handleFileChange}
@@ -133,10 +157,9 @@ const registrar = ({ onCambioClick }) => {
           id="archivo"
           required
         />
-         <label className="labelSubir" for="archivo" >
-           Subir Archivo
-      </label>
-     
+        <label className="labelSubir" for="archivo">
+          Subir Archivo
+        </label>
       </div>
       <form>
         {errorgeneral && <div>{errorgeneral}</div>}
@@ -275,7 +298,6 @@ const registrar = ({ onCambioClick }) => {
         </button>
         <button onClick={handleSubmit} type="button" className="submit">
           Agregar
-          
         </button>
       </div>
     </div>

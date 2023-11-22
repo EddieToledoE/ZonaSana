@@ -294,7 +294,7 @@ export default function Inventario() {
                 </div>
                 <div className="Detalles-Atributos-Renglones">
                   <h3>Precio Compra:</h3>
-                  <p className={descripcion_p}>{preciocosto}</p>
+                  <p className={descripcion_p}>$:{preciocosto}</p>
                   <input
                     value={preciocosto}
                     onChange={(event) => setPreciocosto(event.target.value)}
@@ -307,7 +307,7 @@ export default function Inventario() {
                 </div>
                 <div className="Detalles-Atributos-Renglones">
                   <h3>Precio Venta:</h3>
-                  <p className={descripcion_p}>{precioventa}</p>
+                  <p className={descripcion_p}>$:{precioventa}</p>
                   <input
                     value={precioventa}
                     onChange={(event) => setPrecioventa(event.target.value)}
@@ -326,7 +326,7 @@ export default function Inventario() {
               <div className="Detalles-Stock">
                 <div className="Stock-Renglones">
                   <h3>Stock disponible</h3>
-                  <p>{cantidad}</p>
+                  <p className={descripcion_p}>{cantidad}</p>
                   <input
                     value={cantidad}
                     onChange={(event) => setCantidad(event.target.value)}
@@ -338,7 +338,7 @@ export default function Inventario() {
                 </div>
                 <div className="Stock-Renglones">
                   <h3>Se considera poco stock:</h3>
-                  <p>{alerta}</p>
+                  <p className={descripcion_p}>{alerta}</p>
                   <input
                     value={alerta}
                     onChange={(event) => setAlerta(event.target.value)}
@@ -357,8 +357,9 @@ export default function Inventario() {
           </div>
           <div className="Detalles-Final">
             <h3>Detalles del producto:</h3>
-            <p>{descripcion}</p>
+            <p >{descripcion}</p>
             <input
+              style={{marginLeft:'10px'}}
               value={descripcion}
               onChange={(event) => setDescripcion(event.target.value)}
               className={editar}

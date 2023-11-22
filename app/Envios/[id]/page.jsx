@@ -15,6 +15,7 @@ import DetallesStilos from "@/styles/Detalles.css";
 import { Button } from "@mui/material";
 import Image from "next/image";
 const Swal = require("sweetalert2");
+
 export default function Inventario() {
   const idDinamico = usePathname();
   const router = useRouter();
@@ -286,7 +287,7 @@ export default function Inventario() {
                 </div>
                 <div className="Detalles-Atributos-Renglones">
                   <h3>Valor:</h3>
-                  <p className={descripcion_p}>{valor}</p>
+                  <p className={descripcion_p}>$:{valor}</p>
                   <input
                     value={valor}
                     onChange={(event) => setValor(event.target.value)}
@@ -299,36 +300,39 @@ export default function Inventario() {
               </div>
             </div>
             <div className="Detalles-Parte2">
-              <div className="Detalles-Imagen">
+              <div className="Envio-Productos-Detalles">
                 {productoEnviado.map((producto, index) => (
-                  <div
-                    style={{ display: "flex", flexDirection: "column" }}
-                    key={index}
-                  >
+                  <div className="Envios-Ren">
+                    <div className="Detalles-R">
                     <p>Nombre: {producto._id.nombre}</p>
                     <p>Marca: {producto._id.marca}</p>
-                    <img
-                      width={120}
-                      height={120}
-                      src={producto._id.url}
-                      alt={`Imagen de ${producto._id.nombre}`}
-                    />
                     <p>Cantidad: {producto.cantidad}</p>
+                    </div>
+                    <div className="Detalles-IMG">
+                    <Image
+                        width={60}
+                        height={60}
+                        style={{ objectFit: 'cover', borderRadius: '50%' }}
+                        src={producto._id.url}
+                        alt={`Imagen de ${producto._id.nombre}`}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
           <div className="Detalles-Final">
+
             <h3>Informacion del cliente</h3>
-            <p>{descripcion}</p>
-            <h1>Direccion : </h1>
-            <h2>{cp}</h2>
-            <h2>{calle}</h2>
-            <h2>{municipio}</h2>
-            <h2>{estado}</h2>
-            <h2>{observacion}</h2>
-            <h2>Telefono : +{telefono}</h2>
+            <div className="Detalles-Linea"></div>
+            <h3>Direccion:</h3>
+            <p>CP: {cp}</p>
+            <p>Calle: {calle}</p>
+            <p>Municipio: {municipio}</p>
+            <p>Estado: {estado}</p>
+            <p>Observaciones: {observacion}</p>
+            <p>Telefono : +{telefono}</p>
           </div>
         </div>
       </div>

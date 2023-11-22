@@ -228,6 +228,19 @@ body{
   
   
 }
+.prducto-foto-inv{
+  display: none;
+}
+.labelSubir{
+  font-size: 13px;
+  color: var(--grey-grey-600, #4979e0);
+  font-weight: 500;
+  line-height: 22px; /* 150% */
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  margin-left: 10px;
+
+}
 
  @keyframes salto {
   0%, 20%, 50%, 80%, 100% {

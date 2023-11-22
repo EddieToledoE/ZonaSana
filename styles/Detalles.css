@@ -36,7 +36,8 @@
     cursor: pointer;
     font-family: 'Inter', sans-serif;
     text-align: start;
-    width: 80%;
+    width: auto;
+   
 }
 .Detalles-Opciones{
     height: 100%;
@@ -172,10 +173,12 @@ line-height: 24px; /* 150% */
     flex-direction: column;
     width: 100%;
     height: 100%;
-
     align-items: end;
     justify-content: space-between;
+   
+   
 }   
+
 .Detalles-Imagen{
     border: 1px dashed #9D9D9D;
     background: #FFF;
@@ -188,14 +191,18 @@ line-height: 24px; /* 150% */
     margin-right: 60px;
     flex-direction: column;
     display: flex;
-   
-    width: 30%;
+    width: auto;
     margin-top: 10px;
+   
+
     
 }
 .Stock-Renglones{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+ 
+    margin-top: 10px;
 }
 .Stock-Renglones h3{
     color: var(--grey-grey-400, #858D9D);
@@ -218,6 +225,8 @@ line-height: 24px; /* 150% */
     width: 99%;
     height: 100%;
     margin-top: 10px;
+    
+    overflow: auto;
   
 }
 .Detalles-Final p{
@@ -239,6 +248,7 @@ line-height: 24px; /* 150% */
     font-weight: 400;
     line-height: 24px; /* 150% */
     margin-top: 10px;
+  
 }
 .Detalles-Editar-Close{
     display: none;
@@ -310,3 +320,84 @@ line-height: 24px; /* 150% */
     height: 100vh;
   
   }
+  .Envio-Productos-Detalles{
+    overflow-x: hidden;
+    margin-top: 10px;
+    overflow-y: auto;
+    display: block;
+    height: 200px;
+    width: 65%;
+
+  }
+  .Envio-Productos-Detalles::-webkit-scrollbar {
+    width: 12px;
+}
+
+.Envio-Productos-Detalles::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+
+}
+ 
+.Envio-Productos-Detalles::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 6px;
+}
+
+.Envio-Productos-Detalles::-webkit-scrollbar-thumb:hover {
+    background: #979595; 
+}
+.Envios-Ren{
+    display: flex;
+    border: 1px dashed #9D9D9D;
+    height: 70px;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+.Detalles-R{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+   
+    overflow: auto;
+}
+.Detalles-R p {
+    color: var(--grey-grey-600, #5D6679);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+}
+
+.Detalles-IMG{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 2px solid green;
+    margin-right: 10px;
+}
+
+.Detalles-R::-webkit-scrollbar {
+    width: 12px;
+    display: none;
+}
+
+.Detalles-R::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    display: none;
+
+}
+ 
+.Detalles-R::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 6px;
+    display: none;
+}
+
+.Detalles-R::-webkit-scrollbar-thumb:hover {
+    background: #979595; 
+}

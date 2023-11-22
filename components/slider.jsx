@@ -13,7 +13,8 @@ const slider = () => {
     startX,
     startScrollLeft,
     timeoutId;
-
+ 
+    
   useEffect(() => {
     const wrapper = wrapperRef.current;
     const carousel = carouselRef.current;

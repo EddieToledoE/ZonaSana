@@ -309,6 +309,7 @@ margin-top: 10px;
     flex-direction: column;
     height: 70%;
     overflow: auto;
+   
     
 }
 .Actualizar_Cantidad{
@@ -332,12 +333,12 @@ margin-top: 10px;
 }
 .ListaP{
     display: flex;
-    border: 2px solid;
-    height: 40px;
+    border: 1px dashed;
+    height: 50px;
     margin-top: 10px;
     display: flex;
     align-items: 0;
     justify-content:space-between;
     width: 90%;
-    overflow: auto;
+   
 }

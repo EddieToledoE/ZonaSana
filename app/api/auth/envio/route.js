@@ -1,12 +1,12 @@
 import { connectarBD } from "@/libs/mongodb";
 import { NextResponse } from "next/server";
 import Envio from "@/models/Envio";
-
+import Cliente from "@/models/Cliente";
 export async function GET() {
   connectarBD();
   try {
     const ObtenerEnvios = await Envio.find()
-      .populate("cliente", "nombre apellido telefono direccion")
+      .populate("cliente", "nombre apellido telefono direccion", Cliente)
       .populate("producto_enviado._id", "nombre marca url");
     // Pobla // Poblar el campo 'producto_enviado.producto' y seleccionar solo 'nombre'
     console.log(ObtenerEnvios);

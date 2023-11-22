@@ -48,9 +48,4 @@ const ProductoSchema = new Schema(
   }
 );
 
-// Realiza la validación de precio_costo y precio_venta
-ProductoSchema.path("precio_costo").validate(function (value) {
-  return value < this.precio_venta;
-}, "El precio de costo debe ser menor que el precio de venta");
-
 export default models.productos || model("productos", ProductoSchema);

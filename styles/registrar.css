@@ -107,6 +107,16 @@
    
    
 }
+.text2{
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-top:80px ;
+ 
+   
+}
 .t-in{
     display: flex;
     width: 50%;
@@ -122,6 +132,14 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+}
+.entradatext2{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+   
 }
 .datos-inv{
         border-radius: 3px;

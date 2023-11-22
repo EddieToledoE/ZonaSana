@@ -1,11 +1,14 @@
 "use client";
 import Header from "@/components/Header";
 import estios from "app/Home.css";
+import Logo from "@/public/logo.png";
 import Grafica from "@/components/Grafica";
 import Bar from "@/components/Bar-1";
 import { closeBar, openBar } from "@/store/barSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import Axios from "axios";
 //Todo los imports para la tabla
 import Table from "@mui/material/Table";
 import { useSession } from "next-auth/react";
@@ -35,6 +38,24 @@ export default function Home() {
       dispatch(closeBar());
     }
   };
+  const [nombreDefault, setNombreDefault] = useState("Nombre");
+  const [cantidadTotal, setCantidadTotal] = useState(0);
+  const [pocostock, setPocostock] = useState([]);
+  const [nadastock, setNadastock] = useState(0);
+  useEffect(() => {
+    const obtenerCantidades = async () => {
+      try {
+        const response = await Axios.get("/api/auth/inicio");
+        setCantidadTotal(response.data.cantidadTotal);
+        setNadastock(response.data.cantidadConCeroStock);
+        setPocostock(response.data.cantidadBajosDeStock);
+      } catch (error) {
+        console.error("Error al obtener cantidades:", error);
+        // Manejar el error según tus necesidades
+      }
+    };
+    obtenerCantidades();
+  }, []);
 
   // carga el header una vez
 
@@ -53,7 +74,7 @@ export default function Home() {
       </div>
 
       <div className={hola} onClick={handleDivClick}>
-        <Header/>
+        <Header />
         <div className={grafica}>
           <h1>Buildeando la grafica</h1>
         </div>
@@ -178,7 +199,7 @@ export default function Home() {
                     </g>
                   </g>
                 </svg>
-                <h1 className="citas-inf">800</h1>
+                <h1 className="citas-inf">{cantidadTotal}</h1>
                 <a className="inf-a">Total Productos</a>
               </div>
             </div>
@@ -205,7 +226,7 @@ export default function Home() {
                   />
                 </svg>
 
-                <h1 className="citas-inf">200</h1>
+                <h1 className="citas-inf">{nadastock}</h1>
                 <a className="inf-a">Productos no disponibles</a>
               </div>
             </div>
@@ -215,71 +236,32 @@ export default function Home() {
         <div className={tabla}>
           <div className="mas-vendidos">
             <div className="titulos">
-              <h3>Productos mas vendidos</h3>
+              <h3>Calendario Deivid</h3>
             </div>
-            <div className="contenedor-tabla">
-              <TableContainer sx={{ boxShadow: 0 }} component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell sx={{ color: "#5D6679" }}>Nombre</TableCell>
-                      <TableCell sx={{ color: "#5D6679" }}>
-                        Cantidad Vendida
-                      </TableCell>
-                      <TableCell sx={{ color: "#5D6679" }}>
-                        Cantidad en stock
-                      </TableCell>
-                      <TableCell sx={{ color: "#5D6679" }}>Precio</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {rows.map((row) => (
-                      <TableRow
-                        key={row.name}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
-                        <TableCell
-                          sx={{ color: "#5D6679" }}
-                          component="th"
-                          scope="row"
-                        >
-                          {row.nombre}
-                        </TableCell>
-                        <TableCell sx={{ color: "#5D6679" }}>
-                          {row.CantidadVendida}
-                        </TableCell>
-                        <TableCell sx={{ color: "#5D6679" }}>
-                          {row.CantidadenStock}
-                        </TableCell>
-                        <TableCell sx={{ color: "#5D6679" }}>
-                          ${row.precio}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </div>
+            <div className="contenedor-tabla"></div>
           </div>
           <div className="pocas-unidades">
             <div className="titulos">
-              <h3>Citas</h3>
+              <h3>Poco Stock</h3>
             </div>
             <div className="contenedor-tabla1">
               <div className="fila">
                 <div className="imagen-card">
                   <Image
                     style={imageStyle}
-                    src="/images/Hola.png"
+                    src={pocostock[0] ? pocostock[0].url : Logo}
                     width={50}
                     height={50}
                   />
                 </div>
                 <div className="informacion-card">
-                  <h3 className="card-nombre">Potis Rojas</h3>
-                  <p className="card-cantidad">Unidades Actuales:12</p>
+                  <h3 className="card-nombre">
+                    {pocostock[0] ? pocostock[0].nombre : nombreDefault}
+                  </h3>
+                  <p className="card-cantidad">
+                    Unidades Actuales :
+                    {pocostock[0] ? pocostock[0].cantidad_stock : 0}
+                  </p>
                 </div>
 
                 <div className="estado">
@@ -290,14 +272,19 @@ export default function Home() {
                 <div className="imagen-card">
                   <Image
                     style={imageStyle}
-                    src="/images/Hola.png"
+                    src={pocostock[1] ? pocostock[1].url : Logo}
                     width={50}
                     height={50}
                   />
                 </div>
                 <div className="informacion-card">
-                  <h3 className="card-nombre">Potis Rojas</h3>
-                  <p className="card-cantidad">Unidades Actuales:12</p>
+                  <h3 className="card-nombre">
+                    {pocostock[1] ? pocostock[1].nombre : nombreDefault}
+                  </h3>
+                  <p className="card-cantidad">
+                    Unidades Actuales :
+                    {pocostock[1] ? pocostock[1].cantidad_stock : 0}
+                  </p>
                 </div>
 
                 <div className="estado">
@@ -308,14 +295,19 @@ export default function Home() {
                 <div className="imagen-card">
                   <Image
                     style={imageStyle}
-                    src="/images/Hola.png"
+                    src={pocostock[2] ? pocostock[2].url : Logo}
                     width={50}
                     height={50}
                   />
                 </div>
                 <div className="informacion-card">
-                  <h3 className="card-nombre">Potis Rojas</h3>
-                  <p className="card-cantidad">Unidades Actuales:12</p>
+                  <h3 className="card-nombre">
+                    {pocostock[2] ? pocostock[2].nombre : nombreDefault}
+                  </h3>
+                  <p className="card-cantidad">
+                    Unidades Actuales :
+                    {pocostock[2] ? pocostock[2].cantidad_stock : 0}
+                  </p>
                 </div>
 
                 <div className="estado">
@@ -329,13 +321,3 @@ export default function Home() {
     </section>
   );
 }
-function createData(nombre, CantidadVendida, CantidadenStock, precio) {
-  return { nombre, CantidadVendida, CantidadenStock, precio };
-}
-
-const rows = [
-  createData("Yaz color #000", 159, 6.0, 24),
-  createData("Eddi asado", 159, 6.0, 24),
-  createData("Deivid Cremas", 159, 6.0, 24),
- 
-];

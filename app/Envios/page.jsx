@@ -12,6 +12,7 @@ import { red } from "@mui/material/colors";
 import Pedidos from "components/hacerPedido";
 import Cliente from "components/registrarCliente";
 import Axios from "axios";
+
 import {
   DataGrid,
   GridColumnHeaderFilterIconButton,
@@ -27,6 +28,7 @@ import {
 import { Avatar, Grid } from "@mui/material";
 import { useState, useEffect } from "react";
 function Envios() {
+  const Swal = require("sweetalert2");
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
   const dispatch = useDispatch();
 
@@ -76,7 +78,7 @@ function Envios() {
 
   const [envios, setEnvios] = useState([]);
 
-  const ruta = "http://localhost:3000/api/auth/envio";
+  const ruta = "/api/auth/envio";
   const getData = async () => {
     try {
       const response = await Axios.get(ruta);
@@ -98,9 +100,7 @@ function Envios() {
   useEffect(() => {
     const obtenerCantidades = async () => {
       try {
-        const response = await Axios.get(
-          "http://localhost:3000/api/auth/envio/contador"
-        );
+        const response = await Axios.get("/api/auth/envio/contador");
 
         setCantidadTotal(response.data.cantidadTotal);
         setCantidadEntregados(response.data.cantidadEntregados);

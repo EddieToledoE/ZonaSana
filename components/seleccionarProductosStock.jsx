@@ -114,7 +114,7 @@ function SeleccionProductos({ onProductosSeleccionados }) {
   }
 
   return (
-    <div className="Carrito-Seccion">
+    <div className="Carrito-Seccion" style={{border:'2px solid blue',width:'80%',overflow:'auto'}}>
       <div className="Agregar_Carrito">
         <label className="carritoT" htmlFor="producto">
           Selecciona un producto:
@@ -223,8 +223,8 @@ function SeleccionProductos({ onProductosSeleccionados }) {
           </Badge>
         </div>
       </div>
-      <div className={carritoP}>
-        <div className="CloseP">
+      <div className={carritoP} style={{border:'2px solid red',}}>
+        <div className="CloseP"style={{border:'2px solid'}}>
           <label className="carritoT">Objetos seleccionados</label>
           <svg
             onClick={CerrarCarrito}

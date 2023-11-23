@@ -276,3 +276,13 @@ a {
   top: -35px;
   left: 400px;
 }
+.Ventas-CONTAINER{
+   border: 2px solid rgb(25, 118, 78);
+   height: 100%;
+   width: 100%;
+   display: flex;
+   overflow: auto;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}

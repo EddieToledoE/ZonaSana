@@ -257,7 +257,7 @@ export default function Inventario() {
                   ></input>
                 </div>
                 <div className="Detalles-Atributos-Renglones">
-                  <h3>Categoria:</h3>
+                  <h3>Categoría:</h3>
                   <p className={descripcion_p}>{categoria}</p>
                   <select
                     className={editar}

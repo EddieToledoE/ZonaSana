@@ -29,7 +29,7 @@ const ChartComponent = ({ data }) => {
     const labels = lastFiveDays.reverse();
     const datasets = [
       {
-        label: "Venta Diario",
+        label: "Venta Diaria",
         data: labels.map((fecha) =>
           filteredData.reduce((total, venta) => {
             if (venta.fecha.split("T")[0] === fecha) {

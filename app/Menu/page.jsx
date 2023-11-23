@@ -20,7 +20,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { red } from "@mui/material/colors";
 import { faListOl } from "@fortawesome/free-solid-svg-icons";
-import Slider from '@/components/slider';
+import Slider from "@/components/slider";
 import Calendario from "@/components/Calendario2";
 
 export default function Home() {
@@ -45,8 +45,8 @@ export default function Home() {
   const [cantidadTotal, setCantidadTotal] = useState(0);
   const [pocostock, setPocostock] = useState([]);
   const [nadastock, setNadastock] = useState(0);
-  const [cantidadCitas, setCantidaCitas] = useState(0)
-  const [cantidadCitasPendientes, setCantidaCitasPendientes] = useState(0)
+  const [cantidadCitas, setCantidaCitas] = useState(0);
+  const [cantidadCitasPendientes, setCantidaCitasPendientes] = useState(0);
 
   useEffect(() => {
     const obtenerCantidades = async () => {
@@ -112,7 +112,7 @@ export default function Home() {
                   />
                 </svg>
                 <h1 className="citas-inf">{cantidadCitas}</h1>
-                <a className="inf-a">Numero de citas</a>
+                <a className="inf-a">Número de citas</a>
               </div>
             </div>
             <div className="linea"></div>
@@ -249,12 +249,25 @@ export default function Home() {
 
         <div className={tabla}>
           <div className="mas-vendidos">
-            <div style={{width : '100%', display: 'flex', justifyContent: 'center'}}>
-              <div style={{ width: '60%', height: '95%', fontSize: '11px', textTransform: 'uppercase', fontWeight: '100'}}>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <div
+                style={{
+                  width: "60%",
+                  height: "95%",
+                  fontSize: "11px",
+                  textTransform: "uppercase",
+                  fontWeight: "100",
+                }}
+              >
                 <Calendario />
               </div>
             </div>
-
           </div>
           <div className="pocas-unidades">
             <div className="titulos">

@@ -106,7 +106,7 @@ const registrar = ({ onCambioClick }) => {
         </div>
         <div className="text">
           <div className="t-in">
-            <label className="titulo-input">Telefono</label>
+            <label className="titulo-input">Teléfono</label>
           </div>
           <div className="entradatext">
             <input
@@ -121,18 +121,18 @@ const registrar = ({ onCambioClick }) => {
           </div>
         </div>
         <div className="titulor">
-          <h3>Direccion:</h3>
+          <h3>Dirección:</h3>
         </div>
         <div className="text">
           <div className="t-in">
-            <label className="titulo-input">Codigo Postal:</label>
+            <label className="titulo-input">Código Postal:</label>
           </div>
           <div className="entradatext">
             <input
               className="datos-inv"
               type="number"
               min={1}
-              placeholder="Codigo Postal"
+              placeholder="Código Postal"
               onChange={(event) => setCp(event.target.value)}
             ></input>
           </div>
@@ -178,13 +178,13 @@ const registrar = ({ onCambioClick }) => {
         </div>
         <div className="text">
           <div className="t-in">
-            <label className="titulo-input">Observacion:</label>
+            <label className="titulo-input">Observación:</label>
           </div>
           <div className="entradatext">
             <input
               className="datos-inv"
               type="text"
-              placeholder="Observacion"
+              placeholder="Observación"
               onChange={(event) => setObservacion(event.target.value)}
             ></input>
           </div>

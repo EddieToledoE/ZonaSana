@@ -18,7 +18,7 @@ const ChartComponent = ({ data }) => {
     const labels = Object.keys(groupedData).reverse();
     const datasets = [
       {
-        label: "Ganancias de los envios por mes",
+        label: "Ganancias mensual por envíos",
         data: labels.map((mes) =>
           groupedData[mes].reduce((total, envio) => total + envio.valor, 0)
         ),

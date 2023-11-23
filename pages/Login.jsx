@@ -15,16 +15,14 @@ export default function page() {
     e.preventDefault();
     console.log(olvidado);
     if (olvidado === "") {
-      setError("Ingresa un correo electronico valido");
+      setError("Ingresa un correo electrónico válido");
     }
     try {
-      const respuesta = await axios.put(
-        `http://localhost:3000/api/auth/pass/${olvidado}`
-      );
+      const respuesta = await axios.put(`/api/auth/pass/${olvidado}`);
       if (respuesta.data) {
         Swal.fire(
           "Enviado",
-          "Se ha envido una nueva contraseña al correo:" + olvidado,
+          "Se ha enviado una nueva contraseña al correo:" + olvidado,
           "success"
         );
       }
@@ -35,7 +33,7 @@ export default function page() {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Ha ocurrio un error ,",
+          text: "Ha ocurrido un error ,",
         });
       }
     }
@@ -72,7 +70,7 @@ export default function page() {
         return setError(res.error);
       }
       if (res?.ok) {
-        return router.push("/Menu");
+        return router.push("/menu");
       }
     } catch (error) {
       console.log(error);
@@ -90,6 +88,7 @@ export default function page() {
             width={400}
             height={400}
           />
+          <h1>Terapias Integrativas</h1>
         </div>
       </section>
       <section className="seccion-derecha">
@@ -158,7 +157,7 @@ export default function page() {
                     className="a-a"
                     onClick={recuperarContraseña}
                   >
-                    Olvide mi contraseña
+                    Olvidé mi contraseña
                   </button>
                 </label>
                 <br />
@@ -210,7 +209,7 @@ export default function page() {
                 <h2 className="h2-2">Recuperar contraseña</h2> <br />
                 <br />
                 <span>
-                  A continuacion ingresa tu corrreo para recuperar tu cuenta
+                  A continuación ingresa tu corrreo para recuperar tu cuenta
                 </span>
               </div>
             </div>

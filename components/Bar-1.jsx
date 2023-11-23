@@ -5,6 +5,8 @@ import estiloBar from "@/styles/Bar.css";
 import { useSelector } from "react-redux";
 import { closeBar, openBar } from "../store/barSlice"; // Importa las acciones
 import Link from "next/link";
+import Image from "next/image";
+import Logo from "@/public/logo.png";
 import { useSession } from "next-auth/react";
 import Inventario from "@/app/inventario/page";
 
@@ -29,6 +31,13 @@ function Bar() {
     <div className={sidebarClass}>
       <div className="Logo">
         <a className="edi"> Zona Sana</a>
+        <Image
+          src={Logo}
+          width={70}
+          height={70}
+          objectFit="cover"
+          objectPosition="center top"
+        />
       </div>
       <div className="Options">
         <div className="paginas-div">
@@ -90,7 +99,7 @@ function Bar() {
                         fill="#12B76A"
                       />
                     </svg>
-                    Estadisticas
+                    Estadísticas
                   </Link>
                 </li>
                 <li className="Paginas">
@@ -109,7 +118,7 @@ function Bar() {
                         stroke-width="0.2"
                       />
                     </svg>
-                    Envios
+                    Envíos
                   </Link>
                 </li>
               </>

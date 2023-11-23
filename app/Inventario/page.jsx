@@ -274,8 +274,8 @@ export default function Inventario() {
 
                 { field: "precio_costo", headerName: "Costo", width: 200 },
                 { field: "precio_venta", headerName: "Venta", width: 200 },
-                { field: "descripcion", headerName: "Descripcion", width: 200 },
-                { field: "categoria", headerName: "Categoria", width: 200 },
+                { field: "descripcion", headerName: "Descripción", width: 200 },
+                { field: "categoria", headerName: "Categoría", width: 200 },
               ]}
               rows={clientes}
               slots={{

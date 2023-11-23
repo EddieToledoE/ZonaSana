@@ -146,7 +146,9 @@ const slider = () => {
               />
             </div>
             <h2>{datoSlider[0] ? datoSlider[0].nombre : nombreDefault}</h2>
-            <span>{datoSlider[0] ? datoSlider[0].totalVendido : "N/A"}</span>
+            <span>
+              Vendidos : {datoSlider[0] ? datoSlider[0].totalVendido : "N/A"}
+            </span>
           </li>
           <li class="card">
             <div class="img">
@@ -160,7 +162,9 @@ const slider = () => {
               />
             </div>
             <h2>{datoSlider[1] ? datoSlider[1].nombre : nombreDefault}</h2>
-            <span>{datoSlider[1] ? datoSlider[1].totalVendido : "N/A"}</span>
+            <span>
+              Vendidos : {datoSlider[1] ? datoSlider[1].totalVendido : "N/A"}
+            </span>
           </li>
           <li class="card">
             <div class="img">
@@ -174,7 +178,9 @@ const slider = () => {
               />
             </div>
             <h2>{datoSlider[2] ? datoSlider[2].nombre : nombreDefault}</h2>
-            <span>{datoSlider[2] ? datoSlider[2].totalVendido : "N/A"}</span>
+            <span>
+              Vendidos : {datoSlider[2] ? datoSlider[2].totalVendido : "N/A"}
+            </span>
           </li>
           <li class="card">
             <div class="img">
@@ -188,7 +194,9 @@ const slider = () => {
               />
             </div>
             <h2>{datoSlider[3] ? datoSlider[3].nombre : nombreDefault}</h2>
-            <span>{datoSlider[3] ? datoSlider[3].totalVendido : "N/A"}</span>
+            <span>
+              Vendidos : {datoSlider[3] ? datoSlider[3].totalVendido : "N/A"}
+            </span>
           </li>
           <li class="card">
             <div class="img">
@@ -202,7 +210,9 @@ const slider = () => {
               />
             </div>
             <h2>{datoSlider[4] ? datoSlider[4].nombre : nombreDefault}</h2>
-            <span>{datoSlider[4] ? datoSlider[4].totalVendido : "N/A"}</span>
+            <span>
+              Vendidos : {datoSlider[4] ? datoSlider[4].totalVendido : "N/A"}
+            </span>
           </li>
           <li class="card">
             <div class="img">
@@ -216,7 +226,9 @@ const slider = () => {
               />
             </div>
             <h2>{datoSlider[5] ? datoSlider[5].nombre : nombreDefault}</h2>
-            <span>{datoSlider[5] ? datoSlider[5].totalVendido : "N/A"}</span>
+            <span>
+              Vendidos : {datoSlider[5] ? datoSlider[5].totalVendido : "N/A"}
+            </span>
           </li>
         </ul>
         <i id="right" class="fa-solid fa-angle-right">

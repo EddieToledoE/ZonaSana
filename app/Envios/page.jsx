@@ -140,7 +140,7 @@ function Envios() {
         <div className={avisos}>
           <div className="citas">
             <div className="Citas">
-              <a className="titulo-citas">Envios</a>
+              <a className="titulo-citas">Envíos</a>
             </div>
             <div className="citas-pendientes">
               <div className="inf">
@@ -207,7 +207,7 @@ function Envios() {
             <div className="citas-pendientes">
               <div className="inf">
                 <button className="Envios-Button" onClick={cambiarClase}>
-                  Hacer un envio
+                  Hacer un envío
                 </button>
               </div>
             </div>
@@ -251,7 +251,7 @@ function Envios() {
               },
               {
                 field: "clientetelefono",
-                headerName: "Telefono",
+                headerName: "Teléfono",
                 width: 200,
                 renderCell: (params) => params.row.cliente.telefono, // Accede al nombre del cliente
               },

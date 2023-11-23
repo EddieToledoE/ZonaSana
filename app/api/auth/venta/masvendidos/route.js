@@ -33,8 +33,6 @@ export async function GET() {
       })
     );
 
-    console.log(detallesProductos);
-
     return NextResponse.json(detallesProductos);
   } catch (error) {
     console.error("Error al obtener productos más vendidos:", error);

@@ -68,12 +68,9 @@ const slider = () => {
         const cardWidth = carousel.querySelector(".card")?.offsetWidth || 0;
         const totalCards = carouselChildrens.length;
 
-        if (carousel.scrollLeft <= 0) {
+        if (carousel.scrollLeft < cardWidth) {
           carousel.scrollLeft = totalCards * cardWidth - carousel.offsetWidth;
-        } else if (
-          carousel.scrollLeft >=
-          totalCards * cardWidth - carousel.offsetWidth
-        ) {
+        } else if (carousel.scrollLeft > (totalCards - 1) * cardWidth) {
           carousel.scrollLeft = 0;
         }
 

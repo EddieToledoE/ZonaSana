@@ -277,12 +277,26 @@ a {
   left: 400px;
 }
 .Ventas-CONTAINER{
-   border: 2px solid rgb(25, 118, 78);
-   height: 100%;
-   width: 100%;
-   display: flex;
-   overflow: auto;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.Button-Ventas-Confirmar{
+  width: auto;
+  cursor: pointer;
+  display: inline-flex;
+  padding: 10px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  margin: 0px;
+  border-radius: 4px;
+  background: var(--primary-primary-600, #1366D9);
+  color: white;
+  margin-left: 44px;
+  width: 50.3%;
+
 }

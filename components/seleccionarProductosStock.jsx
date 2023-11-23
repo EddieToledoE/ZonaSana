@@ -114,7 +114,7 @@ function SeleccionProductos({ onProductosSeleccionados }) {
   }
 
   return (
-    <div className="Carrito-Seccion" style={{border:'2px solid blue',width:'80%',overflow:'auto'}}>
+    <div className="Carrito-Seccion" style={{border:'1px dashed  #383e49',width:'80%',overflow:'auto'}}>
       <div className="Agregar_Carrito">
         <label className="carritoT" htmlFor="producto">
           Selecciona un producto:
@@ -223,9 +223,11 @@ function SeleccionProductos({ onProductosSeleccionados }) {
           </Badge>
         </div>
       </div>
-      <div className={carritoP} style={{border:'2px solid red',}}>
-        <div className="CloseP"style={{border:'2px solid'}}>
-          <label className="carritoT">Objetos seleccionados</label>
+      <div className={carritoP} style={{border:'1px dashed green',alignItems:'center',justifyContent:'center',borderRadius:'4px'}}>
+        <div className="CloseP"style={{marginRight:'0',width:'99%',}}>
+        <div className="titulos2">
+                <h3 style={{margin:'0'}}>Productos Seleccionados:</h3>
+              </div>
           <svg
             onClick={CerrarCarrito}
             width="30px"
@@ -257,9 +259,9 @@ function SeleccionProductos({ onProductosSeleccionados }) {
             </g>
           </svg>
         </div>
-        <div className="Carrito-Objetos">
+        <div className="Carrito-Objetos"style={{width:'100%',display:'flex',justifyContent:'space-between'}}  >
           {productosElegidos.map((producto) => (
-            <div className="ListaP">
+            <div className="ListaP" style={{border:'1px dashed green',width:'100%',display:'flex',justifyContent:'space-around',alignItems:'center'}}>
               <li className="Lic" key={producto._id}>
                 {producto.nombre} - Cantidad:
                 <input
@@ -273,8 +275,8 @@ function SeleccionProductos({ onProductosSeleccionados }) {
                   }
                   min="1" // Establecer un valor mínimo para la cantidad
                 />
-                monto :{producto.monto}
-                ganancia :{producto.ganancia}
+                Monto:$ {producto.monto} ---
+                 Ganancia :$ {producto.ganancia}
               </li>
               <button
                 className="EliminarC"

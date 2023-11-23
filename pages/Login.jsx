@@ -72,7 +72,7 @@ export default function page() {
         return setError(res.error);
       }
       if (res?.ok) {
-        return router.push("/Menu");
+        return router.push("/menu");
       }
     } catch (error) {
       console.log(error);

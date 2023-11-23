@@ -169,14 +169,13 @@ a{
 
 }
 .mas-vendidos{
-  background: #FFF;
+  background: #ffffff;
   width: 100%;
   height: 90%;
   display:flex;
   justify-content: center;
   flex-direction: column;
   border-radius: 8px;
-
 }
 .pocas-unidades{
   background: #FFF;
@@ -363,4 +362,17 @@ line-height: 18px; /* 150% */
 
 
 }
+.Tamaño-Calendario h2,
+.Tamaño-Calendario a,
+.Tamaño-Calendario .fc-event-title {
+    font-weight: 100;
+    cursor: pointer;
+}
+.Tamaño-Calendario .fc-footer-toolbar{
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.fc-event-time {
+  display: none;
+}

@@ -129,10 +129,10 @@ a{
 }
 
 @media only screen and (max-width: 800px){
-    body {
+    /* body {
       font-size: 44px;
       overflow: hidden;
-    }
+    } */
     .Bar{
         transform: translateX(-100%); /* Mueve el elemento fuera de la vista hacia la izquierda */
         width: 200px;

@@ -21,6 +21,8 @@ import Paper from "@mui/material/Paper";
 import { red } from "@mui/material/colors";
 import { faListOl } from "@fortawesome/free-solid-svg-icons";
 import Slider from '@/components/slider';
+import Calendario from "@/components/Calendario2";
+
 export default function Home() {
   //Logica para mandar y recibir los estados de la libreria "Redux"
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
@@ -43,6 +45,9 @@ export default function Home() {
   const [cantidadTotal, setCantidadTotal] = useState(0);
   const [pocostock, setPocostock] = useState([]);
   const [nadastock, setNadastock] = useState(0);
+  const [cantidadCitas, setCantidaCitas] = useState(0)
+  const [cantidadCitasPendientes, setCantidaCitasPendientes] = useState(0)
+
   useEffect(() => {
     const obtenerCantidades = async () => {
       try {
@@ -50,6 +55,14 @@ export default function Home() {
         setCantidadTotal(response.data.cantidadTotal);
         setNadastock(response.data.cantidadConCeroStock);
         setPocostock(response.data.cantidadBajosDeStock);
+      } catch (error) {
+        console.error("Error al obtener cantidades:", error);
+        // Manejar el error según tus necesidades
+      }
+      try {
+        const response = await Axios.get("/api/auth/cita/conteo");
+        setCantidaCitas(response.data.cantidadCitas);
+        setCantidaCitasPendientes(response.data.cantidadCitasPendientes);
       } catch (error) {
         console.error("Error al obtener cantidades:", error);
         // Manejar el error según tus necesidades
@@ -77,7 +90,7 @@ export default function Home() {
       <div className={hola} onClick={handleDivClick}>
         <Header />
         <div className={grafica}>
-          <Slider/>
+          <Slider />
         </div>
         <div className={avisos}>
           <div className="citas">
@@ -98,7 +111,7 @@ export default function Home() {
                     fill="#24B8F1"
                   />
                 </svg>
-                <h1 className="citas-inf">21</h1>
+                <h1 className="citas-inf">{cantidadCitas}</h1>
                 <a className="inf-a">Numero de citas</a>
               </div>
             </div>
@@ -163,8 +176,8 @@ export default function Home() {
                   />
                 </svg>
 
-                <h1 className="citas-inf">21</h1>
-                <a className="inf-a"> Numero de citas</a>
+                <h1 className="citas-inf">{cantidadCitasPendientes}</h1>
+                <a className="inf-a">Citas pendientes</a>
               </div>
             </div>
           </div>
@@ -236,10 +249,12 @@ export default function Home() {
 
         <div className={tabla}>
           <div className="mas-vendidos">
-            <div className="titulos">
-              <h3>Calendario Deivid</h3>
+            <div style={{width : '100%', display: 'flex', justifyContent: 'center'}}>
+              <div style={{ width: '60%', height: '95%', fontSize: '11px', textTransform: 'uppercase', fontWeight: '100'}}>
+                <Calendario />
+              </div>
             </div>
-            <div className="contenedor-tabla"></div>
+
           </div>
           <div className="pocas-unidades">
             <div className="titulos">

@@ -2,17 +2,15 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import estilos from "@/styles/inventario.css";
+import "@/styles/HacerReceta.css"
 import { Avatar, Button } from "@mui/material";
 import Bar from "@/components/Bar-1";
 import { closeBar, openBar } from "@/store/barSlice";
 import { useSelector, useDispatch } from "react-redux";
 import Providers from "@/store/provider";
 import Header from "@/components/Header";
-import AgendarCita from "@/components/agendarCita";
-import RegistrarPaciente from "@/components/registrarPaciente";
-import Calendario from "@/components/Calendario";
-import "@/styles/Calendario.css";
+import HacerReceta from "@/components/hacerReceta";
 import {
   DataGrid,
   GridColumnHeaderFilterIconButton,
@@ -27,15 +25,11 @@ import {
 } from "@mui/x-data-grid";
 import { Grid } from "@mui/material";
 
-export default function Inventario() {
-
-  const [ventanaPaciente, setVentanaPaciente] = useState(false);
-  const [ventanaCita, setVentanaCita] = useState(false)
-
+export default function Expediente() {
   const [pacientes, setPacientes] = useState([]);
   const [claseDiv, setClaseDiv] = useState("Registrar-close");
   const [claseF, setclaseF] = useState("Fondo-Close");
-  const ruta = "http://localhost:3000/api/auth/paciente";
+  const ruta = "http://localhost:3000/api/auth/expediente";
   const getData = async () => {
     try {
       const response = await axios.get(ruta);
@@ -48,6 +42,22 @@ export default function Inventario() {
   useEffect(() => {
     getData();
   }, []);
+
+
+  const handleCellDoubleClick = (params, event) => {
+    // Verifica que no se haya presionado la tecla Ctrl para evitar conflicto con eventos predeterminados
+    if (!event.ctrlKey) {
+      // Evita el comportamiento predeterminado del evento (navegación por enlace)
+      event.defaultMuiPrevented = true;
+
+      // Obtén el ID del elemento de la fila
+      const itemId = params.row._id;
+
+      // Navegación utilizando navigation.navigate de next/navigation al hacer doble clic
+      navigation.navigate(`/Expedientes/${itemId}`);
+    }
+  };
+
 
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
   // importamos el objeto useDispatch para poder mandar los cambios de estados
@@ -79,17 +89,6 @@ export default function Inventario() {
     console.log(claseDiv);
   };
   const cambiarClase = () => {
-    setVentanaPaciente(true)
-    setVentanaCita(false)
-    setClaseDiv("Registrar-envio");
-    setclaseF("Fondo-Open");
-    console.log("Hola mundo");
-    console.log(claseDiv);
-  };
-
-  const cambiarClase2 = () => {
-    setVentanaPaciente(false)
-    setVentanaCita(true)
     setClaseDiv("Registrar-envio");
     setclaseF("Fondo-Open");
     console.log("Hola mundo");
@@ -99,13 +98,10 @@ export default function Inventario() {
   function CustomToolbar() {
     return (
       <GridToolbarContainer>
-        <h1 className="titulo_pacientes">PACIENTES</h1>
         <div className="tool">
-          <div>
-            <button onClick={cambiarClase} className="Agregar">
-              Añadir Paciente
-            </button>
-          </div>
+          <button  onClick={cambiarClase} className="Agregar-receta">
+            Crear Receta
+          </button>
           <div className="filtro-boton">
             <div className="svg-b">
               <svg
@@ -166,82 +162,53 @@ export default function Inventario() {
       </div>
       <div className={main} onClick={handleDivClick}>
         <Header></Header>
-        {ventanaPaciente &&
-          <div className={claseDiv}>
-            <RegistrarPaciente onCambioClick={cambiarClaseEnPadre} />
-          </div>
-        }
-        {ventanaCita &&
-          <div className={claseDiv}>
-            <AgendarCita onCambioClick={cambiarClaseEnPadre} />
-          </div>
-        }
-        <div className="Tabla-Contenedor_Cita">
-          <div className="Tabla-Contenedor_Cita_secc_der">
-            <div className="Tabla_Cita">
-              <h1 className="titulo_pacientes">CITAS</h1>
-              <div className="Contenedor-Citas_Superior">
-                <button onClick={cambiarClase2} className="Agendar_cita">
-                  Agendar Cita
-                </button>
-              </div>
-              <div className="Contenedor-Citas_Inferior">
-                <div className="Tamaño-Calendario">
-                  <Calendario />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="Tabla-Contenedor_Cita_secc_izq">
-            <div className="Tabla_Paciente">
-              <DataGrid
-                columns={[
-                  {
-                    field: "-",
-                    headerName: "",
-                    hideable: false,
-                    width: 60,
-                    renderCell: (params) => <Avatar />,
-                    sortable: false,
-                    filterable: false,
-                  },
-                  {
-                    field: "nombre",
-                    headerName: "Nombre",
-                    hideable: true,
-                    width: 130,
-                  },
-                  {
-                    field: "apellido",
-                    type: "singleSelect",
-                    headerName: "Apellido",
-                    width: 150,
-                  },
-                  {
-                    field: "edad",
-                    headerName: "Edad",
-                    width: 70
-                  },
-                  {
-                    field: "telefono",
-                    headerName: "Telefono",
-                    width: 130
-                  },
-                ]}
-                rows={pacientes}
-                getRowId={(row) => row._id}
-                slots={{
-                  toolbar: CustomToolbar,
-                  pagination: Pagination,
-                }}
-                autoPageSize
-                sx={{
-                  boxShadow: 0,
-                  borderRadius: 2,
-                  borderColor: "#FFF",
-                }}
-              />
-            </div>
+        <div className={claseDiv}>
+           <HacerReceta onCambioClick={cambiarClaseEnPadre} />
+        </div>
+        <div className="Tabla-Contenedor_Expediente">
+          <div className="Tabla">
+            <DataGrid
+              onCellDoubleClick={handleCellDoubleClick}
+              columns={[
+                {
+                  field: "-",
+                  headerName: "",
+                  hideable: false,
+                  width: 60,
+                  renderCell: (params) => <Avatar />,
+                  sortable: false,
+                  filterable: false,
+                },
+                {
+                  field: "nombre",
+                  headerName: "Nombre",
+                  hideable: true,
+                  width: 220,
+                },
+                {
+                  field: "apellido",
+                  type: "singleSelect",
+                  headerName: "Apellido",
+                  width: 220,
+                },
+
+                { field: "telefono", headerName: "Telefono", width: 220 },
+                { field: "edad", headerName: "Edad", width: 220 },
+                { field: "numeroDeRecetas", headerName: "Consultas", width: 220 },
+              ]}
+              rows={pacientes}
+              getRowId={(row) => row._id}
+              slots={{
+                toolbar: CustomToolbar,
+                pagination: Pagination,
+              }}
+              autoPageSize
+              sx={{
+                boxShadow: 0,
+                borderRadius: 2,
+                borderColor: "#FFF",
+              }}
+            />
           </div>
         </div>
       </div>

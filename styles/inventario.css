@@ -115,7 +115,24 @@ body{
   margin-top: 15px;
   border-radius: 8px;
   margin-bottom: 10px;
-  
+}
+.Tabla-Contenedor_Expediente{
+  display: block;
+  width: 100%;
+  height: 80%;
+  background: #FFF;
+  margin-top: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.Tabla-Contenedor_Cita {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 80%;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 .MuiButton-text{
   color: blue;
@@ -291,5 +308,9 @@ body{
         display: flex;
       }
       
-
+      .Tabla-Contenedor_Cita {
+        box-sizing: border-box;
+        overflow: scroll;
+        display: block;
+      }
   }

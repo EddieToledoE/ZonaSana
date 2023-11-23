@@ -63,7 +63,7 @@ export default function Inventario() {
       try {
         const response = await axios.delete(`/api/auth/envio/${id}`);
         if (response) {
-          return router.push("/Envios");
+          return router.push("/envios");
         }
       } catch (error) {
         console.error("Error al borrar el producto:", error);
@@ -304,15 +304,15 @@ export default function Inventario() {
                 {productoEnviado.map((producto, index) => (
                   <div className="Envios-Ren">
                     <div className="Detalles-R">
-                    <p>Nombre: {producto._id.nombre}</p>
-                    <p>Marca: {producto._id.marca}</p>
-                    <p>Cantidad: {producto.cantidad}</p>
+                      <p>Nombre: {producto._id.nombre}</p>
+                      <p>Marca: {producto._id.marca}</p>
+                      <p>Cantidad: {producto.cantidad}</p>
                     </div>
                     <div className="Detalles-IMG">
-                    <Image
+                      <Image
                         width={60}
                         height={60}
-                        style={{ objectFit: 'cover', borderRadius: '50%' }}
+                        style={{ objectFit: "cover", borderRadius: "50%" }}
                         src={producto._id.url}
                         alt={`Imagen de ${producto._id.nombre}`}
                       />
@@ -323,7 +323,6 @@ export default function Inventario() {
             </div>
           </div>
           <div className="Detalles-Final">
-
             <h3>Informacion del cliente</h3>
             <div className="Detalles-Linea"></div>
             <h3>Direccion:</h3>

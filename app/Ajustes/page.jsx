@@ -42,21 +42,21 @@ export default function Registro() {
       }
     }
   };
-      //Implementacion de metodo para ocultar la barra
-      const isBarOpen = useSelector((state) => state.bar.isBarOpen);
-      const dispatch = useDispatch();
-  
-      const handleDivClick = () => {
-        const windowWidth = window.innerWidth;
-    
-        //Condicion para que cambie de estado unicamente cuando isBarOpen sea true y la pantalla tenga un width maximo de 800 px
-        if (isBarOpen && windowWidth <= 800) {
-          console.log("Div clickeado");
-          //Si cumple las condiciones se manda el cambio de estado
-          dispatch(closeBar());
-        }
-      };
-      const protector = isBarOpen ? 'protectorOpen' : 'protector';
+  //Implementacion de metodo para ocultar la barra
+  const isBarOpen = useSelector((state) => state.bar.isBarOpen);
+  const dispatch = useDispatch();
+
+  const handleDivClick = () => {
+    const windowWidth = window.innerWidth;
+
+    //Condicion para que cambie de estado unicamente cuando isBarOpen sea true y la pantalla tenga un width maximo de 800 px
+    if (isBarOpen && windowWidth <= 800) {
+      console.log("Div clickeado");
+      //Si cumple las condiciones se manda el cambio de estado
+      dispatch(closeBar());
+    }
+  };
+  const protector = isBarOpen ? "protectorOpen" : "protector";
 
   return (
     <section className="Container">
@@ -73,7 +73,8 @@ export default function Registro() {
                     <h2 className="h2_ajustes">Datos empleado</h2>
                     <label className="label_Ajustes" htmlFor="nombre">
                       <h3 className="h3_ajustes">Nombre</h3>
-                      <input className="Ajustes_input"
+                      <input
+                        className="Ajustes_input"
                         type="text"
                         placeholder="Nombre"
                         name="nombre"
@@ -82,7 +83,8 @@ export default function Registro() {
                     </label>
                     <label className="label_Ajustes" htmlFor="apellido">
                       <h3 className="h3_ajustes">Apellido</h3>
-                      <input className="Ajustes_input"
+                      <input
+                        className="Ajustes_input"
                         type="text"
                         placeholder="Apellido"
                         name="apellido"
@@ -91,19 +93,22 @@ export default function Registro() {
                     </label>
                     <label className="label_Ajustes" htmlFor="puesto">
                       <h3 className="h3_ajustes">Puesto</h3>
-                      <input className="Ajustes_input"
-                        type="text"
-                        placeholder="Puesto"
+                      <select
+                        className="Ajustes_input"
                         name="puesto"
                         id="puesto"
-                      />
+                      >
+                        <option value="Gerente">Gerente</option>
+                        <option value="Vendedor">Vendedor</option>
+                      </select>
                     </label>
                   </section>
                   <section className="seccion-derecha">
                     <h2 className="h2_ajustes">Datos usuario</h2>
                     <label className="label_Ajustes" htmlFor="email">
                       <h3 className="h3_ajustes">Email</h3>
-                      <input className="Ajustes_input"
+                      <input
+                        className="Ajustes_input"
                         type="email"
                         placeholder="Email"
                         name="email"
@@ -112,7 +117,8 @@ export default function Registro() {
                     </label>
                     <label className="label_Ajustes" htmlFor="contraseña">
                       <h3 className="h3_ajustes">Contraseña</h3>
-                      <input className="Ajustes_input"
+                      <input
+                        className="Ajustes_input"
                         type="password"
                         placeholder="Contraseña"
                         name="contraseña"

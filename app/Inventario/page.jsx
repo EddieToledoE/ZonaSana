@@ -40,7 +40,7 @@ export default function Inventario() {
       const itemId = params.row._id;
 
       // Navegación utilizando navigation.navigate de next/navigation al hacer doble clic
-      navigation.navigate(`/Inventario/${itemId}`);
+      navigation.navigate(`/inventario/${itemId}`);
     }
   };
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);

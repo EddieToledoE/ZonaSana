@@ -2,6 +2,13 @@ import { NextResponse } from "next/server";
 import Usuario from "@/models/user";
 import bcrypt from "bcryptjs";
 import { connectarBD } from "@/libs/mongodb";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: "dwjnodqln",
+  api_key: "857757943571861",
+  api_secret: "wC8CXXYYJYWX7d-naEL2L3UEg8k",
+});
 export async function POST(request) {
   const { email, contraseña, persona, url } = await request.json();
   console.log(email, contraseña, persona, url);

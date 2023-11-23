@@ -11,7 +11,6 @@ import Image from "next/image";
 import Badge from "@mui/material/Badge";
 import Buscar from "@/components/completar";
 
-
 function Header() {
   const [usuario, setUsuario] = useState("");
   const [image, setImage] = useState("");
@@ -30,11 +29,7 @@ function Header() {
   const dispatch = useDispatch();
 
   const handleToggleBar = () => {
-
-
     dispatch(openBar());
-   
-    
   };
   const imageStyle = {
     borderRadius: "50%",
@@ -88,8 +83,8 @@ function Header() {
         </div>
         <div className="items">
           <div className="notificaciones">
-            <p>Nombre Tilin</p>
-             <p>posicion</p>
+            <p>{usuario}</p>
+            <p>{puesto}</p>
           </div>
 
           <div className="perfil">

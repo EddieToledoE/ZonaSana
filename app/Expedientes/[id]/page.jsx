@@ -3,7 +3,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import estilos from "@/styles/inventario.css";
-import "@/styles/HacerReceta.css"
+import "@/styles/HacerReceta.css";
 import { Avatar, Button } from "@mui/material";
 import Bar from "@/components/Bar-1";
 import { closeBar, openBar } from "@/store/barSlice";
@@ -13,7 +13,7 @@ import Header from "@/components/Header";
 import HacerReceta from "@/components/hacerReceta";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 import {
   valueGetter,
   DataGrid,
@@ -33,7 +33,7 @@ export default function Expediente() {
   const [pacientes, setPacientes] = useState([]);
   const [claseDiv, setClaseDiv] = useState("Registrar-close");
   const [claseF, setclaseF] = useState("Fondo-Close");
-  const ruta = "http://localhost:3000/api/auth/expediente";
+  const ruta = "/api/auth/expediente";
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [edad, setEdad] = useState("");
@@ -62,7 +62,7 @@ export default function Expediente() {
       const primerPaciente = data[0];
       setNombre(primerPaciente?.cita_id?.paciente_id?.nombre);
       setApellido(primerPaciente?.cita_id?.paciente_id?.apellido);
-      setEdad(primerPaciente?.cita_id?.paciente_id?.edad)
+      setEdad(primerPaciente?.cita_id?.paciente_id?.edad);
       setPacientes(data);
     } catch (error) {
       console.error("Error al obtener los datos:", error);
@@ -72,11 +72,7 @@ export default function Expediente() {
     getData();
   }, []);
 
-
-  const handleCellDoubleClick = (params, event) => {
-
-  };
-
+  const handleCellDoubleClick = (params, event) => {};
 
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
   // importamos el objeto useDispatch para poder mandar los cambios de estados
@@ -118,7 +114,17 @@ export default function Expediente() {
     return (
       <GridToolbarContainer>
         <div>
-          <h1 style={{boxSizing: 'border-box', padding: '20px', fontWeight: '100', color : ' gray', textDecoration:'none'}}>Expediente del paciente {nombre} {apellido}</h1>
+          <h1
+            style={{
+              boxSizing: "border-box",
+              padding: "20px",
+              fontWeight: "100",
+              color: " gray",
+              textDecoration: "none",
+            }}
+          >
+            Expediente del paciente {nombre} {apellido}
+          </h1>
         </div>
       </GridToolbarContainer>
     );
@@ -164,21 +170,21 @@ export default function Expediente() {
                   filterable: false,
                 },
                 {
-                  field: 'nombre',
+                  field: "nombre",
                   headerName: "Nombre",
                   valueGetter: (params) => nombre,
                   hideable: true,
                   width: 170,
                 },
                 {
-                  field: 'apellido',
+                  field: "apellido",
                   headerName: "Apellido",
                   valueGetter: (params) => apellido,
                   hideable: true,
                   width: 170,
                 },
                 {
-                  field: 'edad',
+                  field: "edad",
                   headerName: "Edad",
                   valueGetter: (params) => edad,
                   hideable: true,
@@ -188,12 +194,16 @@ export default function Expediente() {
                   field: "cita_id",
                   headerName: "Fecha Consulta",
                   width: 200,
-                  renderCell: (params) => format(new Date(params.row.cita_id.fecha), 'dd/MM/yyyy hh:mm a'), // Accede al nombre del cliente
+                  renderCell: (params) =>
+                    format(
+                      new Date(params.row.cita_id.fecha),
+                      "dd/MM/yyyy hh:mm a"
+                    ), // Accede al nombre del cliente
                 },
                 {
                   field: "observaciones",
                   headerName: "Observaciones",
-                  width: 350, 
+                  width: 350,
                 },
               ]}
               rows={pacientes}

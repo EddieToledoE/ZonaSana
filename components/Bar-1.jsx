@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { closeBar, openBar } from "../store/barSlice"; // Importa las acciones
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import Inventario from "@/app/Inventario/page";
+import Inventario from "@/app/inventario/page";
 
 function Bar() {
   const [puesto, setPuesto] = useState("");
@@ -34,7 +34,7 @@ function Bar() {
         <div className="paginas-div">
           <ul className="Paginas-ul">
             <li className="Paginas">
-              <Link className="Paginas-Enlaces" href="/Menu">
+              <Link className="Paginas-Enlaces" href="/menu">
                 <svg
                   width="24"
                   height="24"
@@ -56,7 +56,7 @@ function Bar() {
             {isGerente && (
               <>
                 <li className="Paginas">
-                  <Link className="Paginas-Enlaces" href="/Inventario">
+                  <Link className="Paginas-Enlaces" href="/inventario">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -76,7 +76,7 @@ function Bar() {
                   </Link>
                 </li>
                 <li className="Paginas">
-                  <Link className="Paginas-Enlaces" href="/Estadisticas">
+                  <Link className="Paginas-Enlaces" href="/estadisticas">
                     <svg
                       className="svgs"
                       width="24"
@@ -94,7 +94,7 @@ function Bar() {
                   </Link>
                 </li>
                 <li className="Paginas">
-                  <Link className="Paginas-Enlaces" href="/Envios">
+                  <Link className="Paginas-Enlaces" href="/envios">
                     <svg
                       width="24"
                       height="24"
@@ -116,7 +116,7 @@ function Bar() {
             )}
 
             <li className="Paginas">
-              <Link className="Paginas-Enlaces" href="/Expedientes">
+              <Link className="Paginas-Enlaces" href="/expedientes">
                 <svg
                   width="24"
                   height="24"
@@ -134,7 +134,7 @@ function Bar() {
             </li>
 
             <li className="Paginas">
-              <Link className="Paginas-Enlaces" href="/Citas">
+              <Link className="Paginas-Enlaces" href="/citas">
                 <svg
                   width="24"
                   height="24"
@@ -183,50 +183,20 @@ function Bar() {
               </Link>
             </li>
             <li className="Paginas">
-              <Link className="Paginas-Enlaces" href="/Ventas">
+              <Link className="Paginas-Enlaces" href="/ventas">
                 <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
-                  fill="none"
+                  fill="#0ACF83"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    d="M11.0229 17.8548H9.64885C9.55729 17.8548 9.49615 17.9159 9.49615 18.0075C9.49615 18.099 9.55729 18.1602 9.64885 18.1602H11.0229C11.1145 18.1602 11.1756 18.099 11.1756 18.0075C11.1756 17.9311 11.0993 17.8548 11.0229 17.8548Z"
-                    fill="#12B76A"
-                  />
-                  <path
-                    d="M19.6773 2.84641C19.2276 2.39664 18.63 2.1492 17.9934 2.1492L6.56615 2.14893C5.92962 2.14893 5.33236 2.39636 4.88227 2.84613C4.43249 3.29591 4.18506 3.89346 4.18506 4.53002V19.7678C4.18506 20.4044 4.43249 21.0016 4.88227 21.4517C5.33204 21.9015 5.92959 22.1489 6.56615 22.1489H17.9949C18.6314 22.1489 19.2287 21.9015 19.6788 21.4517C20.1285 21.0019 20.376 20.4044 20.376 19.7678V4.53002C20.3748 3.89376 20.1274 3.29623 19.6776 2.84642L19.6773 2.84641ZM19.4229 19.7686C19.4229 20.5566 18.7825 21.197 17.9946 21.197H6.56585C5.77788 21.197 5.13747 20.5566 5.13747 19.7686V4.53008C5.13747 3.74211 5.7779 3.10171 6.56585 3.10171H17.9946C18.7825 3.10171 19.4229 3.74214 19.4229 4.53008V19.7686Z"
-                    fill="#12B76A"
-                  />
-                  <path
-                    d="M10.0385 10.86L8.47036 12.4284L7.85498 11.813C7.66934 11.6274 7.36707 11.6274 7.18171 11.813C6.99607 11.9987 6.99607 12.301 7.18171 12.4863L8.13442 13.439C8.22431 13.5289 8.34483 13.5787 8.47147 13.5787C8.59811 13.5787 8.71891 13.5289 8.80853 13.439L10.7136 11.5339C10.8993 11.3483 10.8993 11.046 10.7136 10.8606C10.528 10.6747 10.2238 10.6736 10.0384 10.8601L10.0385 10.86Z"
-                    fill="#12B76A"
-                  />
-                  <path
-                    d="M10.0385 15.6211L8.47036 17.1892L7.85498 16.5738C7.66934 16.3881 7.36707 16.3881 7.18171 16.5738C6.99607 16.7594 6.99607 17.0617 7.18171 17.2471L8.13442 18.1998C8.22431 18.2897 8.34483 18.3395 8.47147 18.3395C8.59811 18.3395 8.71891 18.2897 8.80853 18.1998L10.7136 16.2946C10.8993 16.109 10.8993 15.8067 10.7136 15.6214C10.528 15.4355 10.2238 15.4355 10.0384 15.6211L10.0385 15.6211Z"
-                    fill="#12B76A"
-                  />
-                  <path
-                    d="M10.0385 6.09761L8.47036 7.66571L7.85498 7.05033C7.66934 6.86469 7.36707 6.86469 7.18171 7.05033C6.99607 7.23598 6.99607 7.53824 7.18171 7.7236L8.13442 8.67631C8.22431 8.7662 8.34483 8.81602 8.47147 8.81602C8.59811 8.81602 8.71891 8.7662 8.80853 8.67631L10.7136 6.77119C10.8993 6.58554 10.8993 6.28328 10.7136 6.09792C10.528 5.91227 10.2238 5.91227 10.0384 6.09764L10.0385 6.09761Z"
-                    fill="#12B76A"
-                  />
-                  <path
-                    d="M17.0425 11.673H12.2803C12.017 11.673 11.8044 11.8865 11.8044 12.149C11.8044 12.4114 12.0179 12.6249 12.2803 12.6249H17.0425C17.3058 12.6249 17.5184 12.4114 17.5184 12.149C17.5184 11.8857 17.3049 11.673 17.0425 11.673Z"
-                    fill="#12B76A"
-                  />
-                  <path
-                    d="M17.0425 17.3874H12.2803C12.017 17.3874 11.8044 17.6009 11.8044 17.8633C11.8044 18.1258 12.0179 18.3393 12.2803 18.3393H17.0425C17.3058 18.3393 17.5184 18.1258 17.5184 17.8633C17.5184 17.6009 17.3049 17.3874 17.0425 17.3874Z"
-                    fill="#12B76A"
-                  />
-                  <path
-                    d="M17.0425 6.91058H12.2803C12.017 6.91058 11.8044 7.12406 11.8044 7.38652C11.8044 7.64898 12.0179 7.86246 12.2803 7.86246H17.0425C17.3058 7.86246 17.5184 7.64898 17.5184 7.38652C17.5184 7.12406 17.3049 6.91058 17.0425 6.91058Z"
-                    fill="#12B76A"
-                  />
-                  <path
-                    d="M11.0229 18.9233H9.64885C9.55729 18.9233 9.49615 18.9844 9.49615 19.076C9.49615 19.1675 9.55729 19.2287 9.64885 19.2287H11.0229C11.1145 19.2287 11.1756 19.1675 11.1756 19.076C11.1756 18.9844 11.0993 18.9233 11.0229 18.9233Z"
-                    fill="#12B76A"
-                  />
+                  <path d="M4 6H2V4H4V6Z" />
+                  <path d="M22 6H20V4H22V6Z" />
+                  <path d="M4 10H2V8H4V10Z" />
+                  <path d="M22 10H20V8H22V10Z" />
+                  <path d="M8 10C7.44772 10 7 10.4477 7 11V13C7 13.5523 7.44772 14 8 14H16C16.5523 14 17 13.5523 17 13V11C17 10.4477 16.5523 10 16 10H8Z" />
+                  <path d="M19 4H5C3.34315 4 2 5.34315 2 7V17C2 18.6569 3.34315 20 5 20H19C20.6569 20 22 18.6569 22 17V7C22 5.34315 20.6569 4 19 4ZM20 17C20 17.5523 19.5523 18 19 18H5C4.44772 18 4 17.5523 4 17V14H20V17ZM20 12H4V7C4 6.44772 4.44772 6 5 6H19C19.5523 6 20 6.44772 20 7V12Z" />
                 </svg>
                 Ventas
               </Link>
@@ -239,7 +209,7 @@ function Bar() {
           {isGerente && (
             <>
               <li className="Close-li">
-                <a href="/Ajustes" className="Close-Enlaces">
+                <a href="/ajustes" className="Close-Enlaces">
                   <svg
                     width="20"
                     height="20"

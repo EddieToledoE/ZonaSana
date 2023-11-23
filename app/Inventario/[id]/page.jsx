@@ -61,7 +61,7 @@ export default function Inventario() {
       try {
         const response = await axios.delete(`/api/auth/producto/${id}`);
         if (response) {
-          return router.push("/Inventario");
+          return router.push("/inventario");
         }
       } catch (error) {
         console.error("Error al borrar el producto:", error);
@@ -357,9 +357,9 @@ export default function Inventario() {
           </div>
           <div className="Detalles-Final">
             <h3>Detalles del producto:</h3>
-            <p >{descripcion}</p>
+            <p>{descripcion}</p>
             <input
-              style={{marginLeft:'10px'}}
+              style={{ marginLeft: "10px" }}
               value={descripcion}
               onChange={(event) => setDescripcion(event.target.value)}
               className={editar}

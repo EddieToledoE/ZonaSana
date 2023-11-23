@@ -3,7 +3,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import estilos from "@/styles/inventario.css";
-import "@/styles/HacerReceta.css"
+import "@/styles/HacerReceta.css";
 import { Avatar, Button } from "@mui/material";
 import Bar from "@/components/Bar-1";
 import { closeBar, openBar } from "@/store/barSlice";
@@ -29,7 +29,7 @@ export default function Expediente() {
   const [pacientes, setPacientes] = useState([]);
   const [claseDiv, setClaseDiv] = useState("Registrar-close");
   const [claseF, setclaseF] = useState("Fondo-Close");
-  const ruta = "http://localhost:3000/api/auth/expediente";
+  const ruta = "/api/auth/expediente";
   const getData = async () => {
     try {
       const response = await axios.get(ruta);
@@ -43,7 +43,6 @@ export default function Expediente() {
     getData();
   }, []);
 
-
   const handleCellDoubleClick = (params, event) => {
     // Verifica que no se haya presionado la tecla Ctrl para evitar conflicto con eventos predeterminados
     if (!event.ctrlKey) {
@@ -54,10 +53,9 @@ export default function Expediente() {
       const itemId = params.row._id;
 
       // Navegación utilizando navigation.navigate de next/navigation al hacer doble clic
-      navigation.navigate(`/Expedientes/${itemId}`);
+      navigation.navigate(`/expedientes/${itemId}`);
     }
   };
-
 
   const isBarOpen = useSelector((state) => state.bar.isBarOpen);
   // importamos el objeto useDispatch para poder mandar los cambios de estados
@@ -99,7 +97,7 @@ export default function Expediente() {
     return (
       <GridToolbarContainer>
         <div className="tool">
-          <button  onClick={cambiarClase} className="Agregar-receta">
+          <button onClick={cambiarClase} className="Agregar-receta">
             Crear Receta
           </button>
           <div className="filtro-boton">
@@ -163,7 +161,7 @@ export default function Expediente() {
       <div className={main} onClick={handleDivClick}>
         <Header></Header>
         <div className={claseDiv}>
-           <HacerReceta onCambioClick={cambiarClaseEnPadre} />
+          <HacerReceta onCambioClick={cambiarClaseEnPadre} />
         </div>
         <div className="Tabla-Contenedor_Expediente">
           <div className="Tabla">
@@ -194,7 +192,11 @@ export default function Expediente() {
 
                 { field: "telefono", headerName: "Telefono", width: 220 },
                 { field: "edad", headerName: "Edad", width: 220 },
-                { field: "numeroDeRecetas", headerName: "Consultas", width: 220 },
+                {
+                  field: "numeroDeRecetas",
+                  headerName: "Consultas",
+                  width: 220,
+                },
               ]}
               rows={pacientes}
               getRowId={(row) => row._id}

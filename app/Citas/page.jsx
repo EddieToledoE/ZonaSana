@@ -28,14 +28,13 @@ import {
 import { Grid } from "@mui/material";
 
 export default function Inventario() {
-
   const [ventanaPaciente, setVentanaPaciente] = useState(false);
-  const [ventanaCita, setVentanaCita] = useState(false)
+  const [ventanaCita, setVentanaCita] = useState(false);
 
   const [pacientes, setPacientes] = useState([]);
   const [claseDiv, setClaseDiv] = useState("Registrar-close");
   const [claseF, setclaseF] = useState("Fondo-Close");
-  const ruta = "http://localhost:3000/api/auth/paciente";
+  const ruta = "/api/auth/paciente";
   const getData = async () => {
     try {
       const response = await axios.get(ruta);
@@ -79,8 +78,8 @@ export default function Inventario() {
     console.log(claseDiv);
   };
   const cambiarClase = () => {
-    setVentanaPaciente(true)
-    setVentanaCita(false)
+    setVentanaPaciente(true);
+    setVentanaCita(false);
     setClaseDiv("Registrar-envio");
     setclaseF("Fondo-Open");
     console.log("Hola mundo");
@@ -88,8 +87,8 @@ export default function Inventario() {
   };
 
   const cambiarClase2 = () => {
-    setVentanaPaciente(false)
-    setVentanaCita(true)
+    setVentanaPaciente(false);
+    setVentanaCita(true);
     setClaseDiv("Registrar-envio");
     setclaseF("Fondo-Open");
     console.log("Hola mundo");
@@ -166,16 +165,16 @@ export default function Inventario() {
       </div>
       <div className={main} onClick={handleDivClick}>
         <Header></Header>
-        {ventanaPaciente &&
+        {ventanaPaciente && (
           <div className={claseDiv}>
             <RegistrarPaciente onCambioClick={cambiarClaseEnPadre} />
           </div>
-        }
-        {ventanaCita &&
+        )}
+        {ventanaCita && (
           <div className={claseDiv}>
             <AgendarCita onCambioClick={cambiarClaseEnPadre} />
           </div>
-        }
+        )}
         <div className="Tabla-Contenedor_Cita">
           <div className="Tabla-Contenedor_Cita_secc_der">
             <div className="Tabla_Cita">
@@ -220,12 +219,12 @@ export default function Inventario() {
                   {
                     field: "edad",
                     headerName: "Edad",
-                    width: 70
+                    width: 70,
                   },
                   {
                     field: "telefono",
                     headerName: "Telefono",
-                    width: 130
+                    width: 130,
                   },
                 ]}
                 rows={pacientes}

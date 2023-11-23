@@ -46,14 +46,7 @@ const registrar = ({ onCambioClick }) => {
     formData.append("cantidad_alerta", alerta);
     formData.append("archivo", archivo); // Agregar el archivo
     // Mostrar SweetAlert para confirmar la acción
-    if (precioCompra > precioVenta) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "El precio de compra no puede ser mayor que el de venta.",
-      });
-      return;
-    }
+
     const result = await Swal.fire({
       title: "¿Estás seguro?",
       text: "¿Quieres agregar este producto? " + nombreProducto,

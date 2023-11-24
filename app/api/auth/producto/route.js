@@ -4,9 +4,9 @@ import { connectarBD } from "@/libs/mongodb";
 import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({
-  cloud_name: "dwjnodqln",
-  api_key: "857757943571861",
-  api_secret: "wC8CXXYYJYWX7d-naEL2L3UEg8k",
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_KEY,
+  api_secret: process.env.CLOUD_SECRET,
 });
 export async function POST(request) {
   const data = await request.formData();

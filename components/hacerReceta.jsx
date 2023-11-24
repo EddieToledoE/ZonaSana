@@ -3,21 +3,20 @@ import { useState, useEffect } from "react";
 import Axios, { AxiosError } from "axios";
 import SeleccionProductos from "./seleccionarProductoRecetado";
 import { Autocomplete, Badge } from "@mui/material";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 import { brown } from "@mui/material/colors";
 import Image from "next/image";
 const Swal = require("sweetalert2");
 
 const registrar = ({ onCambioClick }) => {
-
   const [citas, setCitas] = useState([]);
-  const [citaSeleccionado, setCitaSeleccionado] = useState("")
+  const [citaSeleccionada, setCitaSeleccionada] = useState("");
   const [productosSeleccionados, setProductosSeleccionados] = useState([]);
   const [observaciones, setObservaciones] = useState("");
 
-  useEffect(()=> {
+  useEffect(() => {
     obtenerCitas();
-  },[])
+  }, []);
 
   const crearRecetas = async (e) => {
     e.preventDefault();
@@ -32,20 +31,16 @@ const registrar = ({ onCambioClick }) => {
     });
 
     if (result.isConfirmed) {
-      console.log(
-        citaSeleccionado,
-        observaciones,
-        productosSeleccionados
-      );
+      console.log(citaSeleccionada, observaciones, productosSeleccionados);
       try {
         const res = await Axios.post("/api/auth/receta", {
-          cita_id: citaSeleccionado,
+          cita_id: citaSeleccionada,
           observaciones: observaciones,
           producto_recetado: productosSeleccionados,
         });
-        await Axios.put(`/api/auth/cita/${citaSeleccionado}`, {
+        await Axios.put(`/api/auth/cita/${citaSeleccionada}`, {
           pendiente: false,
-        })
+        });
         if (res.data) {
           console.log(res.data);
           Swal.fire(
@@ -93,7 +88,7 @@ const registrar = ({ onCambioClick }) => {
     } catch (error) {
       console.error("Error al obtener la lista de pacientes:", error);
     }
-  }
+  };
 
   return (
     <div className="RegistrarMain">
@@ -101,7 +96,12 @@ const registrar = ({ onCambioClick }) => {
         <h3>Crear Receta</h3>
       </div>
       <div className="Main-items">
-        <Image style={{ boxSizing: 'border-box', paddingTop: '15px' }} src={"/icono-receta.png"} width={80} height={80} />
+        <Image
+          style={{ boxSizing: "border-box", paddingTop: "15px" }}
+          src={"/icono-receta.png"}
+          width={80}
+          height={80}
+        />
       </div>
       <div className="Entradas-datos">
         <div className="text">
@@ -111,19 +111,46 @@ const registrar = ({ onCambioClick }) => {
             </label>
           </div>
           <div className="entradatext">
-            <select
-              className="datos-inv"
-              id="paciente"
-              value={citaSeleccionado}
-              onChange={(event) => setCitaSeleccionado(event.target.value)}
-            >
-              <option value="">Selecciona la cita</option>
-              {citas.map((cita) => (
-                <option key={cita._id} value={cita._id}>
-                  {`${cita.paciente_id.nombre} ${cita.paciente_id.apellido} ${format(new Date(cita.fecha), 'dd/MM/yyyy hh:mm a')}`}
-                </option>
-              ))}
-            </select>
+            <Autocomplete
+              sx={{
+                display: "inline-block",
+                "& input": {
+                  width: "100%",
+                  height: 40,
+                  bgcolor: "",
+                  borderColor: "red",
+                  border: "1px solid #D0D5DD",
+                  borderRadius: "4px",
+                  color: (theme) =>
+                    theme.palette.getContrastText(
+                      theme.palette.background.paper
+                    ),
+                },
+              }}
+              style={{ width: "100%", border: "none", borderColor: "#D0D5DD" }}
+              id="custom-input-demo"
+              options={citas}
+              getOptionLabel={(option) =>
+                `${option.paciente_id.nombre} ${
+                  option.paciente_id.apellido
+                } ${format(new Date(option.fecha), "dd/MM/yyyy hh:mm a")}`
+              }
+              value={
+                citas.find((cita) => cita._id === citaSeleccionada) || null
+              }
+              onChange={(event, newValue) =>
+                setCitaSeleccionada(newValue?._id || "")
+              }
+              renderInput={(params) => (
+                <div ref={params.InputProps.ref}>
+                  <input
+                    type="text"
+                    {...params.inputProps}
+                    placeholder="Busca una cita"
+                  />
+                </div>
+              )}
+            />
           </div>
         </div>
         <div className="Entradas-datos">

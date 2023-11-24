@@ -66,6 +66,7 @@ const registrar = ({ onCambioClick }) => {
         cantidad,
         precioVenta,
         descripcion,
+        archivo,
       });
 
       try {

@@ -123,7 +123,7 @@ export default function Expediente() {
               textDecoration: "none",
             }}
           >
-            Expediente del paciente {nombre} {apellido}
+            Expediente del paciente {nombre}
           </h1>
         </div>
       </GridToolbarContainer>

@@ -4,6 +4,7 @@ import Bar from "@/components/Bar-1.jsx";
 import diseño from "@/styles/Envios.css";
 import styles from "@/app/Home.css";
 import Header from "@/components/Header.jsx";
+import Logo from "@/public/logo.png";
 import { closeBar, openBar } from "@/store/barSlice";
 import { useSelector, useDispatch } from "react-redux";
 import estiloinfo from "@/styles/inventario.css";
@@ -265,7 +266,7 @@ function Envios() {
                       <Avatar
                         key={index}
                         alt={`Producto ${index + 1}`}
-                        src={producto._id.url}
+                        src={producto._id ? producto._id.url : Logo}
                         style={{ marginRight: "8px" }} // Ajusta según sea necesario
                       />
                     ))}

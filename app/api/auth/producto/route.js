@@ -30,18 +30,15 @@ export async function POST(request) {
     imagen,
     cantidad_alerta
   );
+  console.log(
+    "El precio compra es:" +
+      precio_costo +
+      "El precio venta es: " +
+      precio_venta
+  );
   if (!imagen) {
     return NextResponse.json("No se ha subido ninguna imagen", { status: 400 });
   }
-  if (precio_costo > precio_venta)
-    return NextResponse.json(
-      {
-        message: "El precio de costo debe ser menor que el precio de venta",
-      },
-      {
-        status: 400,
-      }
-    );
 
   try {
     await connectarBD();

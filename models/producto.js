@@ -4,7 +4,7 @@ const ProductoSchema = new Schema(
     cantidad_stock: {
       type: Number,
       required: [true, "Cantidad necesaria"],
-      min: 1,
+      min: 0,
     },
     cantidad_alerta: {
       type: Number,

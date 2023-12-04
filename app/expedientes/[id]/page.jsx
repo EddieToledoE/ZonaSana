@@ -82,7 +82,7 @@ export default function Expediente() {
   const handleDivClick = () => {
     const windowWidth = window.innerWidth;
 
-    //Condicion para que cambie de estado unicamente cuando isBarOpen sea true y la pantalla tenga un width maximo de 800 px
+    //Condicion para que cambie de estado unicamente cuan do isBarOpen sea true y la pantalla tenga un width maximo de 800 px
     if (isBarOpen && windowWidth <= 800) {
       console.log("Div clickeado");
       //Si cumple las condiciones se manda el cambio de estado

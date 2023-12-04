@@ -12,9 +12,9 @@ io.on("connection", (socket) => {
   console.log("Nuevo cliente conectado", socket.id);
 });
 
-httpServer.listen(() => {
+httpServer.listen(3001,() => {
   console.log(
-    "Servidor WebSocket escuchando en el puerto asignado automaticamente"
+    "Servidor WebSocket escuchando en el puerto 3001"
   );
 });
 

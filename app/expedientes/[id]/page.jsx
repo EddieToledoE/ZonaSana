@@ -225,4 +225,4 @@ export default function Expediente() {
     </section>
   );
 }
->>>>>>> e9de8409d91b98688e22ca1b06fbd52754368754:app/expedientes/[id]/page.jsx
+

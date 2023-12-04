@@ -14,7 +14,7 @@ io.on("connection", (socket) => {
 
 httpServer.listen(3001,() => {
   console.log(
-    "Servidor WebSocket escuchando en el puerto 3001"
+    "Servidor WebSocket escuchando en el puerto 3001 "
   );
 });
 

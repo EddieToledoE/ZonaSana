@@ -156,38 +156,6 @@ const registrar = ({ onCambioClick }) => {
             ></input>
           </div>
         </div>
-        <div className="text">
-          <div className="t-in">
-            <label className="titulo-input">Codigo de recomendación</label>
-          </div>
-          <div className="entradatext">
-            <input
-              className="datos-inv"
-              type="number"
-              min={0}
-              placeholder="Codigo de recomendación"
-              onChange={(event) => setCodigoajeno(event.target.value)}
-            ></input>
-          </div>
-        </div>
-        <div className="text">
-          <div className="t-in">
-            <label className="titulo-input">
-              Codigo de recomendación propio
-            </label>
-          </div>
-          <div className="entradatext">
-            <input
-              className="datos-inv"
-              type="number"
-              min={0}
-              placeholder="Codigo de recomendación propio"
-              onChange={(event) => setCodigopropio(event.target.value)}
-            ></input>
-          </div>
-        </div>
-        <div className="text"></div>
-        <div className="text"></div>
       </div>
       <div className="botonesr">
         <button className="cancelar" onClick={onCambioClick}>

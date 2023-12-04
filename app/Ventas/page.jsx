@@ -7,13 +7,18 @@ import Bar from "@/components/Bar-1";
 import { closeBar, openBar } from "@/store/barSlice";
 import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
-//Todo los imports para la tabla
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import {
+  DataGrid,
+  GridColumnHeaderFilterIconButton,
+  GridPagination,
+  GridToolbar,
+  GridToolbarExport,
+  GridToolbarFilterButton,
+} from "@mui/x-data-grid";
+import {
+  GridToolbarContainer,
+  GridToolbarDensitySelector,
+} from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import { red } from "@mui/material/colors";
 import stylos from "styles/Ventas.css";
@@ -67,7 +72,7 @@ export default function Home() {
             "La venta se ha registrado correctamente.",
             "success"
           );
-          window.location.reload();
+          // window.location.reload();
         } else {
           console.log("La respuesta no contiene datos JSON válidos.");
         }
@@ -116,6 +121,77 @@ export default function Home() {
   };
   const cantidad = productosSeleccionados.length;
   const [carrito, setcarrito] = useState("carrito-close");
+
+  const [ventas, setVentas] = useState([]);
+
+  const ruta = "/api/auth/venta";
+  const getData = async () => {
+    try {
+      const response = await Axios.get(ruta);
+      const data = response.data;
+      setVentas(data);
+    } catch (error) {
+      console.error("Error al obtener los datos:", error);
+    }
+  };
+
+  function Pagination() {
+    return (
+      <GridPagination>
+        sx=
+        {{
+          borderColor: "blue", // Cambia 'boderColor' a 'borderColor'
+          border: 22, // Cambia 'border' y 'borderColor'
+          color: "red",
+          marginLeft: "100px", // Cambia 'margingLeft' a 'marginLeft'
+        }}
+      </GridPagination>
+    );
+  }
+  function CustomToolbar() {
+    return (
+      <GridToolbarContainer>
+        <div className="tool">
+          <div className="filtro-boton">
+            <div className="svg-b">
+              <svg
+                className="fil"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 10H15M2.5 5H17.5M7.5 15H12.5"
+                  stroke="#5D6679"
+                  stroke-width="1.67"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div className="titulo-boton">
+              <label className="f">Filtro</label>
+            </div>
+            <div className="boton">
+              <GridToolbarFilterButton />
+            </div>
+          </div>
+
+          <div className="Descargar">
+            <label className="D">Descargar</label>
+            <div className="buttonD">
+              <GridToolbarExport></GridToolbarExport>
+            </div>
+          </div>
+        </div>
+      </GridToolbarContainer>
+    );
+  }
+  useEffect(() => {
+    getData();
+  }, []);
 
   const hola = isBarOpen ? "hola-true" : "hola";
   const grafica = isBarOpen ? "grafica-true" : "grafica";
@@ -190,8 +266,60 @@ export default function Home() {
             </button>
           </div>
         </div>
+        <div className="Tabla-Contenedor" style={{ height: "50%" }}>
+          <div className="Tabla">
+            <DataGrid
+              columns={[
+                {
+                  field: "usuario",
+                  headerName: "Vendido por",
+                  hideable: false,
+                  width: 150,
+                  sortable: false,
+                  filterable: false,
+                },
+                {
+                  field: "nombre",
+                  headerName: "Cliente",
+                  hideable: false,
+                  width: 150,
+                },
+                {
+                  field: "monto",
+                  type: "singleSelect",
+                  headerName: "Total",
+                  width: 150,
+                },
+                {
+                  field: "ganancia",
+                  type: "singleSelect",
+                  headerName: "Ganancia",
+                  width: 150,
+                },
 
-        <div className="Tabla-Contenedor" style={{ height: "50%" }}></div>
+                { field: "fecha", headerName: "Fecha de venta", width: 200 },
+              ]}
+              rows={ventas}
+              slots={{
+                toolbar: CustomToolbar,
+                pagination: Pagination,
+              }}
+              getRowId={(row) => row._id}
+              autoPageSize
+              localeText={{
+                footerPagination: "Página {{page}} de {{pageCount}}",
+                filterOperatorAfter: "Filtro",
+                toolbarFiltersLabel: "filtro",
+                // Personaliza el mensaje de paginación
+              }}
+              sx={{
+                boxShadow: 0,
+                borderRadius: 2,
+                borderColor: "#FFF",
+              }}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

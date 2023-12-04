@@ -1,1 +1,0 @@
-import cloudinary from "cloudinary";

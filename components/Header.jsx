@@ -10,6 +10,9 @@ import { useSelector } from "react-redux";
 import Image from "next/image";
 import Badge from "@mui/material/Badge";
 import Buscar from "@/components/completar";
+import { io } from "socket.io-client";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Header() {
   const [usuario, setUsuario] = useState("");
@@ -43,6 +46,38 @@ function Header() {
   function informe() {
     <div className="Alert"></div>;
   }
+  const [notificaciones, setNotificaciones] = useState([]);
+
+  useEffect(() => {
+    const socket = io(process.env.REACT_APP_WEBSOCKET_URL); // Asegúrate de reemplazar esto con la URL de tu servidor
+
+    socket.on("connect", () => {
+      console.log("Conectado al servidor WebSocket");
+    });
+
+    socket.on("nueva-venta", (venta) => {
+      console.log("Nueva venta registrada:", venta);
+      setNotificaciones((notificacionesPrevias) => [
+        ...notificacionesPrevias,
+        `Nueva venta: ${venta._id}`,
+      ]);
+      toast(`Nueva venta por : ${venta.usuario}`);
+    });
+
+    socket.on("nuevo-envio", (envio) => {
+      console.log("Nuevo envío registrado:", envio);
+      setNotificaciones((notificacionesPrevias) => [
+        ...notificacionesPrevias,
+        `Nuevo envío: ${envio.estatus}`,
+      ]);
+      toast(`Nuevo envío: ${envio._id}`);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
   return (
     <header className={Header}>
       <div className="Contenedor-Principal">
@@ -86,7 +121,14 @@ function Header() {
             <p>{usuario}</p>
             <p>{puesto}</p>
           </div>
-
+          <div className="notificaciones">
+            {notificaciones.map((notificacion, index) => (
+              <div key={index}>
+                <p>{notificacion}</p>
+              </div>
+            ))}
+            <ToastContainer />
+          </div>
           <div className="perfil">
             <label className="input-perfil">
               <Image

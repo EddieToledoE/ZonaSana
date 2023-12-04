@@ -2,6 +2,7 @@ import { connectarBD } from "@/libs/mongodb";
 import { NextResponse } from "next/server";
 import Venta from "@/models/Venta";
 import Producto from "@/models/producto";
+import io from "@/libs/websocket";
 export async function POST(request) {
   try {
     connectarBD();
@@ -11,7 +12,7 @@ export async function POST(request) {
     const NuevaVenta = new Venta(data);
     const GuardarVenta = await NuevaVenta.save();
     console.log(GuardarVenta);
-
+    io.emit("nueva-venta", GuardarVenta);
     // Actualizar cantidades en productos vendidos
     for (const productoVendido of data.producto_vendido) {
       const producto = await Producto.findById(productoVendido._id);

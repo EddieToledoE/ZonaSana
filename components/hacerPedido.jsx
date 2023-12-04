@@ -51,7 +51,7 @@ const registrar = ({ onCambioClick }) => {
             "El Envio se ha registrado correctamente.",
             "success"
           );
-          window.location.reload();
+          // window.location.reload();
         } else {
           console.log("La respuesta no contiene datos JSON válidos.");
         }

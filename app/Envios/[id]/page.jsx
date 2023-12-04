@@ -165,7 +165,7 @@ export default function Inventario() {
     }
   }, [idDinamico]);
 
-  if (!rastreo) {
+  if (!fecha) {
     return (
       <div className="contenedor_carga">
         <div className="cargando"></div>

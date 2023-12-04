@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@200&display=swap');
+body{
+  padding: 0;
+  margin: 0;
+}
+.seccion1{
+  display: flex;
+  width: 100%;
+}
+.bar1{
+  display: flex;
+ 
+}
+.hola, .hola-true{
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 10px;
+  background-color: #F0F1F3;
+}
+
+.grafica, .grafica-true{
+  background: #FFF;
+  margin-top: 10px;
+  width: 100%;
+  height: 290px;
+ 
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.avisos,.avisos-true{
+    display: flex;
+    padding-top:10px ;
+    width: 100%;
+    height: 20%;
+    
+}
+.citas, .inventario{
+   width: 100%;
+   margin: 5px;
+   display: flex;
+   background: #FFF;
+   border-radius: 8px;
+}
+.Citas{
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 200px;
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 10px;
+  
+}
+.Citas a{
+    color: var(--grey-grey-600, #5D6679);
+    font-family: Inter;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 550;
+    line-height: 24px; /* 150% */
+    font-family: 'Inter', sans-serif;
+}
+.inventario{
+  width: 100%;
+  margin: 5px;
+  display: flex;
+  background: #FFF;
+  border-radius: 8px;
+}
+.citas-pendientes{
+  
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+a{
+  font-family: 'Inter', sans-serif;
+}
+.linea{
+  border: 1px solid #F0F1F3;
+  height: 100px;
+  margin-top: 30px;
+}
+.citas-pendientes1 {
+
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+.inventario-pendiente{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.inf{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 0px;
+}
+
+.inf-inventario{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 0px;
+  border: 2px solid;
+}
+.citas-inf{
+  color: var(--grey-grey-600, #5D6679);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    margin-top: 20px;
+}
+.citas-inf{
+  text-align: center;
+ 
+  
+}
+.titulos-citas{
+  position: relative;
+}
+.inf h1{
+  color: var(--grey-grey-600, #5D6679);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    margin-top: 20px;
+}
+.inf-a{
+  color: var(--grey-grey-600, #5D6679);
+}
+.header1{
+  width: 100%;
+}
+.tabla, .tabla-true{
+    margin-top: 1px;
+    width: 100%;
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+.mas-vendidos{
+  background: #ffffff;
+  width: 100%;
+  height: 90%;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px;
+}
+.pocas-unidades{
+  background: #FFF;
+  width: 50%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 8px;
+}
+.titulos{
+  display: flex;
+  height: 15%;
+  width: 100%;
+  border-radius: 8px 8px 0px 0px;
+  align-items: center;
+  margin-top: 5px;
+
+}
+.titulos h3{
+  color: var(--grey-grey-600, #383E49);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  margin-left: 15px;
+}
+.contenedor-tabla{
+   height: 100%;
+   display: block;
+   width: 100%;
+   margin-top: 10px;
+   border-top: 1px solid #F0F1F3;
+
+}
+.contenedor-tabla1{
+  height: 100%;
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+  
+   border-radius: 0px  0px  8px  8px;
+}
+
+.fila{
+  
+  height: 30%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 0px;
+ 
+}
+.imagen-card{
+  width: 20%;
+  height: 100%;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.informacion-card{
+  display: flex;
+  flex-direction: column;
+
+  width: 60%;
+  height: 100%;
+  align-items: start;
+  justify-content: center;
+}
+
+.card-nombre{
+    color: var(--grey-grey-800, #383E49);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; 
+}
+.card-cantidad{
+      color: var(--grey-grey-500, #667085);
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+}
+
+.estado{
+    display: flex;
+    display: flex;
+    padding: 2px 8px 2px 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 16px;
+    background: var(--error-error-50, #FEECEB);
+}
+.estado p{
+  color: var(--error-error-700, #AA3028);
+text-align: center;
+
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 18px; /* 150% */
+}
+
+@media (max-width: 800px) {
+  .hola,.hola-true {
+    border: none;
+    width: 100%;
+    padding-left: 0px;
+    margin: 0px;
+    flex: 0 0 1;
+    background-color: #F0F1F3;
+    
+  }
+  .hola-true{
+    opacity:1.5;
+    background-color:rgba(0, 0, 0, 0.742);
+  }
+  .grafica-true, .avisos-true, .tabla-true{
+    opacity: 0.5;
+   
+  }
+  .seccion1{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+
+  }
+ .grafica, .grafica-true{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    border: none;
+ }
+
+ .avisos, .avisos-true{
+  display: flex;
+  flex-direction: column;
+  padding-top:0px ;
+  border: none;
+   width: 100%;
+   height:27%;
+ }
+.citas{
+    width: 100%;
+    margin: 0px;
+    height: 50%;
+  }
+  .Citas{
+    display: none;
+  }
+  .linea{
+   margin-top: 6px;
+  }
+.inventario{
+  width: 100%;
+  height: 50%;
+  margin: 0px;
+  margin-top: 2px;
+ 
+ }
+ .inf-a{
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 550;
+  line-height: 10px; /* 150% */
+ }
+ .tabla{
+  display: flex;
+  flex-direction: column;
+ }
+
+
+
+}
+.Tamaño-Calendario h2,
+.Tamaño-Calendario a,
+.Tamaño-Calendario .fc-event-title {
+    font-weight: 100;
+    cursor: pointer;
+}
+.Tamaño-Calendario .fc-footer-toolbar{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fc-event-time {
+  display: none;
+}

@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@200&display=swap');
+
+.login {
+    display: flex;
+    height: 100vh;
+    background-color: #FFFFFF;
+}
+
+.seccion-izquierda {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(31, 135, 154);
+    font-size: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: Inter;
+}
+
+.contenido-izquierda {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-derecha {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(30,126,144);
+    background: linear-gradient(315deg, rgba(30,126,144,1) 0%, rgba(16,255,115,1) 100%);
+}
+
+.contenido-derecha {
+    padding: 30px 30px;
+    flex-direction: column;
+    font-family: Inter;
+    width: 55%;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 12px 10px 10px 5px rgba(0, 0, 0, 0.4);
+}
+
+.contenido-encabezado {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+
+.encabezado {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.campos {
+    width: 80%;
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+}
+
+.recordar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h5-5 {
+    padding-left: 5px;
+}
+
+.contenedor-input {
+    font-family: Inter;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    border-style: none none solid none;
+    border-width: 0 0 2.5px 0; 
+    border-color: #1e7e90;
+}
+
+input:focus {
+    outline: none;
+}
+
+#usuario,
+#contraseña {
+    background-color: transparent;
+    letter-spacing: .5px;
+    font-size: 16px;
+    width: 85%;
+    height: 5vh;
+    border-radius: 8px;
+    border: none;
+}
+
+
+.a-a {
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    color: cornflowerblue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.a-a:hover {
+    color: rgb(26, 98, 233);
+}
+
+.button1 {
+    font-size: 16px;
+    cursor: pointer;
+    color: azure;
+    background-color: #1e7e90;
+    border-radius: 8px;
+    border: 0px solid transparent;
+    width: 100%;
+    height: 5vh;
+    transition: box-shadow 0.3s;
+}
+
+.button1:hover,
+.button3:hover {
+    box-shadow: 0px 0px 12px  #1e7e90;
+}
+
+.alerta-incorrecta {
+    align-items: center;
+    display: flex;
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 100;
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgb(211, 19, 19) ;
+    background-color: rgb(255, 204, 204);
+    border-radius: 15px;
+    color: rgb(211, 19, 19);
+    justify-content: center;
+}
+
+.imagen-debajo {
+    display: none;
+}
+
+.cargando {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid #1e7e90;
+    border-top-color: transparent;
+    animation: spin 1.2s linear infinite;
+}
+
+.botones-rc {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button2,
+.button3 {
+    width: 48%;
+    cursor: pointer;
+    color: azure;
+    background-color: #1e7e90;
+    border-radius: 8px;
+    border: 0px solid transparent;
+    height: 5vh;
+    transition: box-shadow 0.2s;
+}
+.button2 {
+    color: black;
+    background-color: rgb(216, 216, 216);
+}
+
+.button2:hover {
+    box-shadow: 0px 0px 12px  rgb(216, 216, 216);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .seccion-izquierda {
+        display: none;
+    }
+
+    .seccion-derecha {
+        width: 100%;
+    }
+
+    .contenido-derecha {
+        width: 75%;
+    }
+
+    .campos {
+        width: 100%;
+    }
+
+    .imagen-debajo {
+        display: flex;
+        justify-content:center;
+    }
+}

@@ -1,0 +1,167 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@200&display=swap');
+    :root{
+        background-color: #F0F1F3;
+    }
+.Bar, .Bar-Open{
+    display: flex;
+    width: 240px;
+    height: 92vh;
+    padding: 24px 24px 32px 24px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-radius: 0px 8px 8px 0px;
+    background: #FFF;
+}
+.Bar{
+    box-shadow: 1px 0px 3px 0px rgba(207,198,198,0.44);
+    -webkit-box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.44);
+    -moz-box-shadow: 3px 0px 5px 0px rgba(207,198,198,0.44);
+}
+.Logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    height: 90px;
+    width: 100%;
+    margin: 0;
+  
+}
+.Options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:500px;
+    width: 100%;
+    margin-top: 10px;
+   
+}
+.paginas-div{
+        display: flex;
+        position: relative;
+}
+.Close{
+    display: flex;
+     align-items: end;
+    justify-content: center;
+    display: flex;
+    height:250px;
+    width: 100%;
+    margin-top: 0px;
+    
+}
+.Close-Options{
+    display: flex;
+    flex-direction: column;
+}
+
+
+ul{
+  list-style: none;
+}
+a{  
+    
+    text-decoration: none;
+}
+.Paginas-Enlaces{
+    display: flex;
+    width: 186px;
+    height: 24px;
+    align-items: center;
+    gap: 16px;
+}
+.Paginas-Enlaces{
+   color: #12B76A;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    margin-top: 30px;
+
+}
+
+
+
+.Close-Enlaces{
+    display: flex;
+    width: 186px;
+    height: 24px;
+    align-items: center;
+    gap: 16px;
+
+}
+.Close-Enlaces{
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    margin-top: 20px;
+}
+.Close-Enlaces{
+        color: var(--grey-grey-600, #5D6679);
+        /* Body 1/Medium Si no es responsive el que vea esto es gay */
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px; /* 150% Si no coman cola*/
+}
+
+.edi{
+    color: #0ACF83;
+    text-align: center;
+    /* Sub heading/Semi Bold */
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px; /* 150% */
+
+}
+
+@media only screen and (max-width: 800px){
+    /* body {
+      font-size: 44px;
+      overflow: hidden;
+    } */
+    .Bar{
+        transform: translateX(-100%); /* Mueve el elemento fuera de la vista hacia la izquierda */
+        width: 200px;
+        height: 93%;
+        position: fixed;
+        z-index: 999;
+        overflow: hidden;
+        -webkit-transition: width 0.3s ease;
+        transition: transform 0.5s;
+        
+    }
+    .Bar-Open
+    {
+        width: 200px;
+        height: 93%;
+        position: fixed;
+        z-index: 999;
+        overflow: hidden;
+        -webkit-transition: width 0.3s ease;
+       
+        transform: translateX(0);
+        transition: transform 0.5s;
+    }
+   
+    .Close-Enlaces{
+        margin-top: 20px;
+    }
+    /* Pueden agregar mas reglas especificas para pantallas pequeñas*/
+  }
+
+
+

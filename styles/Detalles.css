@@ -1,0 +1,403 @@
+.Details-Open,.Details{
+    background: #FFF;
+    margin-top: 2%;
+    width: 97%;
+    margin-right: 6%;
+    margin-left: 5%;
+    height: 80%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+.Top-Detalles{
+    display: flex;
+    margin-top: 10px;
+    height: 10%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.Titulo-Detalles{
+  
+    height: 80%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.Titulo-Detalles h1{
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19px; /* 150% */
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    text-align: start;
+    width: auto;
+   
+}
+.Detalles-Opciones{
+    height: 100%;
+  
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+.Opciones-Editar-Button{
+    display: flex;
+    padding: 10px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 60%;
+    margin-right: 10px;
+
+}
+.Opciones-Editar-Button{
+    border: 1px solid #afb3bd;
+    color: white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: var(--grey-grey-600, #5D6679);
+}
+.Opciones-Eliminar-Button{
+    display: flex;
+    padding: 10px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 60%;
+    margin-right: 10px;
+border-radius: 4px;
+border: 1px solid #FBDADA;
+background: #FF8585;
+color: white;
+box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+.Opciones-Eliminar-Button:hover{
+    background: #f57a7a;
+}
+.Opciones-Eliminar-Button:active{
+    background: #e76969;
+}
+.Opciones-Editar-Button:hover{
+        background-color: #acbab5;
+        color: white;
+}
+.Detalles-Generales{
+    display: flex;
+    width: 100%;
+    height: 5%;
+    margin-top: 10px;
+    align-items: end;
+}
+.Detalles-Generales-titulo{
+    margin-left: 10px;
+    display: flex;
+    
+}
+.Detalles-Generales h3{
+color: var(--grey-grey-700, #48505E);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 150% */
+}
+.Detalles-Linea{
+        border: 1px solid rgb(179, 175, 175);
+        width: 98%;
+}
+.Detalles-Informacion{
+    display: flex;
+    width: 99%;
+    margin-top: 10px;
+  
+   
+   
+}
+.Detalles-Parte1{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    
+}
+.Detalles-Principales-T{
+    display: flex;
+    margin-left: 10px;
+}
+.Detalles-Principales-T h3{
+    color: var(--grey-grey-700, #48505E);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+}
+.Detalles-Atributos{
+    display: flex;
+    flex-direction: column;
+}
+.Detalles-Atributos-Renglones{
+    display: flex;
+    margin: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Detalles-Atributos-Renglones h3{
+    color: var(--grey-grey-700, #48505E);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+}
+.Detalles-Atributos-Renglones h3{
+   margin-right: 10px;
+}
+.Detalles-Atributos-Renglones p{
+    color: var(--grey-grey-600, #5D6679);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+}
+.Detalles-Parte2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: end;
+    justify-content: space-between;
+   
+   
+}   
+
+.Detalles-Imagen{
+    border: 1px dashed #9D9D9D;
+    background: #FFF;
+    height: 150px;
+    width: 150px;
+    margin-right: 100px;
+    margin-top: 40px;
+}
+.Detalles-Stock{
+    margin-right: 60px;
+    flex-direction: column;
+    display: flex;
+    width: auto;
+    margin-top: 10px;
+   
+
+    
+}
+.Stock-Renglones{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ 
+    margin-top: 10px;
+}
+.Stock-Renglones h3{
+    color: var(--grey-grey-400, #858D9D);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    margin: 5px;
+}
+.Stock-Renglones p{
+        color: var(--grey-grey-600, #5D6679);
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px; /* 150% */
+}
+.Detalles-Final{
+    width: 99%;
+    height: 100%;
+    margin-top: 10px;
+    
+    overflow: auto;
+  
+}
+.Detalles-Final p{
+    color: var(--grey-grey-600, #5D6679);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.Detalles-Final h3{
+    margin-left: 10px;
+    color: var(--grey-grey-400, #323335);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    margin-top: 10px;
+  
+}
+.Detalles-Editar-Close{
+    display: none;
+    visibility:hidden;
+}
+
+.Editar-Descripcion-Close{
+    display: none;
+
+}
+.Opciones-Editar-Button-Close{
+  display: none;
+}
+.Opciones-Eliminar-Button-Close{
+   display: none;
+}
+.Detalles-Editando-Close{
+    display: none;
+}
+.Detalles-Editar-Open{
+    width: 100px;
+    display: flex;
+    gap: 0;
+    text-align: end;
+}
+.Detalles-Editando-Open{
+        display: flex;
+        padding: 10px 16px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        height: 70%;
+        margin-right: 10px;
+        border-radius: 4px;
+        border: 1px solid #FBDADA;
+        color: white;
+        box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+.Detalles-Editando-Close{
+    display: none;
+}
+
+
+@keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+ .cargando{
+    z-index: 10;
+    border: 6px solid #ffffff;
+    border-radius: 100%;
+    border-top-color: #7967d2;
+    border-bottom-color:  #7967d2;
+    width: 100px;
+    height: 100px;
+    animation: loading 1.5s infinite linear;
+  }
+  .contenedor_carga{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+  
+  }
+  .Envio-Productos-Detalles{
+    overflow-x: hidden;
+    margin-top: 10px;
+    overflow-y: auto;
+    display: block;
+    height: 200px;
+    width: 65%;
+
+  }
+  .Envio-Productos-Detalles::-webkit-scrollbar {
+    width: 12px;
+}
+
+.Envio-Productos-Detalles::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+
+}
+ 
+.Envio-Productos-Detalles::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 6px;
+}
+
+.Envio-Productos-Detalles::-webkit-scrollbar-thumb:hover {
+    background: #979595; 
+}
+.Envios-Ren{
+    display: flex;
+    border: 1px dashed #9D9D9D;
+    height: 70px;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+.Detalles-R{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+   
+    overflow: auto;
+}
+.Detalles-R p {
+    color: var(--grey-grey-600, #5D6679);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+}
+
+.Detalles-IMG{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 2px solid green;
+    margin-right: 10px;
+}
+
+.Detalles-R::-webkit-scrollbar {
+    width: 12px;
+    display: none;
+}
+
+.Detalles-R::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    display: none;
+
+}
+ 
+.Detalles-R::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 6px;
+    display: none;
+}
+
+.Detalles-R::-webkit-scrollbar-thumb:hover {
+    background: #979595; 
+}

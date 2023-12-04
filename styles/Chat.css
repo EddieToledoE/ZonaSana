@@ -1,0 +1,41 @@
+/* Chat.css */
+
+.chat-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    background-image: url('../public/logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .message-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .message-item {
+    background-color: #4caf50;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .chat-form {
+    display: flex;
+    margin-top: auto;
+  }
+
+  .message-item img {
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+    width: 50px; /* Ajusta el ancho de la imagen */
+    height: 50px; /* Ajusta la altura de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra todo el espacio sin deformarse */
+    margin-right: 10px; /* Añade un margen a la derecha de la imagen */
+  }
+  
+  

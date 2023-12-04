@@ -1,0 +1,28 @@
+.Agregar-receta  {
+    box-sizing: border-box;
+    margin: 0px 10px;
+    height: 40px;
+    color: rgb(255, 255, 255);
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    /* 142.857% */
+    border-radius: 4px;
+    background: var(--primary-primary-600, brown);
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    padding: 10px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 38px;
+  }
+  .Agregar-receta:hover {
+    background: var(--primary-primary-600, rgb(136, 35, 35));
+  }
+  .Agregar-receta:active {
+    background: var(--primary-primary-600, rgb(209, 54, 54));
+  }

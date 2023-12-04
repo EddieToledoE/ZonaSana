@@ -1,0 +1,39 @@
+### Crear usuario 
+POST http://localhost:3000/api/auth/registro
+Content-Type: application/json
+
+{
+	"email":"Teddy_03@outlook.es",
+	"contraseña":"Gatitor1",
+	"url":"https://res.cloudinary.com/dwjnodqln/image/upload/v1699737730/i8xvwjujmexnqhb39xvh.jpg",
+	"persona":{
+		"nombre":"Eddie",
+		"apellido":"Toledo",
+		"puesto":"Dev"
+	}
+}
+
+### Contraseña Perdida
+PUT   http://localhost:3000/api/auth/pass
+Content-Type: application/json
+
+{
+	"email":"Teddy_03@outlook.es"
+}
+### Contra actual sm8gvh2d
+
+### Prueba Envios
+POST http://localhost:3000/api/auth/envio
+Content-Type: application/json
+
+{
+"rastreo":123,
+"valor":12000,
+"fecha":"2023-11-20",
+"estatus":"Probando",
+"cliente":"655ba38c794f18c7f2f9f718",
+"producto_enviado": {
+"_id":"654ff083cd39d6e6beaa667f",
+"cantidad":1
+}
+}
